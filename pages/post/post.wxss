@@ -1,0 +1,10 @@
+/* post.wxss */
+.section {
+align-items: center;
+
+ margin-bottom: 10rpx;
+}
+.input {
+  padding-top: 0;
+  padding-bottom: 0;
+}

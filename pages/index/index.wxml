@@ -1,0 +1,31 @@
+<!--index.wxml-->
+<view class="container">
+  <view  class="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+
+  <view class="actionAmount">
+    <text class="details">接客次数：{{log.userInfo.pickAmount}}
+    </text>
+    <text class="details">乘坐次数：{{log.userInfo.rideAmount}}
+    </text>
+  </view>
+  <view class="pickSection" >
+    <view bindtap="bindtap=">接客历史</view>
+    <text class="details"> 出发地：{{log.departure}}目的地：{{log.toWhere}}；</text>
+    <text class="details"> 出发日期：{{log.departureDate}}； 出发时间：{{log.departureTime}}</text>
+    <text class="details"> 车型：{{log.carModel}}； 载客量：{{log.pNumber}}</text>
+  </view>
+  <view class="rideSection" >
+    <view bindtap="bindtap=">乘坐历史</view>
+    <text class="details"> 出发地：{{log.departure}}目的地：{{log.toWhere}}；</text>
+    <text class="details"> 出发日期：{{log.departureDate}}； 出发时间：{{log.departureTime}}</text>
+    <text class="details"> 车型：{{log.carModel}}； 司机信息：{{log.dName}}</text>
+  </view>
+
+  <button bindtap="bindMessageButtonTap">修改联系信息</button>
+
+
+
+</view>
