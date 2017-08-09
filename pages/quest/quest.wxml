@@ -1,10 +1,10 @@
 <!--page/one/index.wxml-->
-<view class="page">
+<form bindsubmit="formSubmit">
     <view class="nav">
         <view class="nav-son {{shownavindex == 1? 'active' : ''}}" bindtap="listqy" data-nav="1">
-          <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{arrival}}" range="{{placeArray}}">
+          <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{departure}}" range="{{placeArray}}">
             <view class="picker">
-              出发地：{{placeArray[arrival]}}
+              出发地：{{placeArray[departure]}}
             </view>
           </picker>
           <view class="icon"></view>
@@ -52,7 +52,7 @@
           <view class="icon"></view>
         </view>
         <view class="nav2-son borders {{shownavindex == 2? 'active' : ''}}" bindtap="list" data-nav="2">
-          <picker name="eTime" mode="time" value="{{eTime}}" start="09:01" end="21:01" bindchange="bindETimeChange">
+          <picker name="lTime" mode="time" value="{{lTime}}" start="09:01" end="21:01" bindchange="bindLTimeChange">
             <view class="picker">
               时间: {{lTime}}
             </view>
@@ -61,27 +61,6 @@
         </view>
     </view>
   <view class="btn-area">
-    <button formType="submit">提交</button>
+    <button formType="submit">搜索</button>
   </view>
-    <view class="section__title">vertical scroll</view>
-  <scroll-view scroll-y style="height: 200px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <view id="green" class="scroll-view-item bc_green"></view>
-    <view id="red"  class="scroll-view-item bc_red"></view>
-    <view id="yellow" class="scroll-view-item bc_yellow"></view>
-    <view id="blue" class="scroll-view-item bc_blue"></view>
-  </scroll-view>
-
-  <view class="btn-area">
-    <button size="mini" bindtap="tap">click me to scroll into view </button>
-    <button size="mini" bindtap="tapMove">click me to scroll</button>
-  </view>
-</view>
-<view class="section section_gap">
-  <view class="section__title">horizontal scroll</view>
-  <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
-    <view id="green" class="scroll-view-item_H bc_green"></view>
-    <view id="red"  class="scroll-view-item_H bc_red"></view>
-    <view id="yellow" class="scroll-view-item_H bc_yellow"></view>
-    <view id="blue" class="scroll-view-item_H bc_blue"></view>
-  </scroll-view>
-</view>
+</form>
