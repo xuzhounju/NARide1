@@ -54,6 +54,9 @@ Page({
               console.log(res.data)
             }
           })
+          wx.navigateTo({
+            url: '../index/index',
+          })
         } else {
           console.log("请填写必要联系信息")
         } 

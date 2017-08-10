@@ -4,7 +4,11 @@ var app = getApp()
 Page({
   data: {
     userInfo: {},
-    openid: ''
+    openid: '',
+    count:'',
+    array:'',
+    placeArray: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC'],
+
   },
   //事件处理函数
   
@@ -27,10 +31,12 @@ Page({
             if (res.data[0].fields.gender == -1){
               wx.navigateTo({
                 url: '../first/first',
-              })
-             
-            
+              })   
             }
+            that.setData({
+              count: res.data[0].fields.count,
+              array: res.data[1]
+            })
           }
         })
       }
