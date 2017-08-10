@@ -8,8 +8,11 @@
   <view class="actionAmount">
     <text class="details">申请次数：{{count}}</text>  
   </view>
+
+  <view class="section_title">当前申请</view>
+
   <view wx:for="{{array}}">
-    <view class="ongingPost">
+    <view class="ongingPost" bindtap="tap">
       {{index+1}}.    出发地: {{placeArray[item.fields.departure-1]}}; 目的地:{{placeArray[item.fields.arrival-1]}}
       申请时间:{{item.fields.post_time}}
     </view>

@@ -75,3 +75,6 @@
   </view>
 </form>
 
+<view class="text-area">
+  <text>{{text}}</text>
+</view>

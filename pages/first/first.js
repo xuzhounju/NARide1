@@ -5,7 +5,8 @@ Page({
   data: {
     weixin:'',
     phone:'',
-    email:''
+    email:'',
+    text:''
   },
   onLoad: function () {
     var that = this
@@ -33,6 +34,7 @@ Page({
   },
 
   formSubmit: function (e) {
+    var that = this
     var mydata = e.detail.value
     mydata.gender = app.globalData.userInfo.gender
     mydata.nickName = app.globalData.userInfo.nickName
@@ -52,13 +54,18 @@ Page({
             },
             success: function (res) {
               console.log(res.data)
+              that.setData({
+                text: '修改成功'
+              })
+
+              
             }
           })
-          wx.navigateTo({
-            url: '../index/index',
-          })
+          
         } else {
-          console.log("请填写必要联系信息")
+          that.setData({
+            text:"请填写必要联系信息"
+          })
         } 
       }
     })

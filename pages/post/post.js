@@ -18,7 +18,8 @@ Page({
     lDate:'',
     lTime:'', 
     pNumber: 1, 
-    memo:''
+    memo:'',
+    text: ''
   },
   onLoad: function(){
     console.log('onLoad')
@@ -109,6 +110,7 @@ Page({
   },
 
   formSubmit: function (e) {
+    var that =this
     console.log(e)
     if (e.detail.value.eDate <= e.detail.value.lDate){
       var earlist = new Date(e.detail.value.eDate + ' ' + e.detail.value.eTime)
@@ -133,12 +135,16 @@ Page({
           'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
-          console.log(res.data)
+          that.setData({
+            text:"提交成功"
+          })
         }
       })
       console.log('form发生了submit事件，携带数据为：', e.detail.value)
     } else{
-      console.log('最晚日期早于最早日期 ')
+      that.setData({
+        text: "最早日期晚于最晚日期"
+      })
     }
   },
   formReset: function () {
@@ -150,7 +156,8 @@ Page({
       lDate: '',
       lTime: '',
       pNumber: 1,
-      memo: ''
+      memo: '',
+      text:''
     })
     console.log('form发生了reset事件')
   },

@@ -33,9 +33,16 @@ Page({
                 url: '../first/first',
               })   
             }
+            var i=0
+            var rawArray =res.data[1]
+            for(i;i<rawArray.length;i++){
+              var d = new Date(rawArray[i].fields.post_time)
+              rawArray[i].fields.post_time = d.toLocaleString()
+              console.log(rawArray[i].fields.post_time)
+            }
             that.setData({
               count: res.data[0].fields.count,
-              array: res.data[1]
+              array: rawArray
             })
           }
         })
