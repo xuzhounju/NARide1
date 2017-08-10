@@ -5,7 +5,8 @@
     "pages/ride/ride",
     "pages/quest/quest",
     "pages/first/first",
-    "pages/questResult/questResult"
+    "pages/questResult/questResult",
+    "pages/rideResult/rideResult"
   ],
   "window": {
     "backgroundTextStyle": "light",

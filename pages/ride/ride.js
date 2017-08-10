@@ -1,104 +1,101 @@
 // ride.js
+var util = require('../../utils/util.js')
+
+var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    drivers:[]
+    currentNavtab: "0",
+    nowDate: '',
+    endDate: '',
+    placeArray: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC'],
+    userInfo: {},
+    departure: 0,
+    arrival: 1,
+    eDate: '',
+    eTime: '',
+    lDate: '',
+    lTime: ''
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    
-    var keyList = wx.getStorageInfoSync().keys
-    console.log(keyList)
-    var driverList = []
-    var i
-    var that =this
-    for ( i =0; i<keyList.length;i++){
-      wx.getStorage({
-        key: keyList[i],
-        success: function(res) {
-          driverList.push(res.data)
-          that.setData({
-            drivers: driverList,
-          })
-        }
-      })
-    }
-   
-  
-    },
-
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    var keyList = wx.getStorageInfoSync().keys
-    console.log(keyList)
-    var driverList = []
-    var i
+  onLoad: function () {
+    console.log('onLoad')
     var that = this
-    for (i = 0; i < keyList.length; i++) {
-      wx.getStorage({
-        key: keyList[i],
+    //调用应用实例的方法获取全局数据
+    app.getUserInfo(function (userInfo) {
+      //更新数据
+      that.setData({
+        userInfo: userInfo
+      })
+    })
+  },
+
+
+  bindDeparturePickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      departure: e.detail.value
+    })
+  },
+
+  bindarrivalPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      arrival: e.detail.value
+    })
+  },
+
+  bindEDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      eDate: e.detail.value
+    })
+  },
+  bindETimeChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      eTime: e.detail.value
+    })
+  },
+
+  bindLDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      lDate: e.detail.value
+    })
+  },
+  bindLTimeChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      lTime: e.detail.value
+    })
+  },
+
+  formSubmit: function (e) {
+    if (e.detail.value.eDate <= e.detail.value.lDate) {
+      var earlist = new Date(e.detail.value.eDate + ' ' + e.detail.value.eTime)
+      console.log('E:', earlist)
+      earlist = earlist.getTime() / 1000.0
+      var latest = new Date(e.detail.value.lDate + ' ' + e.detail.value.lTime)
+      latest = latest.getTime() / 1000.0
+      var mydata = e.detail.value;
+      mydata.earliest = earlist;
+      mydata.latest = latest;
+      mydata.departure = parseInt(mydata.departure) + 1;
+      mydata.arrival = parseInt(mydata.arrival) + 1;
+      wx.request({
+        url: 'https://kunwang.us/list/' + mydata.earliest + '/' + mydata.latest + '/' + mydata.departure + '/' + mydata.arrival + '/', //仅为示例，并非真实的接口地址 //仅为示例，并非真实的接口地址
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
         success: function (res) {
-          driverList.push(res.data)
-          that.setData({
-            drivers: driverList,
+          app.searchResult = res.data;
+          wx.navigateTo({
+            url: '../rideResult/rideResult',
           })
         }
       })
     }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    this.setData({
-      keys: wx.getStorageInfoSync().keys,
-    })
-    console.log(this.data.keys)
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
-  
+
   }
 })
