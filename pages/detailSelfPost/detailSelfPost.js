@@ -1,66 +1,41 @@
 // detailSelfPost.js
+var app =getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    placeArray: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC'],
+    detailPost:'',
+    purpose:['招客','搭车'],
+    purposeID: 1,
+    earliest:'',
+    latest:'',
+    userInfo:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.setData({
+      userInfo:app.globalData.userInfo,
+      detailPost: app.globalData.onGoingPost[app.globalData.detailSelfPostID] 
+    })
+    console.log(this.data.detailPost)
+    var etime = new Date(this.data.detailPost.fields.earliest)
+    var ltime = new Date(this.data.detailPost.fields.latest)
+    this.setData({
+      earliest: etime.toLocaleString(),
+      latest: ltime.toLocaleString()
+    })
+    if (this.data.detailPost.fields.driver){
+      this.setData({
+        purposeID:0
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
   
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
 })

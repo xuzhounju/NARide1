@@ -54,8 +54,10 @@ Page({
             },
             success: function (res) {
               console.log(res.data)
-              that.setData({
-                text: '修改成功'
+              wx.showModal({
+                title: '提示',
+                content: '修改成功！',
+                showCancel: false
               })
 
               
@@ -63,8 +65,10 @@ Page({
           })
           
         } else {
-          that.setData({
-            text:"请填写必要联系信息"
+          wx.showModal({
+            title: '提示',
+            content: '请填写必要信息！',
+            showCancel: false
           })
         } 
       }
