@@ -35,6 +35,8 @@ App({
   globalData: {
     userInfo: null,
     openid:null,
-    searchResult: null
+    searchResult: null,
+    onGoingPost: null,
+    detailSelfPostID: null
   }
 })

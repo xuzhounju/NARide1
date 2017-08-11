@@ -6,7 +6,8 @@
     "pages/quest/quest",
     "pages/first/first",
     "pages/questResult/questResult",
-    "pages/rideResult/rideResult"
+    "pages/rideResult/rideResult",
+    "pages/detailSelfPost/detailSelfPost"
   ],
   "window": {
     "backgroundTextStyle": "light",

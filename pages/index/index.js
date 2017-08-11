@@ -35,10 +35,11 @@ Page({
             }
             var i=0
             var rawArray =res.data[1]
+            app.globalData.onGoingPost = rawArray
             for(i;i<rawArray.length;i++){
               var d = new Date(rawArray[i].fields.post_time)
               rawArray[i].fields.post_time = d.toLocaleString()
-              console.log(rawArray[i].fields.post_time)
+      
             }
             that.setData({
               count: res.data[0].fields.count,
@@ -61,6 +62,14 @@ Page({
   bindMessageButtonTap: function(e){
     wx.navigateTo({
       url: '../first/first',
+    })
+  },
+
+  detailTap: function(e){
+    console.log(parseInt(e.currentTarget.dataset.id))
+    app.globalData.detailSelfPostID = parseInt(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '../detailSelfPost/detailSelfPost',
     })
   }
 })
