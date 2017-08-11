@@ -1,1 +1,7 @@
 /* questResult.wxss */
+.userinfo-avatar {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 400 rpx;
+  border-radius: 50%;
+}

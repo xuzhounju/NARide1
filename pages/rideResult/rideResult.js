@@ -19,8 +19,8 @@ Page({
     var placeArray = ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC'];
     for (var i = 0; i < result.length; i++) {
       if (result[i] && result[i].fields.driver) {
-        result[i].fields.departure = placeArray[result[i].fields.departure];
-        result[i].fields.arrival = placeArray[result[i].fields.arrival];
+        result[i].fields.departure = placeArray[result[i].fields.departure - 1];
+        result[i].fields.arrival = placeArray[result[i].fields.arrival - 1];
         result[i].fields.earliest = new Date(result[i].fields.earliest);
         result[i].fields.earliest = result[i].fields.earliest.toLocaleString();
         result[i].fields.latest = new Date(result[i].fields.latest);
