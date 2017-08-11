@@ -36,7 +36,9 @@ App({
     userInfo: null,
     openid:null,
     searchResult: null,
+    sResult:null,
     onGoingPost: null,
-    detailSelfPostID: null
+    detailSelfPostID: null,
+    detailQuestEvent: null
   }
 })
