@@ -5,6 +5,7 @@
       <view class = "flex_item">
         <view class="item_left">
           <image class="userinfo-avatar" src="{{item.poster[3]}}" background-size="cover"></image>
+          <view class = "content"/>
           <text class="userinfo-nickname">{{item.poster[2]}}</text>
         </view>
         <view class="item_right">

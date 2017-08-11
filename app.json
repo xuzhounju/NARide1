@@ -8,7 +8,8 @@
     "pages/questResult/questResult",
     "pages/rideResult/rideResult",
     "pages/detailSelfPost/detailSelfPost",
-    "pages/detailQuestResult/detailQuestResult"
+    "pages/detailQuestResult/detailQuestResult",
+    "pages/detailRideResult/detailRideResult"
   ],
   "window": {
     "backgroundTextStyle": "light",

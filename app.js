@@ -39,6 +39,7 @@ App({
     sResult:null,
     onGoingPost: null,
     detailSelfPostID: null,
-    detailQuestEvent: null
+    detailQuestEvent: null,
+    detailRideEvent: null
   }
 })
