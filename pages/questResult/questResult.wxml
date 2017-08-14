@@ -1,6 +1,5 @@
 <!--questResult.wxml-->
 <view class="section">
-  <view class="section__title">搜索结果</view>
     <view wx:for="{{sResult}}"class="ongingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
       <view class = "flex_item">
         <view class="item_left">

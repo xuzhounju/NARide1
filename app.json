@@ -1,4 +1,4 @@
- {
+{
   "pages": [
     "pages/index/index",
     "pages/post/post",
@@ -11,7 +11,8 @@
     "pages/detailQuestResult/detailQuestResult",
     "pages/detailRideResult/detailRideResult",
     "pages/justLook/justLook",
-    "pages/detailJustLook/detailJustLook"
+    "pages/detailJustLook/detailJustLook",
+    "pages/justLookRide/justLookRide"
   ],
   "window": {
     "backgroundTextStyle": "light",

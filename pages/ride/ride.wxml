@@ -64,3 +64,8 @@
     <button formType="submit">搜索</button>
   </view>
 </form>
+<form bindsubmit="justLook">
+  <view class="btn-area">
+    <button formType="submit">随便看看</button>
+  </view>
+</form>

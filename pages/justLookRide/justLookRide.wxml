@@ -1,4 +1,4 @@
-<!--rideResult.wxml-->
+<!--justLook.wxml-->
 <view class="section">
     <view wx:for="{{sResult}}"class="ongingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
       <view class = "flex_item">
@@ -15,5 +15,3 @@
       </view>
     </view>
 </view>
-
-
