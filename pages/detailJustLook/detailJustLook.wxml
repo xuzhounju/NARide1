@@ -1,5 +1,4 @@
 <!--detailJustLook.wxml-->
-<view class="section__title">详细信息</view>
   <image class="userinfo-avatar" src="{{eventDetail.poster[3]}}" background-size="cover"></image>
   <view class = "content"></view> 
   <text class="userinfo-nickname">{{eventDetail.poster[2]}}</text>
