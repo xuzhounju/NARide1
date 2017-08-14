@@ -71,5 +71,10 @@ Page({
     wx.navigateTo({
       url: '../detailSelfPost/detailSelfPost',
     })
+  },
+
+  onShow:function(){
+    this.onLoad()
+
   }
 })

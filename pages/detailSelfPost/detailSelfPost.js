@@ -40,7 +40,11 @@ Page({
   deletePost: function(e){
     var mydata = this.data.detailPost.fields
     mydata.removed = true
+    var etime = new Date(this.data.detailPost.fields.earliest)
+    var ltime = new Date(this.data.detailPost.fields.latest)
     var post_pk = this.data.detailPost.pk
+    mydata.earliest = etime.getTime()/1000.0
+    mydata.latest = ltime.getTime()/1000.0
     console.log(mydata)
 
     wx.request({
