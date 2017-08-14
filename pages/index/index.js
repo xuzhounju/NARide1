@@ -76,5 +76,9 @@ Page({
   onShow:function(){
     this.onLoad()
 
+  },
+
+   onShareAppMessage: function () {
+
   }
 })
