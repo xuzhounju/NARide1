@@ -74,6 +74,7 @@ Page({
       var earlist = new Date(e.detail.value.eDate + ' ' + e.detail.value.eTime)
       console.log('E:', earlist)
       earlist = earlist.getTime() / 1000.0
+      console.log(earlist);
       var latest = new Date(e.detail.value.lDate + ' ' + e.detail.value.lTime)
       latest = latest.getTime() / 1000.0
       var mydata = e.detail.value;
@@ -94,6 +95,28 @@ Page({
         }
       })
     } 
+  },
+  
+  justLook: function () {
+      var nowTime = new Date();
+      var latestTime = new Date(nowTime.getTime() + 2 * 24 * 3600 * 1000);
+      nowTime = Math.floor(nowTime.getTime() / 1000.0);
+      latestTime = Math.floor(latestTime.getTime() / 1000.0);
+      console.log(latestTime);
+      var departure = 0;
+      var arrival = 0;
+      wx.request({
+        url: 'https://kunwang.us/list/' + nowTime + '/' + latestTime + '/' + departure + '/' + arrival + '/', //仅为示例，并非真实的接口地址 //仅为示例，并非真实的接口地址
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          app.searchResult = res.data;
+          wx.navigateTo({
+            url: '../justLook/justLook',
+          })
+        }
+      })
   },
   onShareAppMessage: function () {
 

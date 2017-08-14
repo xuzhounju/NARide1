@@ -9,7 +9,9 @@
     "pages/rideResult/rideResult",
     "pages/detailSelfPost/detailSelfPost",
     "pages/detailQuestResult/detailQuestResult",
-    "pages/detailRideResult/detailRideResult"
+    "pages/detailRideResult/detailRideResult",
+    "pages/justLook/justLook",
+    "pages/detailJustLook/detailJustLook"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -29,11 +31,11 @@
       },
       {
         "pagePath": "pages/ride/ride",
-        "text": "拼车广场"
+        "text": "搜索司机"
       },
       {
         "pagePath": "pages/quest/quest",
-        "text": "悬赏任务"
+        "text": "搜索乘客"
       }
     ]
   }
