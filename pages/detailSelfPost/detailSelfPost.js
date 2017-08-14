@@ -37,5 +37,28 @@ Page({
     }
   },
 
+  deletePost: function(e){
+    var mydata = this.data.detailPost.fields
+    mydata.removed = true
+    var post_pk = this.data.detailPost.pk
+    console.log(mydata)
+
+    wx.request({
+      url: 'https://kunwang.us/entry/'+post_pk+'/'+app.globalData.openid+'/',
+      data: mydata,
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        wx.showModal({
+          title: '提示',
+          content: '提交成功！',
+          showCancel: false
+        })
+      }
+    })
+  }
+
   
 })
