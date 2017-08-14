@@ -73,25 +73,43 @@ Page({
     if (e.detail.value.eDate <= e.detail.value.lDate) {
       var earlist = new Date(e.detail.value.eDate + ' ' + e.detail.value.eTime)
       console.log('E:', earlist)
+      var nowTime = new Date();
+      nowTime = Math.floor(nowTime.getTime() / 1000.0);
       earlist = earlist.getTime() / 1000.0
+      console.log(earlist);
       var latest = new Date(e.detail.value.lDate + ' ' + e.detail.value.lTime)
       latest = latest.getTime() / 1000.0
-      var mydata = e.detail.value;
-      mydata.earliest = earlist;
-      mydata.latest = latest;
-      mydata.departure = parseInt(mydata.departure) + 1;
-      mydata.arrival = parseInt(mydata.arrival) + 1;
-      wx.request({
-        url: 'https://kunwang.us/list/' + mydata.earliest + '/' + mydata.latest + '/' + mydata.departure + '/' + mydata.arrival + '/', //仅为示例，并非真实的接口地址 //仅为示例，并非真实的接口地址
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-        success: function (res) {
-          app.searchResult = res.data;
-          wx.navigateTo({
-            url: '../rideResult/rideResult',
-          })
-        }
+      if (earlist < latest && earlist > nowTime) {
+        var mydata = e.detail.value;
+        mydata.earliest = earlist;
+        mydata.latest = latest;
+        mydata.departure = parseInt(mydata.departure) + 1;
+        mydata.arrival = parseInt(mydata.arrival) + 1;
+        wx.request({
+          url: 'https://kunwang.us/list/' + mydata.earliest + '/' + mydata.latest + '/' + mydata.departure + '/' + mydata.arrival + '/', //仅为示例，并非真实的接口地址 //仅为示例，并非真实的接口地址
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            app.searchResult = res.data;
+            wx.navigateTo({
+              url: '../rideResult/rideResult',
+            })
+          }
+        })
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: '请确认最早时间晚于现在！',
+          showCancel: false
+        })
+      }
+    }
+    else {
+      wx.showModal({
+        title: '提示',
+        content: '请确认最晚时间晚于最早时间！',
+        showCancel: false
       })
     }
   },
