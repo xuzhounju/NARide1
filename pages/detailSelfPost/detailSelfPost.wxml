@@ -10,11 +10,11 @@
 </view>
 
 <view class="text-container" >
-  <text>目的地：{{placeArray[detailPost.fields.departure]}}</text>
+  <text>目的地：{{placeArray[detailPost.fields.departure-1]}}</text>
 </view>
 
 <view class="text-container" >
-  <text>目的地：{{placeArray[detailPost.fields.arrival]}}</text>
+  <text>目的地：{{placeArray[detailPost.fields.arrival-1]}}</text>
 </view>
 
 <view class="text-container" >
@@ -32,3 +32,5 @@
 <view class="text-container" >
   <text>备注：{{detailPost.fields.memo}}</text>
 </view>
+
+ <button bindtap="deletePost">删除请求</button>

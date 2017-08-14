@@ -35,7 +35,7 @@ Page({
             }
             var i=0
             var rawArray =res.data[1]
-            app.globalData.onGoingPost = rawArray
+            app.globalData.onGoingPost = res.data[1]
             for(i;i<rawArray.length;i++){
               var d = new Date(rawArray[i].fields.post_time)
               rawArray[i].fields.post_time = d.toLocaleString()
@@ -71,5 +71,10 @@ Page({
     wx.navigateTo({
       url: '../detailSelfPost/detailSelfPost',
     })
+  },
+
+  onShow:function(){
+    this.onLoad()
+
   }
 })
