@@ -76,10 +76,9 @@ Page({
       var nowTime = new Date();
       nowTime = Math.floor(nowTime.getTime() / 1000.0);
       earlist = earlist.getTime() / 1000.0
-      console.log(earlist);
       var latest = new Date(e.detail.value.lDate + ' ' + e.detail.value.lTime)
       latest = latest.getTime() / 1000.0
-      if (earlist < latest && earlist > nowTime) {
+      if (earlist < latest) {
         var mydata = e.detail.value;
         mydata.earliest = earlist;
         mydata.latest = latest;
@@ -92,18 +91,20 @@ Page({
           },
           success: function (res) {
             app.searchResult = res.data;
+            console.log(res.data[0]);
             wx.navigateTo({
               url: '../questResult/questResult',
             })
           }
         })
-      } else {
-        wx.showModal({
-          title: '提示',
-          content: '请确认最早时间晚于现在！',
-          showCancel: false
-        }) 
       } 
+      // else {
+      //   wx.showModal({
+      //     title: '提示',
+      //     content: '请确认最早时间晚于现在！',
+      //     showCancel: false
+      //   }) 
+      // } 
       }
       else {
         wx.showModal({
@@ -119,7 +120,6 @@ Page({
       var latestTime = new Date(nowTime.getTime() + 2 * 24 * 3600 * 1000);
       nowTime = Math.floor(nowTime.getTime() / 1000.0);
       latestTime = Math.floor(latestTime.getTime() / 1000.0);
-      console.log(latestTime);
       var departure = 0;
       var arrival = 0;
       wx.request({
