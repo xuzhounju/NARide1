@@ -1,5 +1,4 @@
 <!--index.wxml-->
-<view class="container">
   <view class = "userbox">
     <view class="userinfo">
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
@@ -20,6 +19,3 @@
 
   <button bindtap="bindMessageButtonTap">修改联系信息</button>
 
-
-
-</view>
