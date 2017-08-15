@@ -113,11 +113,15 @@ Page({
     var that =this
     var event=e.detail.value
     if(event.eDate.length>0&&event.eTime.length>0&&event.lDate.length>0&&event.lTime.length>0){
-      var earlist = new Date(e.detail.value.eDate + ' ' + e.detail.value.eTime)
+      var rawE = e.detail.value.eDate + ' ' + e.detail.value.eTime
+      var earlist = new Date(rawE.replace(/-/g, "/"))
       console.log('E:', earlist)
       earlist = earlist.getTime() / 1000.0
-      var latest = new Date(e.detail.value.lDate + ' ' + e.detail.value.lTime)
+      var rawL = e.detail.value.lDate + ' ' + e.detail.value.lTime
+      var latest = new Date(rawL.replace(/-/g, "/"))
       latest = latest.getTime() / 1000.0
+      console.log('form发生了submit事件，携带数据为：', e.detail.value)
+
       if (earlist < latest) {
 
         var mydata = e.detail.value;
