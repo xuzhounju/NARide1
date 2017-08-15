@@ -71,14 +71,17 @@ Page({
 
   formSubmit: function (e) {
     if (e.detail.value.eDate <= e.detail.value.lDate) {
-      var earlist = new Date(e.detail.value.eDate + ' ' + e.detail.value.eTime)
       var timeNow = new Date();
       var nowTime = new Date(timeNow.getTime() - 60*1000);
       nowTime = Math.floor(nowTime.getTime() / 1000.0);
+      var rawE = e.detail.value.eDate + ' ' + e.detail.value.eTime
+      var earlist = new Date(rawE.replace(/-/g, "/"))
+      console.log('E:', earlist)
       earlist = earlist.getTime() / 1000.0
-      var latest = new Date(e.detail.value.lDate + ' ' + e.detail.value.lTime)
+      var rawL = e.detail.value.lDate + ' ' + e.detail.value.lTime
+      var latest = new Date(rawL.replace(/-/g, "/"))
       latest = latest.getTime() / 1000.0
-      if (earlist < latest) {
+      if (earlist < latest && earlist > nowTime) {
         var mydata = e.detail.value;
         mydata.earliest = earlist;
         mydata.latest = latest;
@@ -97,13 +100,13 @@ Page({
           }
         })
       } 
-      // else {
-      //   wx.showModal({
-      //     title: '提示',
-      //     content: '请确认最早时间晚于现在！',
-      //     showCancel: false
-      //   }) 
-      // } 
+      else {
+        wx.showModal({
+          title: '提示',
+          content: '请确认最早时间晚于现在！',
+          showCancel: false
+        }) 
+      } 
       }
       else {
         wx.showModal({
