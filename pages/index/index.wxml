@@ -1,14 +1,16 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <view class = "userbox">
+    <view class="userinfo">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+    <view class = "userdetail">
+      <view class="actionAmount">
+        <text class="details">申请次数：{{count}}</text>  
+      </view>
+    </view>
   </view>
-
-  <view class="actionAmount">
-    <text class="details">申请次数：{{count}}</text>  
-  </view>
-
   <view class="section_title">当前申请</view>
 
   <view wx:for="{{array}}"class="ongingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
