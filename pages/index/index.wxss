@@ -9,6 +9,10 @@
   width: 256 rpx;
 }
 
+.userdetail{
+  padding: 10 rpx;
+}
+
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
@@ -29,4 +33,12 @@
   text-align: left;     
   align-items: left;
 
+}
+
+.ongoingPost{
+  background: red;
+}
+
+view{
+  padding: 10rpx;
 }
