@@ -43,7 +43,7 @@
           日期: {{lDate}}
         </view>
       </picker>
-      <picker name="lTime" mode="time" value="{{lTime}}" start="09:01" end="21:01" bindchange="bindLTimeChange">
+      <picker name="lTime" mode="time" value="{{lTime}}"  bindchange="bindLTimeChange">
         <view class="picker">
           时间: {{lTime}}
         </view>
