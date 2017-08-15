@@ -79,7 +79,7 @@ Page({
       console.log(earlist);
       var latest = new Date(e.detail.value.lDate + ' ' + e.detail.value.lTime)
       latest = latest.getTime() / 1000.0
-      if (earlist < latest && earlist > nowTime) {
+      if (earlist < latest) {
         var mydata = e.detail.value;
         mydata.earliest = earlist;
         mydata.latest = latest;
@@ -97,13 +97,14 @@ Page({
             })
           }
         })
-      } else {
-        wx.showModal({
-          title: '提示',
-          content: '请确认最早时间晚于现在！',
-          showCancel: false
-        })
-      }
+      } 
+      // else {
+      //   wx.showModal({
+      //     title: '提示',
+      //     content: '请确认最早时间晚于现在！',
+      //     showCancel: false
+      //   })
+      // }
     }
     else {
       wx.showModal({

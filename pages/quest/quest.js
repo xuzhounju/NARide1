@@ -72,8 +72,8 @@ Page({
   formSubmit: function (e) {
     if (e.detail.value.eDate <= e.detail.value.lDate) {
       var earlist = new Date(e.detail.value.eDate + ' ' + e.detail.value.eTime)
-      console.log('E:', earlist)
-      var nowTime = new Date();
+      var timeNow = new Date();
+      var nowTime = new Date(timeNow.getTime() - 60*1000);
       nowTime = Math.floor(nowTime.getTime() / 1000.0);
       earlist = earlist.getTime() / 1000.0
       var latest = new Date(e.detail.value.lDate + ' ' + e.detail.value.lTime)
@@ -91,7 +91,6 @@ Page({
           },
           success: function (res) {
             app.searchResult = res.data;
-            console.log(res.data[0]);
             wx.navigateTo({
               url: '../questResult/questResult',
             })
