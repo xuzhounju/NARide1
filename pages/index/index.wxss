@@ -9,8 +9,8 @@
   width: 256 rpx;
 }
 
-.userdetail{
-  padding: 10 rpx;
+.userbox .userdetail{
+  justify-content: space-around;
 }
 
 .userinfo-avatar {
@@ -35,10 +35,3 @@
 
 }
 
-.ongoingPost{
-  background: red;
-}
-
-view{
-  padding: 10rpx;
-}
