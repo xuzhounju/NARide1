@@ -8,6 +8,10 @@
   width: 256 rpx;
 }
 
+.userbox .userdetail{
+  justify-content: space-around;
+}
+
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
@@ -29,3 +33,4 @@
   align-items: left;
 
 }
+

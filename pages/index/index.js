@@ -8,7 +8,8 @@ Page({
     count:'',
     array:'',
     placeArray: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC'],
-
+    weixin:'',
+    phone:''
   },
   //事件处理函数
   
@@ -42,6 +43,8 @@ Page({
       
             }
             that.setData({
+              weixin: res.data[0].fields.weixin,
+              phone: res.data[0].fields.phone,
               count: res.data[0].fields.count,
               array: rawArray
             })

@@ -5,9 +5,10 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </view>
     <view class = "userdetail">
-      <view class="actionAmount">
-        <text class="details">申请次数：{{count}}</text>  
-      </view>
+      <view class="details">申请次数:{{count}}</view>  
+      <view class="details">微信号:{{weixin}}</view>
+      <view class="details">手机号:{{phone}}</view>
+        <button bindtap="bindMessageButtonTap">修改联系信息</button>
     </view>
   </view>
   <view class="section_title">当前申请</view>
@@ -17,5 +18,5 @@
     <text>申请时间:{{item.fields.post_time}}</text>  
   </view>
 
-  <button bindtap="bindMessageButtonTap">修改联系信息</button>
+
 
