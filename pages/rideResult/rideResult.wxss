@@ -1,1 +1,58 @@
 /* rideResult.wxss */
+
+.section{
+    padding-bottom: 100rpx;
+}
+
+.ongingPost{
+    position: relative;
+    padding: 20rpx 20rpx 20rpx 200rpx;
+    height: 185rpx;
+    border-bottom: 1rpx solid #e9e9e9;
+}
+
+.userinfo {
+  width: 185 rpx;
+  height: 185 rpx;
+  left: 10 rpx;
+  position: absolute;
+} 
+
+.userinfo-avatar {
+  width: 150rpx;
+  height: 150rpx;
+  top: 10 rpx;
+  border-radius: 50%;
+  position: absolute;
+  margin: auto;
+}
+
+.ongingPost .userinfo-nickname{
+    position: absolute;
+    left: 60rpx;
+    bottom: 10rpx;
+    overflow: hidden;
+    text-align: center;
+    font-size: 33rpx;
+}
+
+.ongingPost .item-left{
+  float: right;
+  height: 105rpx;
+  line-height: 50rpx;
+}
+
+.ongingPost .position{
+  display: inline-block;
+  font-size: 30rpx;
+}
+
+.ongingPost .eTime{
+  display: inline-block;
+  font-size: 30rpx;
+}
+
+.ongingPost .lTime{
+  display: inline-block;
+  font-size: 30rpx;
+}

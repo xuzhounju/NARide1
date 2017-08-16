@@ -72,7 +72,7 @@ Page({
   formSubmit: function (e) {
     if (e.detail.value.eDate <= e.detail.value.lDate) {
       var timeNow = new Date();
-      var nowTime = new Date(timeNow.getTime() - 60*1000);
+      var nowTime = new Date(timeNow.getTime() - 120*1000);
       nowTime = Math.floor(nowTime.getTime() / 1000.0);
       var rawE = e.detail.value.eDate + ' ' + e.detail.value.eTime
       var earlist = new Date(rawE.replace(/-/g, "/"))
