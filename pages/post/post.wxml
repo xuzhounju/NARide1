@@ -74,7 +74,7 @@
 
   <view class="section_title">备注：</view>
   <view class="Grid-cell 5-1">
-    <input name="memo" placeholder="可输入心目中的价格，司机可输入车型" auto-focus />
+    <input name="memo" placeholder="可输入心目中的价格，司机可输入车型"  />
   </view>
 
   <view class="btn-area">
