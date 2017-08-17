@@ -52,11 +52,10 @@ Page({
     var a = app.sResult;
     console.log(parseInt(e.currentTarget.dataset.id));
     var b = parseInt(e.currentTarget.dataset.id);
-    console.log(a[b]);
-    app.detailQuestEvent = a[b];
+    app.detailEvent = a[b];
     console.log(app.detailQuestEvent);
     wx.navigateTo({
-      url: '../detailQuestResult/detailQuestResult',
+      url: '../resultDetail/resultDetail',
     })
   }
 })

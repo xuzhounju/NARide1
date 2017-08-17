@@ -39,7 +39,7 @@ App({
     sResult:null,
     onGoingPost: null,
     detailSelfPostID: null,
-    detailQuestEvent: null,
+    detailEvent: null,
     detailRideEvent: null,
     weixin: null,
     phone:'',
