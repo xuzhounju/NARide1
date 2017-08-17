@@ -1,0 +1,16 @@
+<!--result.wxml-->
+
+<view wx:for="{{sResult}}"class="ongoingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
+  <view class="Grid"> 
+    <view class="Grid-cell userinfo">
+      <image class="userinfo-avatar" src="{{item.poster[3]}}" background-size="cover"></image>
+      <text class="content">{{item.poster[2]}}</text>
+    </view>
+    <view class = "Grid-cell infoDetails">
+      <view class = "detail">出发地：{{item.departure}}</view>
+      <view class = "detail">目的地: {{item.arrival}}</view>
+      <view class = "detail">最早时间：{{item.earliest}}</view>
+      <view class = "detail">最晚时间：{{item.latest}}</view>
+    </view>
+  </view>
+</view>

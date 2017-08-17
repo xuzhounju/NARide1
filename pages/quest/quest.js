@@ -94,8 +94,9 @@ Page({
           },
           success: function (res) {
             app.searchResult = res.data;
+            app.searchTap = 0;
             wx.navigateTo({
-              url: '../questResult/questResult',
+              url: '../result/result',
             })
           }
         })
@@ -131,8 +132,9 @@ Page({
         },
         success: function (res) {
           app.searchResult = res.data;
+          app.searchTap = 0;
           wx.navigateTo({
-            url: '../justLook/justLook',
+            url: '../result/result',
           })
         }
       })

@@ -1,67 +1,64 @@
 <!--page/one/index.wxml-->
-<form bindsubmit="formSubmit">
-    <view class="nav">
-        <view class="nav-son {{shownavindex == 1? 'active' : ''}}" bindtap="listqy" data-nav="1">
-          <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{departure}}" range="{{placeArray}}">
-            <view class="picker">
-              出发地：{{placeArray[departure]}}
-            </view>
-          </picker>
-          <view class="icon"></view>
+<form bindsubmit="formSubmit" bindreset="formReset" id="js-postform">
+  <view class= "Grid">
+    <view class="Grid-cell 1-1">
+      <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{departure}}" range="{{placeArray}}">
+        <view class="picker">
+           出发地：{{placeArray[departure]}}
         </view>
-        <view class="nav-son borders {{shownavindex == 2? 'active' : ''}}" bindtap="list" data-nav="2">
-          <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{arrival}}" range="{{placeArray}}">
-            <view class="picker">
-              目的地：{{placeArray[arrival]}}
-            </view>
-          </picker>
-          <view class="icon"></view>
-        </view>
+      </picker>
     </view>
-    <view class="content">
-      最早出发时间
-    </view>
-    <view class="nav1">
-        <view class="nav1-son {{shownavindex == 1? 'active' : ''}}" bindtap="listqy" data-nav="1">
-          <picker name="eDate" mode="date" value="{{eDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindEDateChange">
-            <view class="picker">
-              日期: {{eDate}}
-            </view>
-          </picker>
-          <view class="icon"></view>
+    <view class= "Grid-cell 1-2">
+      <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{arrival}}" range="{{placeArray}}">
+        <view class="picker">
+          目的地：{{placeArray[arrival]}}
         </view>
-        <view class="nav1-son borders {{shownavindex == 2? 'active' : ''}}" bindtap="list" data-nav="2">
-          <picker name="eTime" mode="time" value="{{eTime}}" bindchange="bindETimeChange">
-            <view class="picker">
-              时间: {{eTime}}
-            </view>
-          </picker>
-          <view class="icon"></view>
-        </view>
+      </picker>
     </view>
-    <view class = "content">
-      最晚出发时间
-    </view>
-    <view class="nav2">
-        <view class="nav2-son {{shownavindex == 1? 'active' : ''}}" bindtap="listqy" data-nav="1">
-          <picker name="lDate" mode="date" value="{{lDate}}" start="{{eDate}}" end="{{endDate}}" bindchange="bindLDateChange">
-            <view class="picker">
-              日期: {{lDate}}
-            </view>
-          </picker>
-          <view class="icon"></view>
+  </view>
+
+
+
+  <view class="section_title">最早出发时间</view>
+  <view class="Grid">
+    <view class="Grid-cell 2-1">
+      <picker name="eDate" mode="date" value="{{eDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindEDateChange">
+        <view class="picker">
+          日期: {{eDate}}
         </view>
-        <view class="nav2-son borders {{shownavindex == 2? 'active' : ''}}" bindtap="list" data-nav="2">
-          <picker name="lTime" mode="time" value="{{lTime}}" bindchange="bindLTimeChange">
-            <view class="picker">
-              时间: {{lTime}}
-            </view>
-          </picker>
-          <view class="icon"></view>
-        </view>
+      </picker>
     </view>
+    <view class="Grid-cell 2-2">
+      <picker name="eTime" mode="time" value="{{eTime}}" bindchange="bindETimeChange">
+        <view class="picker">
+          时间: {{eTime}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+
+  <view class="section_title">最晚出发时间</view>
+  <view class="Grid">
+    <view class="Grid-cell 3-1">
+      <picker name="lDate" mode="date" value="{{lDate}}" start="{{eDate}}" end="{{endDate}}" bindchange="bindLDateChange">
+        <view class="picker">
+          日期: {{lDate}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="Grid-cell 3-2">
+      <picker name="lTime" mode="time" value="{{lTime}}"  bindchange="bindLTimeChange">
+        <view class="picker">
+          时间: {{lTime}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
   <view class="btn-area">
-    <button formType="submit">搜索</button>
+    <button formType="submit">Submit</button>
   </view>
 </form>
 <form bindsubmit="justLook">

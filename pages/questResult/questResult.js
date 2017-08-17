@@ -42,7 +42,7 @@ Page({
     app.detailQuestEvent = a[b];
     console.log(app.detailQuestEvent);
     wx.navigateTo({
-      url: '../detailQuestResult/detailQuestResult',
+      url: '../result/result',
     })
   }
 })

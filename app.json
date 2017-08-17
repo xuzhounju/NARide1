@@ -12,7 +12,9 @@
     "pages/detailRideResult/detailRideResult",
     "pages/justLook/justLook",
     "pages/detailJustLook/detailJustLook",
-    "pages/justLookRide/justLookRide"
+    "pages/justLookRide/justLookRide",
+    "pages/result/result",
+    "pages/resultDetail/resultDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

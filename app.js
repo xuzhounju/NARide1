@@ -44,7 +44,7 @@ App({
     weixin: null,
     phone:'',
     email:'',
-    place: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC']
-  
+    place: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC'],
+    searchTab:null
   }
 })

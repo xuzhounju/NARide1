@@ -68,7 +68,7 @@
     </view>
   </view>
 
-  <view class="section_title">司机</view>
+  <view class="section_title">我是司机</view>
   <switch name="driver"/>
 
 
