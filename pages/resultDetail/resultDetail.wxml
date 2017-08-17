@@ -33,5 +33,10 @@
 </view>
 
 <view class="btn-area">
+    <button bindtap="copyWechat">复制微信号</button>
+</view>
+
+<view class="btn-area">
     <button bindtap="phoneCall">拨打电话</button>
 </view>
+

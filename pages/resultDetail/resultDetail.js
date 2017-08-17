@@ -20,5 +20,19 @@ Page({
     wx.makePhoneCall({
       phoneNumber: app.detailEvent.poster[6]
     })
+  },
+
+  copyWechat: function (e){
+    wx.setClipboardData({
+      data: app.detailEvent.poster[5],
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            console.log(res.data) // data
+          }
+        })
+      }
+    })
   }
+
 })

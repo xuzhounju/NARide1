@@ -96,7 +96,7 @@ Page({
             },
             success: function (res) {
               app.searchResult = res.data;
-              app.searchTap = 1;
+              app.searchTap = 0;
               wx.navigateTo({
                 url: '../result/result',
               })
