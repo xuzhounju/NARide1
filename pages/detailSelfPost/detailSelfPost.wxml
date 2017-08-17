@@ -10,7 +10,7 @@
 </view>
 
 <view class="text-container" >
-  <text>目的地：<span>{{placeArray[detailPost.fields.departure-1]}}</span></text>
+  <text>出发地：<span>{{placeArray[detailPost.fields.departure-1]}}</span></text>
 </view>
 
 <view class="text-container" >

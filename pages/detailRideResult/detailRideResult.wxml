@@ -1,9 +1,0 @@
-<!--detailRideResult.wxml-->
-  <image class="userinfo-avatar" src="{{eventDetail.poster[3]}}" background-size="cover"></image>
-  <view class = "content"></view> 
-  <text class="userinfo-nickname">{{eventDetail.poster[2]}}</text>
-  <view class = "content">出发地：{{eventDetail.departure}} 目的地{{eventDetail.arrival}}</view>
-  <view class = "content">最早时间：{{eventDetail.earliest}}</view>
-  <view class = "content">最晚时间：{{eventDetail.latest}}</view> 
-  <view class = "content">联系方式：{{eventDetail.poster[5]}}</view> 
-  <view class = "content">备注信息：{{eventDetail.memo}}</view> 

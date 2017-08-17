@@ -1,2 +1,33 @@
 <!--resultDetail.wxml-->
-<text>resultDetail.wxml</text>
+<view class="userinfo">
+  <image class="userinfo-avatar" src="{{eventDetail.poster[3]}}" background-size="cover"></image>
+  <text class="userinfo-nickname">{{eventDetail.poster[2]}}</text>
+</view>
+
+<view class="text-container" >
+  <view>出发地：<span>{{eventDetail.departure}}</span></view>
+</view>
+
+<view class="text-container" >
+  <view>目的地：<span>{{eventDetail.arrival}}</span></view>
+</view>
+
+<view class="text-container" >
+  <view>最早出发时间：<span>{{eventDetail.earliest}}</span></view>
+</view>
+
+<view class="text-container" >
+  <view>最晚出发时间：<span>{{eventDetail.latest}}</span></view>
+</view>
+
+<view class="text-container" >
+  <view>微信号：<span>{{eventDetail.poster[5]}}</span></view>
+</view>
+
+<view class="text-container" >
+  <view>手机号：<span>{{eventDetail.poster[6]}}</span></view>
+</view>
+
+<view class="text-container" >
+  <view>备注信息：<span>{{eventDetail.memo}}</span></view>
+</view>

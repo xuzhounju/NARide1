@@ -7,10 +7,10 @@
       <text class="content">{{item.poster[2]}}</text>
     </view>
     <view class = "Grid-cell infoDetails">
-      <view class = "detail">出发地：{{item.departure}}</view>
-      <view class = "detail">目的地: {{item.arrival}}</view>
-      <view class = "detail">最早时间：{{item.earliest}}</view>
-      <view class = "detail">最晚时间：{{item.latest}}</view>
+      <view class = "detail">出发地：<span>{{item.departure}}</span></view>
+      <view class = "detail">目的地: <span>{{item.arrival}}</span></view>
+      <view class = "detail">最早时间：<span>{{item.earliest}}</span></view>
+      <view class = "detail">最晚时间：<span>{{item.latest}}</span></view>
     </view>
   </view>
 </view>
