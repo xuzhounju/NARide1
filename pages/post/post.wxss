@@ -1,10 +1,20 @@
 /* post.wxss */
-.section {
-align-items: center;
-
- margin-bottom: 10rpx;
+.Grid {
+  display: flex; 
 }
-.input {
-  padding-top: 0;
-  padding-bottom: 0;
+
+.Grid-cell{
+  flex: 1;
+  height: 300 rpx;
+  margin: 20rpx 10rpx;
+  background: lightcyan;
+  border-radius: 20%;
+}
+
+.picker{
+  font-size: 35rpx;
+}
+
+.secion_title{
+  font-size: 10 rpx;
 }

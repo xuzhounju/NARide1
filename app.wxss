@@ -3,7 +3,9 @@
 
 page {
   background-color: #fbf9fe;  
-  padding: 40rpx 15rpx;
+  padding-top: 40rpx ;
   
 
 }
+
+

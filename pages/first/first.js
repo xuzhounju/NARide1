@@ -57,8 +57,16 @@ Page({
               wx.showModal({
                 title: '提示',
                 content: '修改成功！',
-                showCancel: false
+                showCancel: false,
+                success:function(res){
+                  if(res.confirm){
+                    wx.navigateBack({
+                      
+                    })
+                  }
+                }
               })
+            
 
               
             }

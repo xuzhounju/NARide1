@@ -20,3 +20,17 @@
 .usermotto {
   margin-top: 100px;
 }
+
+.purpose-container{
+
+  margin: 40rpx 10rpx;
+  color:blue;
+  font-weight:bold;
+  text-align: center;
+}
+
+.text-container{
+  background: lightcyan;
+  margin: 20rpx 10rpx;
+  border-radius: 20% 
+}

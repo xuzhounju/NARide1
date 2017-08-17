@@ -5,8 +5,8 @@
 </view>
 
 
-<view class="text-container" >
-  <text>{{purpose[purposeID]}}</text>
+<view class="purpose-container" >
+  <text>想要{{purpose[purposeID]}}</text>
 </view>
 
 <view class="text-container" >
@@ -33,4 +33,4 @@
   <text>备注：{{detailPost.fields.memo}}</text>
 </view>
 
- <button bindtap="deletePost">删除请求</button>
+ <button bindtap="deletePost" type="warn">删除请求</button>

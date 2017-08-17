@@ -38,7 +38,7 @@
 
 .ongoingPost{
   margin: 20rpx 10rpx;
-  font-size: 30rpx;
+  font-size: 35rpx;
   background: lightcyan;
   border-radius: 20%  
 }

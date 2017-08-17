@@ -58,7 +58,14 @@ Page({
         wx.showModal({
           title: '提示',
           content: '提交成功！',
-          showCancel: false
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateBack({
+
+              })
+            }
+          }
         })
       }
     })

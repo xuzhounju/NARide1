@@ -1,31 +1,34 @@
 <!--post.wxml-->
 <form bindsubmit="formSubmit" bindreset="formReset" id="js-postform">
-  <view class="section">
-    <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{departure}}" range="{{placeArray}}">
-      <view class="picker">
-        出发地：{{placeArray[departure]}}
-      </view>
-    </picker>
+  <view class= "Grid">
+    <view class="Grid-cell 1-1">
+      <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{departure}}" range="{{placeArray}}">
+        <view class="picker">
+           出发地：{{placeArray[departure]}}
+        </view>
+      </picker>
+    </view>
+    <view class= "Grid-cell 1-2">
+      <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{arrival}}" range="{{placeArray}}">
+        <view class="picker">
+          目的地：{{placeArray[arrival]}}
+        </view>
+      </picker>
+    </view>
   </view>
 
-  <view class="section">
-    <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{arrival}}" range="{{placeArray}}">
-      <view class="picker">
-        目的地：{{placeArray[arrival]}}
-      </view>
-    </picker>
-  </view>
 
 
-  <view class="section">
-    <view class="section__title">最早出发时间</view>
-    <view class="flex-wrp" style="flex-direction:row;">
-
+  <view class="section_title">最早出发时间</view>
+  <view class="Grid">
+    <view class="Grid-cell 2-1">
       <picker name="eDate" mode="date" value="{{eDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindEDateChange">
         <view class="picker">
           日期: {{eDate}}
         </view>
       </picker>
+    </view>
+    <view class="Grid-cell 2-2">
       <picker name="eTime" mode="time" value="{{eTime}}" bindchange="bindETimeChange">
         <view class="picker">
           时间: {{eTime}}
@@ -34,15 +37,18 @@
     </view>
   </view>
 
-  <view class="section">
-    <view class="section__title">最晚出发时间</view>
-    <view class="flex-wrp" style="flex-direction:row;">
 
+  <view class="section_title">最晚出发时间</view>
+  <view class="Grid">
+    <view class="Grid-cell 3-1">
       <picker name="lDate" mode="date" value="{{lDate}}" start="{{eDate}}" end="{{endDate}}" bindchange="bindLDateChange">
         <view class="picker">
           日期: {{lDate}}
         </view>
       </picker>
+    </view>
+
+    <view class="Grid-cell 3-2">
       <picker name="lTime" mode="time" value="{{lTime}}"  bindchange="bindLTimeChange">
         <view class="picker">
           时间: {{lTime}}
@@ -52,29 +58,28 @@
   </view>
 
 
-  <view class="section">
-    <picker name="pNumber" bindchange="bindPNumberPickerChange" value="{{pNumber}}" range="{{numArray}}">
-      <view class="picker">
-        乘客数：{{numArray[pNumber]}}
-      </view>
-    </picker>
+  <view class="Grid">
+    <view class="Grid-cell 4-1">
+      <picker name="pNumber" bindchange="bindPNumberPickerChange" value="{{pNumber}}" range="{{numArray}}">
+        <view class="picker">
+          乘客数：{{numArray[pNumber]}}
+        </view>
+      </picker>
+    </view>
   </view>
 
-  <view class="section">
-    <view class="section__title">司机</view>
-    <switch name="driver"/>
+  <view class="section_title">司机</view>
+  <switch name="driver"/>
+
+
+  <view class="section_title">备注：</view>
+  <view class="Grid-cell 5-1">
+    <input name="memo" placeholder="可输入心目中的价格，司机可输入车型" auto-focus />
   </view>
-<view class="section">
-  <view class="section__title">备注：</view>
-  <input name="memo" placeholder="可输入心目中的价格，司机可输入车型" auto-focus/>
-</view>
 
   <view class="btn-area">
-    <button formType="submit">Submit</button>
-    <button formType="reset">Reset</button>
+    <button formType="submit" type="primary" >Submit</button>
+    <button formType="reset" type="warn">Reset</button>
   </view>
 </form>
 
-<view class="text-area">
-  <text>{{text}}</text>
-</view>
