@@ -31,7 +31,7 @@ Page({
             app.globalData.openid = res.data[0].fields.username
             if (res.data[0].fields.gender == -1){
               wx.navigateTo({
-                url: '../first/first',
+                url: '../terms/terms',
               })   
             }
             var i=0

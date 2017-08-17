@@ -14,7 +14,8 @@
     "pages/detailJustLook/detailJustLook",
     "pages/justLookRide/justLookRide",
     "pages/result/result",
-    "pages/resultDetail/resultDetail"
+    "pages/resultDetail/resultDetail",
+    "pages/terms/terms"
   ],
   "window": {
     "backgroundTextStyle": "light",

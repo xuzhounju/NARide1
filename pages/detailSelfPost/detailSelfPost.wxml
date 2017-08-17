@@ -6,31 +6,31 @@
 
 
 <view class="purpose-container" >
-  <text>想要{{purpose[purposeID]}}</text>
+  <view>想要{{purpose[purposeID]}}</view>
 </view>
 
 <view class="text-container" >
-  <text>目的地：<span>{{placeArray[detailPost.fields.departure-1]}}</span></text>
+  <view>目的地：<span>{{placeArray[detailPost.fields.departure-1]}}</span></view>
 </view>
 
 <view class="text-container" >
-  <text>目的地：<span>{{placeArray[detailPost.fields.arrival-1]}}</span></text>
+  <view>目的地：<span>{{placeArray[detailPost.fields.arrival-1]}}</span></view>
 </view>
 
 <view class="text-container" >
-  <text>最早出发时间：<span>{{earliest}}</span></text>
+  <view>最早出发时间：<span>{{earliest}}</span></view>
 </view>
 
 <view class="text-container" >
-  <text>最晚出发时间：<span>{{latest}}</span></text>
+  <view>最晚出发时间：<span>{{latest}}</span></view>
 </view>
 
 <view class="text-container" >
-  <text>乘客数：<span>{{detailPost.fields.pNumber}}</span></text>
+  <view>乘客数：<span>{{detailPost.fields.pNumber}}</span></view>
 </view>
 
 <view class="text-container" >
-  <text>备注：<span>{{detailPost.fields.memo}}</span></text>
+  <view>备注：<span>{{detailPost.fields.memo}}</span></view>
 </view>
 
  <button bindtap="deletePost" type="warn">删除请求</button>
