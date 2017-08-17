@@ -16,8 +16,8 @@
 </view>
 
 <view wx:for="{{array}}"class="ongoingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
-  <text>{{index+1}}.出发地: {{placeArray[item.fields.departure-1]}};目的地:{{placeArray[item.fields.arrival-1]}};</text>
-  <text>申请时间:{{item.fields.post_time}}</text>  
+  <view>{{index+1}}.出发地: <span>{{placeArray[item.fields.departure-1]}}</span>;目的地:<span>{{placeArray[item.fields.arrival-1]}}</span>;</view>
+  <view>申请时间:<span>{{item.fields.post_time}}</span></view>  
 </view>
 
 
