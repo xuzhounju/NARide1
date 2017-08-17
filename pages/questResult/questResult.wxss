@@ -1,8 +1,6 @@
 /* questResult.wxss */
 
-* {
-  box-sizing: border-box;
-}
+
 
 body {
   width: 980px;

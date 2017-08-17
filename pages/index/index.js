@@ -42,6 +42,9 @@ Page({
               rawArray[i].fields.post_time = d.toLocaleString()
       
             }
+            app.weixin = res.data[0].fields.weixin
+            app.phone = res.data[0].fields.phone
+            app.email = res.data[0].fields.email
             that.setData({
               weixin: res.data[0].fields.weixin,
               phone: res.data[0].fields.phone,

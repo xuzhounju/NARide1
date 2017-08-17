@@ -40,6 +40,9 @@ App({
     onGoingPost: null,
     detailSelfPostID: null,
     detailQuestEvent: null,
-    detailRideEvent: null
+    detailRideEvent: null,
+    weixin: null,
+    phone:'',
+    email:''
   }
 })

@@ -9,7 +9,7 @@
 
   <view class="section">
     <view class="section__title">手机号:</view>
-    <view class="section_cell">
+    <view class="section-cell">
       <input name="phone" placeholder="可不填写" value="{{phone}}" auto-focus/>
     </view>
   </view>

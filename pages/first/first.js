@@ -10,25 +10,10 @@ Page({
   },
   onLoad: function () {
     var that = this
-    wx.login({
-      success: function (res) {
-        var js_code = res.code;//调用登录接口获得的用户的登录凭证code
-        console.log(js_code)
-        wx.request({
-          url: 'https://kunwang.us/user/' + js_code,
-          method: 'GET',
-          success: function (res) {
-            if (res.data.gender != -1) {
-              that.setData({
-                weixin: res.data[0].fields.weixin,
-                phone: res.data[0].fields.phone,
-                email: res.data[0].fields.email
-              })
-
-            }
-          }
-        })
-      }
+    that.setData({
+      weixin:app.weixin,
+      phone: app.phone,
+      email: app.email
     })
 
   },
