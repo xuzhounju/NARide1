@@ -1,5 +1,5 @@
 <!--terms.wxml-->
 <text>terms.wxml</text>
 <view class="btn-area">
-    <button type="primary"bindtap="agreeButton">Submit</button>
+    <button type="primary"bindtap="agreeButton">同意</button>
 </view>
