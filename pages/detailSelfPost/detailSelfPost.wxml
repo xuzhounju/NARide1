@@ -10,27 +10,27 @@
 </view>
 
 <view class="text-container" >
-  <text>目的地：{{placeArray[detailPost.fields.departure-1]}}</text>
+  <text>目的地：<span>{{placeArray[detailPost.fields.departure-1]}}</span></text>
 </view>
 
 <view class="text-container" >
-  <text>目的地：{{placeArray[detailPost.fields.arrival-1]}}</text>
+  <text>目的地：<span>{{placeArray[detailPost.fields.arrival-1]}}</span></text>
 </view>
 
 <view class="text-container" >
-  <text>最早出发时间：{{earliest}}</text>
+  <text>最早出发时间：<span>{{earliest}}</span></text>
 </view>
 
 <view class="text-container" >
-  <text>最晚出发时间：{{latest}}</text>
+  <text>最晚出发时间：<span>{{latest}}</span></text>
 </view>
 
 <view class="text-container" >
-  <text>乘客数：{{detailPost.fields.pNumber}}</text>
+  <text>乘客数：<span>{{detailPost.fields.pNumber}}</span></text>
 </view>
 
 <view class="text-container" >
-  <text>备注：{{detailPost.fields.memo}}</text>
+  <text>备注：<span>{{detailPost.fields.memo}}</span></text>
 </view>
 
  <button bindtap="deletePost" type="warn">删除请求</button>

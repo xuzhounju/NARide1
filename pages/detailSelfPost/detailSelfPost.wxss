@@ -30,7 +30,7 @@
 }
 
 .text-container{
-  background: lightcyan;
+  background: lightgray;
   margin: 20rpx 10rpx;
-  border-radius: 20% 
+  border-radius: 8% 
 }
