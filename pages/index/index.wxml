@@ -1,22 +1,24 @@
 <!--index.wxml-->
   
-    <view id="userinfo">
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </view>
-    <view class = "userdetail">
-      <view class="details">申请次数:{{count}}</view>  
-      <view class="details">微信号:{{weixin}}</view>
-      <view class="details">手机号:{{phone}}</view>
-        <button bindtap="bindMessageButtonTap">修改联系信息</button>
-    </view>
-
-  <view class="section_title">当前申请</view>
-
-  <view wx:for="{{array}}"class="ongingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
-    <text>{{index+1}}.    出发地: {{placeArray[item.fields.departure-1]}}; 目的地:{{placeArray[item.fields.arrival-1]}}</text>
-    <text>申请时间:{{item.fields.post_time}}</text>  
+<view class="Grid"> 
+  <view class="Grid-cell userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
+  <view class = "Grid-cell userdetails" bindtap="bindMessageButtonTap">
+    <view class="details">申请次数:{{count}}</view>  
+    <view class="details">微信号:{{weixin}}</view>
+    <view class="details">手机号:{{phone}}</view>
+  </view>
+</view>
+<view class="Grid">
+  <view class="section_title">当前申请：</view>
+</view>
+
+<view wx:for="{{array}}"class="ongoingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
+  <text>{{index+1}}.出发地: {{placeArray[item.fields.departure-1]}};目的地:{{placeArray[item.fields.arrival-1]}};</text>
+  <text>申请时间:{{item.fields.post_time}}</text>  
+</view>
 
 
 

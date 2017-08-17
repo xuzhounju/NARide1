@@ -1,15 +1,9 @@
 /**app.wxss**/
 
-.text-area{
-  color: red
-}
 
 page {
-  background-color: #fbf9fe;
-  height: 100%;
-  display: grid;
-  width: 100%;
-  grid-template-columns: 30% 20% 20% 30%;
-  grid-auto-flow: row;
+  background-color: #fbf9fe;  
+  padding: 40rpx 15rpx;
+  
 
 }

@@ -1,6 +1,46 @@
+.Grid {
+  display: flex; 
+}
+
+.Grid-cell{
+  flex: 1;
+  height: 300 rpx;
+  margin: 20rpx 10rpx;
+
+}
+.userinfo{
+  flex:0 0 40%;
+  text-align: center;
+  color: grey;
+  
+
+}
+.userdetails{
+  font-size: 35rpx;
+}
+
+
 .userinfo-avatar {
   width: 150rpx;
   height: 150rpx;
   border-radius: 50%;
   margin: auto;
+  display: flex;
+          
 }
+
+.section_title{
+  flex:0 0 100%;
+  display: flex;
+  font-size: 30 rpx;
+  font-weight: bold;
+}
+
+.ongoingPost{
+  margin: 20rpx 10rpx;
+  font-size: 30rpx;
+  background: lightcyan;
+  border-radius: 20%  
+}
+
+
