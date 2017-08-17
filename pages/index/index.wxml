@@ -1,6 +1,6 @@
 <!--index.wxml-->
-  <view class = "userbox">
-    <view class="userinfo">
+  
+    <view id="userinfo">
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </view>
@@ -10,7 +10,7 @@
       <view class="details">手机号:{{phone}}</view>
         <button bindtap="bindMessageButtonTap">修改联系信息</button>
     </view>
-  </view>
+
   <view class="section_title">当前申请</view>
 
   <view wx:for="{{array}}"class="ongingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
