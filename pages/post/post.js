@@ -122,7 +122,7 @@ Page({
       latest = latest.getTime() / 1000.0
       console.log('form发生了submit事件，携带数据为：', e.detail.value)
 
-      if (earlist < latest) {
+      if (earlist < latest && (app.globalData.weixin.length > 0 || app.globalData.phone.length > 0)) {
 
         var mydata = e.detail.value;
         mydata.earliest = earlist;
@@ -151,11 +151,24 @@ Page({
           }
         })
         console.log('form发生了submit事件，携带数据为：', e.detail.value)
-      } else {
+      } else  if (earlist>=latest){
         wx.showModal({
           title: '提示',
           content: '请确认最晚时间晚于最早时间！',
           showCancel: false
+        })
+      } else if (app.globalData.weixin.length == 0 && app.globalData.phone.length == 0) {
+        wx.showModal({
+          title: '提示',
+          content: '请填写微信号或者手机号，便于其他用户联系！',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../first/first',
+              })
+            }
+          }
         })
       }
     }else{
