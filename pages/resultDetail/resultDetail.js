@@ -16,4 +16,9 @@ Page({
       eventDetail: result
     })
   },
+  phoneCall: function (e){
+    wx.makePhoneCall({
+      phoneNumber: app.detailEvent.poster[6]
+    })
+  }
 })
