@@ -41,7 +41,7 @@ App({
     detailSelfPostID: null,
     detailEvent: null,
     detailRideEvent: null,
-    weixin: null,
+    weixin:'',
     phone:'',
     email:'',
     place: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC'],
