@@ -62,7 +62,6 @@ Page({
           success: function (res) {
             if (res.confirm) {
               wx.navigateBack({
-
               })
             }
           }

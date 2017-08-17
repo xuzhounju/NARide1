@@ -70,44 +70,46 @@ Page({
   },
 
   formSubmit: function (e) {
-    if (e.detail.value.eDate <= e.detail.value.lDate) {
-      var timeNow = new Date();
-      var nowTime = new Date(timeNow.getTime() - 120*1000);
-      nowTime = Math.floor(nowTime.getTime() / 1000.0);
-      var rawE = e.detail.value.eDate + ' ' + e.detail.value.eTime
-      var earlist = new Date(rawE.replace(/-/g, "/"))
-      console.log('E:', earlist)
-      earlist = earlist.getTime() / 1000.0
-      var rawL = e.detail.value.lDate + ' ' + e.detail.value.lTime
-      var latest = new Date(rawL.replace(/-/g, "/"))
-      latest = latest.getTime() / 1000.0
-      if (earlist < latest && earlist > nowTime) {
-        var mydata = e.detail.value;
-        mydata.earliest = earlist;
-        mydata.latest = latest;
-        mydata.departure = parseInt(mydata.departure) + 1;
-        mydata.arrival = parseInt(mydata.arrival) + 1;
-        wx.request({
-          url: 'https://kunwang.us/list/' + mydata.earliest + '/' + mydata.latest + '/' + mydata.departure + '/' + mydata.arrival + '/', //仅为示例，并非真实的接口地址 //仅为示例，并非真实的接口地址
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success: function (res) {
-            app.searchResult = res.data;
-            app.searchTap = 0;
-            wx.navigateTo({
-              url: '../result/result',
-            })
-          }
-        })
-      } 
-      else {
-        wx.showModal({
-          title: '提示',
-          content: '请确认最早时间晚于现在！',
-          showCancel: false
-        }) 
-      } 
+    var event = e.detail.value
+    if (event.eDate.length > 0 && event.eTime.length > 0 && event.lDate.length > 0 && event.lTime.length > 0) {
+      if (e.detail.value.eDate <= e.detail.value.lDate) {
+        var timeNow = new Date();
+        var nowTime = new Date(timeNow.getTime() - 2 * 60 * 1000);
+        nowTime = Math.floor(nowTime.getTime() / 1000.0);
+        var rawE = e.detail.value.eDate + ' ' + e.detail.value.eTime
+        var earlist = new Date(rawE.replace(/-/g, "/"))
+        console.log('E:', earlist)
+        earlist = earlist.getTime() / 1000.0
+        var rawL = e.detail.value.lDate + ' ' + e.detail.value.lTime
+        var latest = new Date(rawL.replace(/-/g, "/"))
+        latest = latest.getTime() / 1000.0
+        if (earlist < latest && earlist > nowTime) {
+          var mydata = e.detail.value;
+          mydata.earliest = earlist;
+          mydata.latest = latest;
+          mydata.departure = parseInt(mydata.departure) + 1;
+          mydata.arrival = parseInt(mydata.arrival) + 1;
+          wx.request({
+            url: 'https://kunwang.us/list/' + mydata.earliest + '/' + mydata.latest + '/' + mydata.departure + '/' + mydata.arrival + '/', //仅为示例，并非真实的接口地址 //仅为示例，并非真实的接口地址
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              app.searchResult = res.data;
+              app.searchTap = 1;
+              wx.navigateTo({
+                url: '../result/result',
+              })
+            }
+          })
+        }
+        else {
+          wx.showModal({
+            title: '提示',
+            content: '请确认最早时间晚于现在！',
+            showCancel: false
+          })
+        }
       }
       else {
         wx.showModal({
@@ -116,11 +118,19 @@ Page({
           showCancel: false
         })
       }
+    }
+    else {
+      wx.showModal({
+        title: '提示',
+        content: '请填写必要信息！',
+        showCancel: false
+      })
+    }
   },
   
   justLook: function () {
       var nowTime = new Date();
-      var latestTime = new Date(nowTime.getTime() + 2 * 24 * 3600 * 1000);
+      var latestTime = new Date(nowTime.getTime() + 2 * 30 * 24 * 3600 * 1000);
       nowTime = Math.floor(nowTime.getTime() / 1000.0);
       latestTime = Math.floor(latestTime.getTime() / 1000.0);
       var departure = 0;
