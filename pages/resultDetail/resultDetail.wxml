@@ -31,3 +31,7 @@
 <view class="text-container" >
   <view>备注信息：<span>{{eventDetail.memo}}</span></view>
 </view>
+
+<view class="btn-area">
+    <button bindtap="phoneCall">拨打电话</button>
+</view>
