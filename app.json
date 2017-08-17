@@ -24,19 +24,27 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index_c.png"
       },
       {
         "pagePath": "pages/post/post",
-        "text": "提交申请"
+        "text": "提交申请",
+        "iconPath": "images/post.png",
+        "selectedIconPath": "images/post_c.png"
       },
       {
         "pagePath": "pages/ride/ride",
-        "text": "搜索司机"
+        "text": "搜索司机",
+        "iconPath": "images/car.png",
+        "selectedIconPath": "images/car_c.png"
       },
       {
         "pagePath": "pages/quest/quest",
-        "text": "搜索乘客"
+        "text": "搜索乘客",
+        "iconPath": "images/dollar.png",
+        "selectedIconPath": "images/dollar_c.png"
       }
     ]
   }
