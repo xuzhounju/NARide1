@@ -43,6 +43,8 @@ App({
     detailRideEvent: null,
     weixin: null,
     phone:'',
-    email:''
+    email:'',
+    place: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC']
+  
   }
 })

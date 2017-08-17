@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    placeArray: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC'],
+    placeArray: app.globalData.place,
     detailPost:'',
     purpose:['招客','搭车'],
     purposeID: 1,

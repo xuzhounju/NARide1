@@ -6,7 +6,7 @@ Page({
   data: {
     nowDate: '',
     endDate: '',
-    placeArray: ['Amherst', 'BDL Airport','Boston','Logan Airport','NYC'],
+    placeArray: app.globalData.place,
 
     numArray:[0,1,2,3,4,5,6],
    

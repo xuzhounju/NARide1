@@ -7,13 +7,13 @@ Page({
     openid: '',
     count:'',
     array:'',
-    placeArray: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC'],
+    placeArray: app.globalData.place,
     weixin:'',
     phone:''
   },
   //事件处理函数
   
-  onLoad: function () {
+  onShow: function () {
     console.log('onLoad')
     var that = this
     //调用应用实例的方法获取全局数据
@@ -79,10 +79,6 @@ Page({
     })
   },
 
-  onShow:function(){
-    this.onLoad()
-
-  },
 
    onShareAppMessage: function () {
 
