@@ -6,8 +6,8 @@
 
 
 <view class="purpose-container" >
-  <view class = "driver" wx:if="{{detailPost.fields.driver}}">我是司机</view>
-  <view class = "passenger" wx:else> 我是乘客</view>
+  <view class = "driver" wx:if="{{detailPost.fields.driver}}">司机</view>
+  <view class = "passenger" wx:else> 乘客</view>
 </view>
 <view class="text-container" >
 

@@ -111,6 +111,11 @@ Page({
         sResult: temp
       })
     }
+    else {
+      this.setData({
+        sResult: result
+      })
+    }
   },
   detailTap: function (e) {
     var a = app.globalData.sResult;

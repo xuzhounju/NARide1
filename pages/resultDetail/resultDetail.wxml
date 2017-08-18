@@ -5,8 +5,8 @@
 </view>
 
 <view class="purpose-container" >
-  <view class = "driver" wx:if="{{eventDetail.driver}}">他是司机</view>
-  <view class = "passenger" wx:else> 他是乘客</view>
+  <view class = "driver" wx:if="{{eventDetail.driver}}">司机</view>
+  <view class = "passenger" wx:else> 乘客</view>
 </view>
 
 
