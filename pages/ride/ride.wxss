@@ -22,5 +22,6 @@
   flex: 1;
   height: 300 rpx;
   margin: 20rpx 10rpx;
+  background: lightgray;
   border-radius: 8%;
 }

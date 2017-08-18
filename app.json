@@ -9,7 +9,8 @@
     "pages/result/result",
     "pages/resultDetail/resultDetail",
     "pages/terms/terms",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/indexResult/indexResult"
   ],
   "window": {
     "backgroundTextStyle": "light",
