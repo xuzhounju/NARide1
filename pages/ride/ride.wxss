@@ -15,7 +15,7 @@
 }
 
 .secion_title{
-  font-size: 10 rpx;
+  font-size: 35rpx;
 }
 
 .radio-group{
@@ -24,4 +24,6 @@
   margin: 20rpx 10rpx;
   background: lightgray;
   border-radius: 8%;
+  font-size: 35rpx;
+  background: lightgray;
 }
