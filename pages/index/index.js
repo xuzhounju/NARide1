@@ -1,15 +1,14 @@
 // index.js
+var util = require('../../utils/util.js')
+
 var app=getApp()
 Page({
 
 
   data: {
-<<<<<<< HEAD
-    navTab: ["推荐", "圆桌", "热门", "收藏"],
+    navTab: ["全部", "我是司机", "我是乘客"],
     currentNavtab: "0",
-=======
     userInfo:''
->>>>>>> f9e1f7b884f2fea644a519fdc71a81db52f4d31b
   },
 
   /**
@@ -19,9 +18,7 @@ Page({
     console.log('onLoad')
     var that = this
     //调用应用实例的方法获取全局数据
-<<<<<<< HEAD
     this.refresh();
-=======
 
 
     wx.login({
@@ -55,7 +52,6 @@ Page({
         userInfo: userInfo
       })
     })
->>>>>>> f9e1f7b884f2fea644a519fdc71a81db52f4d31b
   },
 
   switchTab: function (e) {
@@ -64,3 +60,4 @@ Page({
     });
   },
 })
+

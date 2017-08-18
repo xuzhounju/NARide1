@@ -17,3 +17,10 @@
 .secion_title{
   font-size: 10 rpx;
 }
+
+.radio-group{
+  flex: 1;
+  height: 300 rpx;
+  margin: 20rpx 10rpx;
+  border-radius: 8%;
+}

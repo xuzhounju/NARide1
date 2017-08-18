@@ -4,7 +4,11 @@ var util = require('../../utils/util.js')
 var app = getApp()
 Page({
   data: {
-    currentNavtab: "0",
+    identity: [
+      { name: '我是司机', value: 0, checked: 'true' },
+      { name: '我是乘客', value: 1 },
+    ],
+    identityValue: 0,
     nowDate: '',
     endDate: '',
     placeArray: app.globalData.place,
@@ -19,6 +23,7 @@ Page({
   onLoad: function () {
     console.log('onLoad')
     var that = this
+    app.globalData.searchTap = 0;
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function (userInfo) {
       //更新数据
@@ -28,6 +33,10 @@ Page({
     })
   },
 
+  radioChange: function (e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    app.globalData.searchTap = e.detail.value
+  },
 
   bindDeparturePickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -45,6 +54,7 @@ Page({
 
   bindEDateChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
+
     this.setData({
       eDate: e.detail.value
     })
@@ -71,6 +81,7 @@ Page({
 
   formSubmit: function (e) {
     var event = e.detail.value
+    console.log(event);
     if (event.eDate.length > 0 && event.eTime.length > 0 && event.lDate.length > 0 && event.lTime.length > 0) {
       if (e.detail.value.eDate <= e.detail.value.lDate) {
         var timeNow = new Date();
@@ -78,7 +89,6 @@ Page({
         nowTime = Math.floor(nowTime.getTime() / 1000.0);
         var rawE = e.detail.value.eDate + ' ' + e.detail.value.eTime
         var earlist = new Date(rawE.replace(/-/g, "/"))
-        console.log('E:', earlist)
         earlist = earlist.getTime() / 1000.0
         var rawL = e.detail.value.lDate + ' ' + e.detail.value.lTime
         var latest = new Date(rawL.replace(/-/g, "/"))
@@ -95,8 +105,7 @@ Page({
               'content-type': 'application/x-www-form-urlencoded'
             },
             success: function (res) {
-              app.searchResult = res.data;
-              app.searchTap = 1;
+              app.globalData.searchResult = res.data;
               wx.navigateTo({
                 url: '../result/result',
               })
@@ -132,7 +141,6 @@ Page({
     var latestTime = new Date(nowTime.getTime() + 2 * 30 * 24 * 3600 * 1000);
     nowTime = Math.floor(nowTime.getTime() / 1000.0);
     latestTime = Math.floor(latestTime.getTime() / 1000.0);
-    console.log(latestTime);
     var departure = 0;
     var arrival = 0;
     wx.request({
@@ -141,8 +149,8 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        app.searchResult = res.data;
-        app.searchTap = 1;
+        app.globalData.searchResult = res.data;
+        app.globalData.searchTap = 1;
         wx.navigateTo({
           url: '../result/result',
         })

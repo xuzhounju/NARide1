@@ -14,10 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var result = app.searchResult;
+    var result = app.globalData.searchResult;
     var sResult = [];
     var placeArray = app.globalData.place;
-    if (app.searchTap == 0) {
+    if (app.globalData.searchTap == 0) {
       for (var i = 0; i < result.length; i++) {
         if (result[i] && !result[i].fields.driver) {
           result[i].fields.departure = placeArray[result[i].fields.departure - 1];
@@ -30,7 +30,7 @@ Page({
         }
       }
     } 
-    else if(app.searchTap == 1) {
+    else if (app.globalData.searchTap == 1) {
       for (var i = 0; i < result.length; i++) {
         if (result[i] && result[i].fields.driver) {
           result[i].fields.departure = placeArray[result[i].fields.departure - 1];
@@ -44,18 +44,17 @@ Page({
       }
     }
     sResult = sResult.reverse();
-    app.sResult = sResult;
+    app.globalData.sResult = sResult;
     this.setData({
       sResult: sResult
     })
   },
   detailTap: function (e) {
-    console.log(app.sResult);
-    var a = app.sResult;
+    var a = app.globalData.sResult;
     console.log(parseInt(e.currentTarget.dataset.id));
     var b = parseInt(e.currentTarget.dataset.id);
-    app.detailEvent = a[b];
-    console.log(app.detailQuestEvent);
+    app.globalData.detailEvent = a[b];
+    console.log(app.globalData.detailQuestEvent);
     wx.navigateTo({
       url: '../resultDetail/resultDetail',
     })

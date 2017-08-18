@@ -57,12 +57,19 @@
     </view>
   </view>
 
+  <view class="section_title">以何种身份搜索</view>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" wx:for="{{identity}}">
+      <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+    </label>
+  </radio-group>
+
   <view class="btn-area">
     <button formType="submit">搜索</button>
   </view>
 </form>
-<form bindsubmit="justLook">
+<!-- <form bindsubmit="justLook">
   <view class="btn-area">
     <button formType="submit">随便看看</button>
   </view>
-</form>
+</form> -->
