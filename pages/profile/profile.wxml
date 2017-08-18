@@ -1,5 +1,7 @@
 <!--index.wxml-->
-  
+<loading hidden="{{loadingHidden}}">
+	加载中...
+</loading>
 <view class="Grid"> 
   <view class="Grid-cell userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>

@@ -8,10 +8,13 @@
   margin: 20rpx 10rpx;
   background: lightgrey;
   border-radius: 8%;
+  height: 50rpx;
+  
 }
 
 .picker{
   font-size: 35rpx;
+  height: 35rpx;
 }
 
 .section_title{
@@ -20,4 +23,8 @@
 
 radio-group{
   font-size: 35rpx;
+  background: lightgrey;
+  border-radius: 8%;
+  height: 60rpx;
+  margin: 20rpx 10rpx;
 }
