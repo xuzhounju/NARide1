@@ -58,7 +58,7 @@
   </view>
 
   <view class="btn-area">
-    <button formType="submit">Submit</button>
+    <button formType="submit">搜索</button>
   </view>
 </form>
 <form bindsubmit="justLook">

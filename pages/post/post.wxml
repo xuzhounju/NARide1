@@ -78,8 +78,8 @@
   </view>
 
   <view class="btn-area">
-    <button formType="submit" type="primary" >Submit</button>
-    <button formType="reset" type="warn">Reset</button>
+    <button formType="submit" type="primary" >提交申请</button>
+    <button formType="reset" type="warn">重置信息</button>
   </view>
 </form>
 
