@@ -13,15 +13,17 @@
   </view>
 </view>
 <view class="Grid">
-  <view class="section_title">当前申请：</view>
+  <view class="section_title">当前发布：</view>
 </view>
 
 <view wx:if="{{array.length>0}}"> 
   <view wx:for="{{array}}"class="ongoingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
-    <view>{{index+1}}.出发地: <span>{{placeArray[item.fields.departure-1]}}</span>;目的地:<span>{{placeArray[item.fields.arrival-1]}}</span>;</view>
+    <view>{{index+1}}.<span>{{placeArray[item.fields.departure-1]}}</span><arrow>→</arrow><span>{{placeArray[item.fields.arrival-1]}}</span>;</view>
     <view>申请时间:<span>{{item.fields.post_time}}</span></view>  
   </view>
 </view>
-
+<view wx:else>
+  <view class="hint">您当前没有发布过进行中的信息</view>
+</view>
 
 
