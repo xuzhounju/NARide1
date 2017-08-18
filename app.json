@@ -33,9 +33,9 @@
       },
       {
         "pagePath": "pages/ride/ride",
-        "text": "我是乘客",
-        "iconPath": "images/car.png",
-        "selectedIconPath": "images/car_c.png"
+        "text": "筛选",
+        "iconPath": "images/filter.png",
+        "selectedIconPath": "images/filter_c.png"
       },
       {
         "pagePath": "pages/profile/profile",

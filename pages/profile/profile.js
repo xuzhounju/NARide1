@@ -9,12 +9,16 @@ Page({
     array:'',
     placeArray: app.globalData.place,
     weixin:'',
-    phone:''
+    phone:'',
+    loadingHidden: true
   },
   //事件处理函数
   
   onShow: function () {
     console.log('onLoad')
+    this.setData({
+      loadingHidden: false
+    })
     var that = this
     //调用应用实例的方法获取全局数据
 
@@ -45,7 +49,8 @@ Page({
               phone: app.globalData.phone,
               email: app.globalData.email,
               userInfo: app.globalData.userInfo,
-              array: rawArray
+              array: rawArray,
+              loadingHidden:true
             })
             
 
