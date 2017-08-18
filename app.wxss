@@ -2,10 +2,8 @@
 
 
 page {
-  background-color: #fbf9fe;  
+  background: #F0F4F3;  
   padding-top: 40rpx ;
-  
-
 }
 
 span{

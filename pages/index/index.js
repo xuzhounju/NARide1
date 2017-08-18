@@ -4,29 +4,23 @@ var util = require('../../utils/util.js')
 var app=getApp()
 Page({
 
-
   data: {
     navTab: ["全部", "我是司机", "我是乘客"],
     currentNavtab: "0",
     userInfo:'',
-    sResult:null,
-    purpose: ['招客', '搭车'],
-    purposeID: 1
+    genderUrl: '../../images/',
+    gender: ['unknown.png', 'male.png', 'female.png']
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-    console.log('onLoad')
     var that = this
-    //调用应用实例的方法获取全局数据
     var nowTime = new Date();
     var latestTime = new Date(nowTime.getTime() + 2 * 30 * 24 * 3600 * 1000);
     nowTime = Math.floor(nowTime.getTime() / 1000.0);
     latestTime = Math.floor(latestTime.getTime() / 1000.0);
     var departure = 0;
     var arrival = 0;
+    var sResult = [];
     wx.request({
       url: 'https://kunwang.us/list/' + nowTime + '/' + latestTime + '/' + departure + '/' + arrival + '/', //仅为示例，并非真实的接口地址 //仅为示例，并非真实的接口地址
       header: {
@@ -34,26 +28,27 @@ Page({
       },
       success: function (res) {
         var result = res.data;
-      }
-    })
-    var sResult = [];
-    var placeArray = app.globalData.place;
-      for (var i = 0; i < result.length; i++) {
-        if (result[i]) {
-          result[i].fields.departure = placeArray[result[i].fields.departure - 1];
-          result[i].fields.arrival = placeArray[result[i].fields.arrival - 1];
-          result[i].fields.earliest = new Date(result[i].fields.earliest);
-          result[i].fields.earliest = result[i].fields.earliest.toLocaleString();
-          result[i].fields.latest = new Date(result[i].fields.latest);
-          result[i].fields.latest = result[i].fields.latest.toLocaleString();
-          sResult.push(result[i].fields);
+        var placeArray = app.globalData.place;
+        for (var i = 0; i < result.length; i++) {
+          if (result[i]) {
+            result[i].fields.departure = placeArray[result[i].fields.departure - 1];
+            result[i].fields.arrival = placeArray[result[i].fields.arrival - 1];
+            result[i].fields.earliest = new Date(result[i].fields.earliest);
+            result[i].fields.earliest = result[i].fields.earliest.toLocaleString();
+            result[i].fields.latest = new Date(result[i].fields.latest);
+            result[i].fields.latest = result[i].fields.latest.toLocaleString();
+            sResult.push(result[i].fields);
+          }
         }
+        sResult = sResult.reverse();
+        app.globalData.sResult = sResult;
+        that.setData({
+          sResult: sResult
+        })
       }
-    sResult = sResult.reverse();
-    app.globalData.sResult = sResult;
-    this.setData({
-      sResult: sResult
     })
+    
+    
 
     wx.login({
       success: function (res) {
@@ -92,7 +87,30 @@ Page({
     this.setData({
       currentNavtab: e.currentTarget.dataset.idx
     });
-    console.log(e.currentTarget.dataset.idx)
+    var currentN = this.data.currentNavtab;
+    var result = app.globalData.sResult;
+    if(currentN == 1) {
+      var temp = [];
+      for (var i = 0; i < result.length; i++) {
+        if (!result[i].driver) {
+          temp.push(result[i])
+        }
+      }
+      this.setData({
+        sResult: temp
+      })
+    }
+    else if (currentN == 2) {
+      var temp = [];
+      for (var i = 0; i < result.length; i++) {
+        if (result[i].driver) {
+          temp.push(result[i])
+        }
+      }
+      this.setData({
+        sResult: temp
+      })
+    }
   },
 
 })

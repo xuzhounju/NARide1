@@ -1,13 +1,9 @@
 /**app.wxss**/
-.container {
+
+page {
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  /*padding: 200rpx 0;*/
-  box-sizing: border-box;
-  background: lightgray;
+  background: #F0F4F3; 
+  padding-top: 0rpx;
 }
 
 .flex-wrp{
@@ -31,12 +27,81 @@
   line-height: 100rpx;
   box-shadow: 0 2px 2px #bebebe;
   margin: 0 0 8rpx 0;
-  position: fixed;
   top: 0;
   z-index: 9999;
 }
 .toptab.active{
   color: #ffffff;
   border-bottom: solid 2px #ffffff;
+}
+
+
+.Grid {
+  display: flex; 
+}
+
+.Grid-cell{
+  flex: 1;
+  height: 300 rpx;
+  margin: 20rpx 10rpx;
+
+}
+.userinfo{
+  flex:0 0 30%;  
+  text-align: center;
+  color: grey;
+}
+
+.infoDetails{
+  font-size: 29rpx;
+}
+
+
+.userinfo-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin: auto;
+  display: flex;   
+}
+
+.section_title{
+  flex:0 0 100%;
+  display: flex;
+  
+  font-weight: bold;
+}
+
+.ongoingPost{
+  margin: 20rpx 10rpx;
+  font-size: 35rpx;
+  background: #efeaea;
+  border-radius: 5%  
+}
+
+.gender{
+  width:25rpx;
+  height: 25rpx;
+  margin: auto;
+  display: flex;
+      
+}
+
+.nickName{
+  display: inline-flex;
+}
+
+.driver{
+  background: green;
+  width: 150rpx;
+  text-align: center;
+  color: white;
+}
+
+.passenger{
+  background: darkcyan;
+  width: 150rpx;
+  text-align: center;
+  color: white;
 }
 
