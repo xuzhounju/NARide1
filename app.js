@@ -45,6 +45,7 @@ App({
     phone:'',
     email:'',
     place: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC','Mount Holyoke College'],
-    searchTab:null
+    searchTab:null,
+    currentTap:0
   }
 })

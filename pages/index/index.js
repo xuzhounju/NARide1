@@ -6,13 +6,21 @@ Page({
 
   data: {
     navTab: ["全部", "我是司机", "我是乘客"],
-    currentNavtab: "0",
+    currentNavtab: app.globalData.currentTap,
     userInfo:'',
     genderUrl: '../../images/',
-    gender: ['unknown.png', 'male.png', 'female.png']
+    gender: ['unknown.png', 'male.png', 'female.png'],
+    loadingHidden: true
   },
 
-  onLoad: function (options) {
+  onShow: function (options) {
+    console.log('Gid:', app.globalData.currentTap)
+    this.setData({
+      loadingHidden: false,
+      currentNavtab: app.globalData.currentTap
+    })
+    console.log('id:', this.data.currentNavtab)
+
     var that = this
     var nowTime = new Date();
     var latestTime = new Date(nowTime.getTime() + 2 * 30 * 24 * 3600 * 1000);
@@ -42,9 +50,39 @@ Page({
         }
         sResult = sResult.reverse();
         app.globalData.sResult = sResult;
-        that.setData({
-          sResult: sResult
-        })
+        var currentN = that.data.currentNavtab;
+        var result = app.globalData.sResult;
+        if (currentN == 1) {
+          var temp = [];
+          for (var i = 0; i < result.length; i++) {
+            if (!result[i].driver) {
+              temp.push(result[i])
+              console.log(result[i].poster[2])
+            }
+          }
+          that.setData({
+            sResult: temp,
+            loadingHidden: true
+          })
+        }
+        else if (currentN == 2) {
+          var temp = [];
+          for (var i = 0; i < result.length; i++) {
+            if (result[i].driver) {
+              temp.push(result[i])
+            }
+          }
+          that.setData({
+            sResult: temp,
+            loadingHidden: true
+          })
+        }
+        else {
+          that.setData({
+            sResult: result,
+            loadingHidden: true
+          })
+        }
       }
     })
     
@@ -87,6 +125,7 @@ Page({
     this.setData({
       currentNavtab: e.currentTarget.dataset.idx
     });
+    app.globalData.currentTap = this.data.currentNavtab;
     var currentN = this.data.currentNavtab;
     var result = app.globalData.sResult;
     if(currentN == 1) {
@@ -94,6 +133,7 @@ Page({
       for (var i = 0; i < result.length; i++) {
         if (!result[i].driver) {
           temp.push(result[i])
+          console.log(result[i].poster[2])
         }
       }
       this.setData({
@@ -118,15 +158,17 @@ Page({
     }
   },
   detailTap: function (e) {
-    var a = app.globalData.sResult;
-    console.log(parseInt(e.currentTarget.dataset.id));
+    var a = this.data.sResult;
     var b = parseInt(e.currentTarget.dataset.id);
     app.globalData.detailEvent = a[b];
     console.log(app.globalData.detailQuestEvent);
     wx.navigateTo({
       url: '../resultDetail/resultDetail',
     })
-  }
+  },
 
+  onShareAppMessage: function () {
+
+  }
 })
 

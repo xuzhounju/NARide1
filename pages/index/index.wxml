@@ -1,9 +1,12 @@
-
+<loading hidden="{{loadingHidden}}">
+	加载中...
+</loading>
 <view class="top-tab flex-wrp flex-tab">
   <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
     {{itemName}}
   </view>
 </view>
+<view class = "container">
 <view wx:for="{{sResult}}"class="ongoingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
   <view class="Grid"> 
     <view class="Grid-cell userinfo">
@@ -22,4 +25,5 @@
       <view class = "detail">人数：<span>{{item.pNumber}}</span></view>
     </view>
   </view>
+</view>
 </view>

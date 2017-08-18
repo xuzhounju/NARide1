@@ -13,6 +13,7 @@ page {
   flex-flow: row nowrap;
   justify-content: space-around;
   align-items: stretch;
+  position: fixed;
 }
 .flex-item{
   flex-grow: 1;
@@ -35,6 +36,9 @@ page {
   border-bottom: solid 2px #ffffff;
 }
 
+.container{
+  margin-top: 115rpx
+}
 
 .Grid {
   display: flex; 
