@@ -121,15 +121,21 @@ Page({
       var rawL = e.detail.value.lDate + ' ' + e.detail.value.lTime
       var latest = new Date(rawL.replace(/-/g, "/"))
       latest = latest.getTime() / 1000.0
+      var mydata = e.detail.value;
+      mydata.earliest = earlist;
+      mydata.latest = latest;
+      mydata.departure = parseInt(mydata.departure) + 1;
+      mydata.arrival = parseInt(mydata.arrival) + 1;
+      if(parseInt(mydata.driver)== 1){
+        mydata.driver = true
+      } else{
+        mydata.driver = false
+      }
       console.log('form发生了submit事件，携带数据为：', e.detail.value)
 
       if (earlist < latest && (app.globalData.weixin.length > 0 || app.globalData.phone.length > 0)) {
 
-        var mydata = e.detail.value;
-        mydata.earliest = earlist;
-        mydata.latest = latest;
-        mydata.departure = parseInt(mydata.departure) + 1;
-        mydata.arrival = parseInt(mydata.arrival) + 1;
+      
         
         wx.request({
           url: 'https://kunwang.us/new/' + app.globalData.openid + '/', //仅为示例，并非真实的接口地址
@@ -146,7 +152,15 @@ Page({
             wx.showModal({
               title: '提示',
               content: '提交成功！',
-              showCancel: false
+              showCancel: false,
+              success: function (res) {
+                if (res.confirm) {
+                  wx.switchTab({
+                    url: '../index/index'
+                  })
+
+                }
+              }
              
             })
            
