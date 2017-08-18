@@ -4,6 +4,12 @@
   <text class="userinfo-nickname">{{eventDetail.poster[2]}}</text>
 </view>
 
+<view class="purpose-container" >
+  <view class = "driver" wx:if="{{eventDetail.driver}}">他是司机</view>
+  <view class = "passenger" wx:else> 他是乘客</view>
+</view>
+
+
 <view class="text-container" >
   <view>出发地：<span>{{eventDetail.departure}}</span></view>
 </view>
@@ -37,10 +43,10 @@
 </view>
 
 <view class="btn-area">
-    <button bindtap="copyWechat">复制微信号</button>
+    <button class ="copyButton" bindtap="copyWechat">复制微信号</button>
 </view>
 
 <view class="btn-area">
-    <button bindtap="phoneCall">拨打电话</button>
+    <button bindtap="phoneCall" type="primary">拨打电话</button>
 </view>
 

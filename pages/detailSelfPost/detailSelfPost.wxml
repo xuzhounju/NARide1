@@ -6,9 +6,9 @@
 
 
 <view class="purpose-container" >
-  <view>想要{{purpose[purposeID]}}</view>
+  <view class = "driver" wx:if="{{detailPost.fields.driver}}">我是司机</view>
+  <view class = "passenger" wx:else> 我是乘客</view>
 </view>
-
 <view class="text-container" >
 
   <view>出发地：<span>{{placeArray[detailPost.fields.departure-1]}}</span></view>
