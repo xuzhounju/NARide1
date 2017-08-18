@@ -68,9 +68,11 @@
     </view>
   </view>
 
-  <view class="section_title">我是司机</view>
-  <switch name="driver"/>
-
+  
+  <radio-group name="driver">
+    <label><radio value="1" checked="true"/>我是司机</label>
+    <label><radio value="0"/>我是乘客</label>
+  </radio-group>
 
   <view class="section_title">备注：</view>
   <view class="Grid-cell 5-1">
