@@ -4,7 +4,7 @@
 
 .Grid-cell{
   flex: 1;
-  height: 300 rpx;
+  height: 50rpx;
   margin: 20rpx 10rpx;
   background: lightgray;
   border-radius: 8%;
@@ -14,7 +14,7 @@
   font-size: 35rpx;
 }
 
-.secion_title{
+.section_title{
   font-size: 35rpx;
 }
 

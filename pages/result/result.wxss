@@ -54,16 +54,3 @@
   display: inline-flex;
 }
 
-.driver{
-  background: green;
-  width: 150rpx;
-  text-align: center;
-  color: white;
-}
-
-.passenger{
-  background: darkcyan;
-  width: 150rpx;
-  text-align: center;
-  color: white;
-}

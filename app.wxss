@@ -30,3 +30,17 @@ arrow{
   font-weight: bold;
 }
 
+
+.driver{
+  background: green;
+  width: 100rpx;
+  text-align: center;
+  color: white;
+}
+
+.passenger{
+  background: darkcyan;
+  width: 100rpx;
+  text-align: center;
+  color: white;
+}

@@ -22,15 +22,31 @@
 }
 
 .purpose-container{
-
+  flex-direction: column;
+  display: flex;
+  align-items: center;
   margin: 40rpx 10rpx;
   color:blue;
-  font-weight:bold;
-  text-align: center;
 }
 
 .text-container{
   background: lightgray;
   margin: 20rpx 10rpx;
-  border-radius: 8% 
+  border-radius: 8% ;
+  font-size: 35rpx;
+  height: 50rpx;
+}
+
+.driver{
+  background: green;
+  width: 300rpx;
+  text-align: center;
+  color: white;
+}
+
+.passenger{
+  background: darkcyan;
+  width: 300rpx;
+  text-align: center;
+  color: white;
 }
