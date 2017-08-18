@@ -14,7 +14,7 @@ Page({
   onLoad: function (options) {
     var result = app.searchResult;
     var sResult = [];
-    var placeArray = ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC'];
+    var placeArray = app.globalData.place;
     if (app.searchTap == 0) {
       for (var i = 0; i < result.length; i++) {
         if (result[i] && !result[i].fields.driver) {

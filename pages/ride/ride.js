@@ -7,7 +7,7 @@ Page({
     currentNavtab: "0",
     nowDate: '',
     endDate: '',
-    placeArray: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC'],
+    placeArray: app.globalData.place,
     userInfo: {},
     departure: 0,
     arrival: 1,
