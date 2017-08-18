@@ -10,6 +10,8 @@
       </view>
     </view>
     <view class = "Grid-cell infoDetails">
+      <view class = "driver" wx:if="{{item.driver}}">我是司机</view>
+      <view class = "passenger" wx:else> 我是乘客</view>
       <view class = "detail"><span>{{item.departure + '  '}}</span><arrow>→</arrow><span>{{' ' + item.arrival}}</span></view>
       <view class = "detail">最早时间：<span>{{item.earliest}}</span></view>
       <view class = "detail">最晚时间：<span>{{item.latest}}</span></view>

@@ -65,7 +65,7 @@
   </radio-group>
 
   <view class="btn-area">
-    <button formType="submit">搜索</button>
+    <button formType="submit" type="primary">搜索</button>
   </view>
 </form>
 <!-- <form bindsubmit="justLook">
