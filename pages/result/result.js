@@ -5,7 +5,9 @@ var app = getApp()
 Page({
 
   data: {
-    sResult: []
+    sResult: [],
+    genderUrl:'../../images/',
+    gender: ['unknown.png','male.png','female.png']
   },
 
   /**

@@ -8,7 +8,8 @@
     "pages/detailSelfPost/detailSelfPost",
     "pages/result/result",
     "pages/resultDetail/resultDetail",
-    "pages/terms/terms"
+    "pages/terms/terms",
+    "pages/profile/profile"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -37,10 +38,10 @@
         "selectedIconPath": "images/car_c.png"
       },
       {
-        "pagePath": "pages/quest/quest",
-        "text": "我是司机",
-        "iconPath": "images/dollar.png",
-        "selectedIconPath": "images/dollar_c.png"
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/profile.png",
+        "selectedIconPath": "images/profile_c.png"
       }
     ]
   }

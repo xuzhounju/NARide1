@@ -22,7 +22,7 @@
   </view>
 
   <view class="btn-area">
-    <button formType="submit"type="primary">Submit</button>
+    <button formType="submit"type="primary">提交修改</button>
   </view>
 
 </form>

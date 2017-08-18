@@ -4,14 +4,14 @@
     <view class="Grid-cell 1-1">
       <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{departure}}" range="{{placeArray}}">
         <view class="picker">
-           出发地：{{placeArray[departure]}}
+           出发地：<span>{{placeArray[departure]}}</span>
         </view>
       </picker>
     </view>
     <view class= "Grid-cell 1-2">
       <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{arrival}}" range="{{placeArray}}">
         <view class="picker">
-          目的地：{{placeArray[arrival]}}
+          目的地：<span>{{placeArray[arrival]}}</span>
         </view>
       </picker>
     </view>
@@ -24,14 +24,14 @@
     <view class="Grid-cell 2-1">
       <picker name="eDate" mode="date" value="{{eDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindEDateChange">
         <view class="picker">
-          日期: {{eDate}}
+          日期: <span>{{eDate}}</span>
         </view>
       </picker>
     </view>
     <view class="Grid-cell 2-2">
       <picker name="eTime" mode="time" value="{{eTime}}" bindchange="bindETimeChange">
         <view class="picker">
-          时间: {{eTime}}
+          时间: <span>{{eTime}}</span>
         </view>
       </picker>
     </view>
@@ -43,7 +43,7 @@
     <view class="Grid-cell 3-1">
       <picker name="lDate" mode="date" value="{{lDate}}" start="{{eDate}}" end="{{endDate}}" bindchange="bindLDateChange">
         <view class="picker">
-          日期: {{lDate}}
+          日期: <span>{{lDate}}</span>
         </view>
       </picker>
     </view>
@@ -51,7 +51,7 @@
     <view class="Grid-cell 3-2">
       <picker name="lTime" mode="time" value="{{lTime}}"  bindchange="bindLTimeChange">
         <view class="picker">
-          时间: {{lTime}}
+          时间: <span>{{lTime}}</span>
         </view>
       </picker>
     </view>
@@ -62,7 +62,7 @@
     <view class="Grid-cell 4-1">
       <picker name="pNumber" bindchange="bindPNumberPickerChange" value="{{pNumber}}" range="{{numArray}}">
         <view class="picker">
-          乘客数：{{numArray[pNumber]}}
+          乘客数：<span>{{numArray[pNumber]}}</span>
         </view>
       </picker>
     </view>
@@ -78,7 +78,7 @@
   </view>
 
   <view class="btn-area">
-    <button formType="submit" type="primary" >提交申请</button>
+    <button formType="submit" type="primary">提交申请</button>
     <button formType="reset" type="warn">重置信息</button>
   </view>
 </form>

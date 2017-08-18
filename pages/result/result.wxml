@@ -4,11 +4,13 @@
   <view class="Grid"> 
     <view class="Grid-cell userinfo">
       <image class="userinfo-avatar" src="{{item.poster[3]}}" background-size="cover"></image>
-      <text class="content">{{item.poster[2]}}</text>
+      <view class="nickName">
+        <text class="content">{{item.poster[2]}}</text>
+        <image class="gender"src="{{genderUrl + gender[item.poster[1]]}}" background-size="cover"></image>              
+      </view>
     </view>
     <view class = "Grid-cell infoDetails">
-      <view class = "detail">出发地：<span>{{item.departure}}</span></view>
-      <view class = "detail">目的地: <span>{{item.arrival}}</span></view>
+      <view class = "detail"><span>{{item.departure + '  '}}</span><arrow>→</arrow><span>{{' ' + item.arrival}}</span></view>
       <view class = "detail">最早时间：<span>{{item.earliest}}</span></view>
       <view class = "detail">最晚时间：<span>{{item.latest}}</span></view>
       <view class = "detail">人数：<span>{{item.pNumber}}</span></view>

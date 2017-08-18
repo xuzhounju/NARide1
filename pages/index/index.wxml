@@ -1,24 +1,2 @@
 <!--index.wxml-->
-  
-<view class="Grid"> 
-  <view class="Grid-cell userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class = "Grid-cell userdetails" bindtap="bindMessageButtonTap">
-    <view class="details">发布次数:{{count}}</view>  
-    <view class="details">微信号:{{weixin}}</view>
-    <view class="details">手机号:{{phone}}</view>
-  </view>
-</view>
-<view class="Grid">
-  <view class="section_title">当前申请：</view>
-</view>
-
-<view wx:for="{{array}}"class="ongoingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
-  <view>{{index+1}}.出发地: <span>{{placeArray[item.fields.departure-1]}}</span>;目的地:<span>{{placeArray[item.fields.arrival-1]}}</span>;</view>
-  <view>申请时间:<span>{{item.fields.post_time}}</span></view>  
-</view>
-
-
-
+<text>index.wxml</text>
