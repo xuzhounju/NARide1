@@ -112,6 +112,16 @@ Page({
       })
     }
   },
+  detailTap: function (e) {
+    var a = app.globalData.sResult;
+    console.log(parseInt(e.currentTarget.dataset.id));
+    var b = parseInt(e.currentTarget.dataset.id);
+    app.globalData.detailEvent = a[b];
+    console.log(app.globalData.detailQuestEvent);
+    wx.navigateTo({
+      url: '../resultDetail/resultDetail',
+    })
+  }
 
 })
 
