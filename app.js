@@ -44,7 +44,7 @@ App({
     weixin:'',
     phone:'',
     email:'',
-    place: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC'],
+    place: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC','Mount Holyoke College'],
     searchTab:null
   }
 })
