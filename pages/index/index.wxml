@@ -6,7 +6,7 @@
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
   <view class = "Grid-cell userdetails" bindtap="bindMessageButtonTap">
-    <view class="details">申请次数:{{count}}</view>  
+    <view class="details">发布次数:{{count}}</view>  
     <view class="details">微信号:{{weixin}}</view>
     <view class="details">手机号:{{phone}}</view>
   </view>

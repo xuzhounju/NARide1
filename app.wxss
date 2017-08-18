@@ -11,3 +11,9 @@ page {
 span{
   font-style: oblique;
 }
+
+
+button{
+  height: 110rpx;
+  width: 300rpx;
+}
