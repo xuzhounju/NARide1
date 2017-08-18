@@ -11,6 +11,7 @@
       <view class = "detail">目的地: <span>{{item.arrival}}</span></view>
       <view class = "detail">最早时间：<span>{{item.earliest}}</span></view>
       <view class = "detail">最晚时间：<span>{{item.latest}}</span></view>
+      <view class = "detail">人数：<span>{{item.pNumber}}</span></view>
     </view>
   </view>
 </view>

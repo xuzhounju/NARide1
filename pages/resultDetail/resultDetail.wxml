@@ -29,6 +29,10 @@
 </view>
 
 <view class="text-container" >
+  <view>人数：<span>{{eventDetail.pNumber}}</span></view>
+</view>
+
+<view class="text-container" >
   <view>备注信息：<span>{{eventDetail.memo}}</span></view>
 </view>
 
