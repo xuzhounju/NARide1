@@ -45,9 +45,16 @@ Page({
             result[i].fields.earliest = result[i].fields.earliest.toLocaleString([], {month:'numeric',day:'2-digit', hour: '2-digit', minute: '2-digit' } );
             result[i].fields.latest = new Date(result[i].fields.latest);
             result[i].fields.latest = result[i].fields.latest.toLocaleString([], {month:'numeric',day:'2-digit', hour: '2-digit', minute: '2-digit' } );
+            result[i].fields.post_time = new Date(result[i].fields.post_time);
+            result[i].fields.post_time = Date.parse(result[i].fields.post_time) / 1000;
             sResult.push(result[i].fields);
           }
         }
+
+        function sortNumber(a, b) {
+          return b.post_time - a.post_time;
+        }
+        sResult = sResult.sort(sortNumber);
         app.globalData.sResult = sResult;
         var currentN = that.data.currentNavtab;
         var result = app.globalData.sResult;
