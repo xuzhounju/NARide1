@@ -14,9 +14,7 @@
   <view><span>{{eventDetail.departure+'   '}}</span><arrow>→</arrow><span>{{eventDetail.arrival}}</span></view>
 </view>
 
-<view class="text-container" >
-  <view>目的地：<span>{{eventDetail.arrival}}</span></view>
-</view>
+
 
 <view class="text-container" >
   <view>最早出发时间：<span>{{eventDetail.earliest}}</span></view>

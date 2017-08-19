@@ -15,9 +15,6 @@
 
 </view>
 
-<view class="text-container" >
-  <view>目的地：<span>{{placeArray[detailPost.fields.arrival-1]}}</span></view>
-</view>
 
 <view class="text-container" >
   <view>最早出发时间：<span>{{earliest}}</span></view>
