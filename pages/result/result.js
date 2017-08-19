@@ -23,9 +23,9 @@ Page({
           result[i].fields.departure = placeArray[result[i].fields.departure - 1];
           result[i].fields.arrival = placeArray[result[i].fields.arrival - 1];
           result[i].fields.earliest = new Date(result[i].fields.earliest);
-          result[i].fields.earliest = result[i].fields.earliest.toLocaleString();
+          result[i].fields.earliest = result[i].fields.earliest.toLocaleString([], {month:'numeric',day:'2-digit', hour: '2-digit', minute: '2-digit' } );
           result[i].fields.latest = new Date(result[i].fields.latest);
-          result[i].fields.latest = result[i].fields.latest.toLocaleString();
+          result[i].fields.latest = result[i].fields.latest.toLocaleString([], {month:'numeric',day:'2-digit', hour: '2-digit', minute: '2-digit' } );
           sResult.push(result[i].fields);
         }
       }
@@ -36,9 +36,9 @@ Page({
           result[i].fields.departure = placeArray[result[i].fields.departure - 1];
           result[i].fields.arrival = placeArray[result[i].fields.arrival - 1];
           result[i].fields.earliest = new Date(result[i].fields.earliest);
-          result[i].fields.earliest = result[i].fields.earliest.toLocaleString();
+          result[i].fields.earliest = result[i].fields.earliest.toLocaleString([], {month:'numeric',day:'2-digit', hour: '2-digit', minute: '2-digit' } );
           result[i].fields.latest = new Date(result[i].fields.latest);
-          result[i].fields.latest = result[i].fields.latest.toLocaleString();
+          result[i].fields.latest = result[i].fields.latest.toLocaleString([], {month:'numeric',day:'2-digit', hour: '2-digit', minute: '2-digit' } );
           sResult.push(result[i].fields);
         }
       }

@@ -28,7 +28,11 @@ Page({
       success: function (res) {
         wx.getClipboardData({
           success: function (res) {
-            console.log(res.data) // data
+            wx.showModal({
+              title: '提示',
+              content: '微信号已复制到粘贴板！',
+              showCancel: false
+            })
           }
         })
       }

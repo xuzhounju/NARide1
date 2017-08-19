@@ -11,7 +11,7 @@
 
 
 <view class="text-container" >
-  <view>出发地：<span>{{eventDetail.departure}}</span></view>
+  <view><span>{{eventDetail.departure+'   '}}</span><arrow>→</arrow><span>{{eventDetail.arrival}}</span></view>
 </view>
 
 <view class="text-container" >

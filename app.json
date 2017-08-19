@@ -26,18 +26,20 @@
         "iconPath": "images/index.png",
         "selectedIconPath": "images/index_c.png"
       },
-      {
-        "pagePath": "pages/post/post",
-        "text": "信息发布",
-        "iconPath": "images/post.png",
-        "selectedIconPath": "images/post_c.png"
-      },
+
       {
         "pagePath": "pages/ride/ride",
         "text": "筛选",
         "iconPath": "images/filter.png",
         "selectedIconPath": "images/filter_c.png"
       },
+      {
+        "pagePath": "pages/post/post",
+        "text": "信息发布",
+        "iconPath": "images/post.png",
+        "selectedIconPath": "images/post_c.png"
+      },
+      
       {
         "pagePath": "pages/profile/profile",
         "text": "我的",
