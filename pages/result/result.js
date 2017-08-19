@@ -43,7 +43,6 @@ Page({
         }
       }
     }
-    sResult = sResult.reverse();
     app.globalData.sResult = sResult;
     this.setData({
       sResult: sResult

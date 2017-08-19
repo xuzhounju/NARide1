@@ -48,7 +48,6 @@ Page({
             sResult.push(result[i].fields);
           }
         }
-        sResult = sResult.reverse();
         app.globalData.sResult = sResult;
         var currentN = that.data.currentNavtab;
         var result = app.globalData.sResult;
