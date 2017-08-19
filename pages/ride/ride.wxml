@@ -8,6 +8,13 @@
         </view>
       </picker>
     </view>
+    
+  </view>
+
+
+
+  <view class= "Grid">
+    
     <view class= "Grid-cell 1-2">
       <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{arrival}}" range="{{placeArray}}">
         <view class="picker">

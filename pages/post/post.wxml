@@ -1,6 +1,6 @@
 <!--post.wxml-->
 <form bindsubmit="formSubmit" bindreset="formReset" id="js-postform">
-  <view class= "Grid">
+   <view class= "Grid">
     <view class="Grid-cell 1-1">
       <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{departure}}" range="{{placeArray}}">
         <view class="picker">
@@ -8,6 +8,13 @@
         </view>
       </picker>
     </view>
+    
+  </view>
+
+
+
+  <view class= "Grid">
+    
     <view class= "Grid-cell 1-2">
       <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{arrival}}" range="{{placeArray}}">
         <view class="picker">
