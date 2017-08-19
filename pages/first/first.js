@@ -45,7 +45,7 @@ Page({
               success:function(res){
                 if(res.confirm){
                   wx.switchTab({
-                    url:'../profile/profile'
+                    url:'../index/index'
                   })
       
                 }

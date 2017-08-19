@@ -16,8 +16,8 @@ Page({
   },
 
   agreeButton: function(e){
-    wx.navigateBack({
-      
+    wx.navigateTo({
+      url: '../first/first',
     })
   },
   onShareAppMessage: function () {
