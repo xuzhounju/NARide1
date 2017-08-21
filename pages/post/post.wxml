@@ -1,4 +1,8 @@
 <!--post.wxml-->
+
+<loading hidden="{{loadingHidden}}">
+	加载中...
+</loading>
 <form bindsubmit="formSubmit" bindreset="formReset" id="js-postform">
    <view class= "Grid">
     <view class="Grid-cell 1-1">
@@ -67,9 +71,9 @@
 
   <view class="Grid">
     <view class="Grid-cell 4-1">
-      <picker name="pNumber" bindchange="bindPNumberPickerChange" value="{{pNumber}}" range="{{numArray}}">
+      <picker name="pNumber" bindchange="bindPNumberPickerChange"  range="{{numArray}}">
         <view class="picker">
-          乘客数：<span>{{numArray[pNumber]}}</span>
+          乘客数：<span>{{pNumber}}</span>
         </view>
       </picker>
     </view>

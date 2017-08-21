@@ -6,7 +6,8 @@ Page({
     weixin:'',
     phone:'',
     email:'',
-    text:''
+    text:'',
+    loadingHidden: true
   },
   onLoad: function () {
     var that = this
@@ -24,6 +25,9 @@ Page({
     mydata.gender = app.globalData.userInfo.gender
     mydata.nickName = app.globalData.userInfo.nickName
     mydata.avatarUrl = app.globalData.userInfo.avatarUrl
+    this.setData({
+      loadingHidden: false
+    })
     wx.login({
       success: function(res){
         var js_code = res.code
@@ -35,6 +39,9 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
+            that.setData({
+              loadingHidden: true
+            })
             wx.showModal({
               title: '提示',
               content: '修改成功！',

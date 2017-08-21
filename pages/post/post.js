@@ -8,7 +8,7 @@ Page({
     endDate: '',
     placeArray: app.globalData.place,
 
-    numArray:[0,1,2,3,4,5,6],
+    numArray:[1,2,3,4,5,6],
    
     userInfo:{},
     departure: 0,
@@ -20,7 +20,8 @@ Page({
     pNumber: 1, 
     memo:'',
     text: '',
-    agree: true
+    agree: true,
+    loadingHidden: true
   },
   onLoad: function(){
 
@@ -36,8 +37,10 @@ Page({
 
   bindPNumberPickerChange: function (e) {
     this.setData({
-      pNumber: e.detail.value
+      pNumber: parseInt(e.detail.value)+1
+
     })
+
   },
 
 
@@ -99,6 +102,7 @@ Page({
       return
     }
     //if (app.global.)
+    var omit=''
     if(event.eDate.length>0&&event.eTime.length>0&&event.lDate.length>0&&event.lTime.length>0){
       var rawE = e.detail.value.eDate + ' ' + e.detail.value.eTime
       var earlist = new Date(rawE.replace(/-/g, "/"))
@@ -111,6 +115,7 @@ Page({
       mydata.latest = latest;
       mydata.departure = parseInt(mydata.departure) + 1;
       mydata.arrival = parseInt(mydata.arrival) + 1;
+      mydata.pNumber = this.data.pNumber
       if(parseInt(mydata.driver)== 1){
         mydata.driver = true
       } else{
@@ -119,7 +124,9 @@ Page({
 
       if (earlist < latest && (app.globalData.weixin.length > 0 || app.globalData.phone.length > 0)) {
 
-      
+        this.setData({
+          loadingHidden: false
+        })
         
         wx.request({
           url: 'https://kunwang.us/new/' + app.globalData.openid + '/', 
@@ -133,6 +140,9 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
+            that.setData({
+              loadingHidden: true
+            })
             wx.showModal({
               title: '提示',
               content: '提交成功！',
@@ -171,9 +181,15 @@ Page({
         })
       }
     }else{
+      if (event.eDate.length ==0){omit=omit+' 最早日期'}
+      if (event.eTime.length==0){omit=omit+' 最早时间'}
+      if (event.lDate.length == 0) { omit = omit + ' 最晚日期' }
+      if (event.lTime.length == 0) { omit = omit + ' 最晚时间' }
+
+
       wx.showModal({
         title: '提示',
-        content: '请填写必要信息！',
+        content: '请填写:'+omit+ '!',
         showCancel: false
       })
     }
