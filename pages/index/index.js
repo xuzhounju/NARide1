@@ -14,12 +14,10 @@ Page({
   },
 
   onShow: function (options) {
-    console.log('Gid:', app.globalData.currentTap)
     this.setData({
       loadingHidden: false,
       currentNavtab: app.globalData.currentTap
     })
-    console.log('id:', this.data.currentNavtab)
 
     var that = this
     var nowTime = new Date();
@@ -63,7 +61,6 @@ Page({
           for (var i = 0; i < result.length; i++) {
             if (!result[i].driver) {
               temp.push(result[i])
-              console.log(result[i].poster[2])
             }
           }
           that.setData({
@@ -97,12 +94,10 @@ Page({
     wx.login({
       success: function (res) {
         var js_code = res.code;//调用登录接口获得的用户的登录凭证code
-        console.log(js_code)
         wx.request({
           url: 'https://kunwang.us/user/' + js_code,
           method: 'GET',
           success: function (res) {
-            console.log('res.data[0].fields=', res.data)
             app.globalData.openid = res.data[0].fields.username
             app.globalData.onGoingPost = res.data[1]
             if (res.data[0].fields.gender == -1) {
@@ -141,7 +136,6 @@ Page({
       for (var i = 0; i < result.length; i++) {
         if (!result[i].driver) {
           temp.push(result[i])
-          console.log(result[i].poster[2])
         }
       }
       this.setData({
@@ -169,14 +163,12 @@ Page({
     var a = this.data.sResult;
     var b = parseInt(e.currentTarget.dataset.id);
     app.globalData.detailEvent = a[b];
-    console.log(app.globalData.detailQuestEvent);
     wx.navigateTo({
       url: '../resultDetail/resultDetail',
     })
   },
 
   searchTap:function(e){
-    console.log('search')
     wx.switchTab({
       url: '../ride/ride',
     })

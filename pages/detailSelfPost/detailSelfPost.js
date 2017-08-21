@@ -24,7 +24,6 @@ Page({
       userInfo:app.globalData.userInfo,
       detailPost: app.globalData.onGoingPost[app.globalData.detailSelfPostID] 
     })
-    console.log(this.data.detailPost)
     var etime = new Date(this.data.detailPost.fields.earliest)
     var ltime = new Date(this.data.detailPost.fields.latest)
     this.setData({
@@ -46,7 +45,6 @@ Page({
     var post_pk = this.data.detailPost.pk
     mydata.earliest = etime.getTime()/1000.0
     mydata.latest = ltime.getTime()/1000.0
-    console.log(mydata)
 
     wx.request({
       url: 'https://kunwang.us/entry/'+post_pk+'/'+app.globalData.openid+'/',

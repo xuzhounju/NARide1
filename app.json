@@ -3,14 +3,12 @@
     "pages/index/index",
     "pages/post/post",
     "pages/ride/ride",
-    "pages/quest/quest",
     "pages/first/first",
     "pages/detailSelfPost/detailSelfPost",
     "pages/result/result",
     "pages/resultDetail/resultDetail",
     "pages/terms/terms",
-    "pages/profile/profile",
-    "pages/indexResult/indexResult"
+    "pages/profile/profile"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -24,11 +24,9 @@ Page({
     mydata.gender = app.globalData.userInfo.gender
     mydata.nickName = app.globalData.userInfo.nickName
     mydata.avatarUrl = app.globalData.userInfo.avatarUrl
-    console.log(mydata)
     wx.login({
       success: function(res){
         var js_code = res.code
-        console.log("联系信息：", mydata)
         wx.request({
           url: 'https://kunwang.us/user/'+js_code+'/',
           data: mydata,
@@ -37,7 +35,6 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
-            console.log(res.data)
             wx.showModal({
               title: '提示',
               content: '修改成功！',
