@@ -33,6 +33,7 @@ App({
   },
 
   globalData: {
+    firstLogin:false,
     userInfo: null,
     openid:null,
     searchResult: null,

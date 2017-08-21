@@ -106,6 +106,7 @@ Page({
             app.globalData.openid = res.data[0].fields.username
             app.globalData.onGoingPost = res.data[1]
             if (res.data[0].fields.gender == -1) {
+              app.globalData.firstLogin = true
               wx.navigateTo({
                 url: '../terms/terms',
               })
