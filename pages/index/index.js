@@ -104,15 +104,16 @@ Page({
           success: function (res) {
             console.log('res.data[0].fields=', res.data)
             app.globalData.openid = res.data[0].fields.username
+            app.globalData.onGoingPost = res.data[1]
             if (res.data[0].fields.gender == -1) {
               wx.navigateTo({
                 url: '../terms/terms',
               })
             }
-            
             app.globalData.weixin = res.data[0].fields.weixin
             app.globalData.phone = res.data[0].fields.phone
             app.globalData.email = res.data[0].fields.email
+            
      
           }
         })

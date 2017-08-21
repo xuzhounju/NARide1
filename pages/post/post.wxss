@@ -28,3 +28,8 @@ radio-group{
   height: 60rpx;
   margin: 20rpx 10rpx;
 }
+
+.term{
+  font-size:35rpx;
+  text-align: center;
+}

@@ -42,3 +42,7 @@ arrow{
   text-align: center;
   color: white;
 }
+
+.hyperLink{
+  color: blue;
+}

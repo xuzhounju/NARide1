@@ -19,8 +19,8 @@ Page({
     lTime:'', 
     pNumber: 1, 
     memo:'',
-    text: ''
-  
+    text: '',
+    agree: true
   },
   onLoad: function(){
     console.log('onLoad')
@@ -113,6 +113,26 @@ Page({
   formSubmit: function (e) {
     var that =this
     var event=e.detail.value
+    if (this.data.agree == false){
+      wx.showModal({
+        title: '提示',
+        content: '不同意免责申明则无法发布信息',
+        showCancel: false
+      })
+      return
+    }
+
+
+    if(app.globalData.onGoingPost.length>4){
+      wx.showModal({
+        title: '提示',
+        content: '不能同时发布超过五条进行中的信息，请删除现有信息后再试',
+        showCancel: false
+      })
+
+      return
+    }
+    //if (app.global.)
     if(event.eDate.length>0&&event.eTime.length>0&&event.lDate.length>0&&event.lTime.length>0){
       var rawE = e.detail.value.eDate + ' ' + e.detail.value.eTime
       var earlist = new Date(rawE.replace(/-/g, "/"))
@@ -210,6 +230,25 @@ Page({
       text:''
     })
     console.log('form发生了reset事件')
+  },
+
+  clickTerm: function(e){
+    wx.navigateTo({
+      url: '../terms/terms',
+    })
+  },
+
+  agreeTerm: function(e){
+    console.log("agree:",e.detail.value.length)
+    if(e.detail.value.length==0){
+      this.setData({
+        agree: false
+      })
+    }else{
+      this.setData({
+        agree: true
+      })
+    }
   },
 
   onShareAppMessage: function () {

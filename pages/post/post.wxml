@@ -86,6 +86,13 @@
     <input name="memo" placeholder="可输入心目中的价格，司机可输入车型"  />
   </view>
 
+
+  <view class="term">  
+    <checkbox-group bindchange="agreeTerm">
+      <checkbox value="true" checked="{{true}}" />我已阅读并同意<text class="hyperLink" bindtap="clickTerm">免责申明</text>
+    </checkbox-group>
+  </view>
+
   <view class="btn-area">
     <button formType="submit" type="primary">提交申请</button>
     <button formType="reset" type="warn">重置信息</button>
