@@ -14,23 +14,28 @@
  
 
 <view class = "container">
-<view wx:for="{{sResult}}"class="ongoingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
-  <view class="Grid"> 
-    <view class="Grid-cell userinfo">
-      <image class="userinfo-avatar" src="{{item.poster[3]}}" background-size="cover"></image>
-      <view class="nickName">
-        <text class="content">{{item.poster[2]}}</text>
-        <image class="gender"src="{{genderUrl + gender[item.poster[1]]}}" background-size="cover"></image>              
+  <view wx:if="{{sResult.length>0}}">
+    <view wx:for="{{sResult}}"class="ongoingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
+      <view class="Grid"> 
+        <view class="Grid-cell userinfo">
+          <image class="userinfo-avatar" src="{{item.poster[3]}}" background-size="cover"></image>
+          <view class="nickName">
+            <text class="content">{{item.poster[2]}}</text>
+            <image class="gender"src="{{genderUrl + gender[item.poster[1]]}}" background-size="cover"></image>              
+          </view>
+        </view>
+        <view class = "Grid-cell infoDetails">
+          <view class = "driver" wx:if="{{item.driver}}">司机</view>
+          <view class = "passenger" wx:else> 乘客</view>
+          <view class = "detail"><span>{{item.departure + '  '}}</span><arrow>→</arrow><span>{{' ' + item.arrival}}</span></view>
+          <view class = "detail">最早时间：<span>{{item.earliest}}</span></view>
+          <view class = "detail">最晚时间：<span>{{item.latest}}</span></view>
+          <view class = "detail">人数：<span>{{item.pNumber}}</span></view>
+        </view>
       </view>
     </view>
-    <view class = "Grid-cell infoDetails">
-      <view class = "driver" wx:if="{{item.driver}}">司机</view>
-      <view class = "passenger" wx:else> 乘客</view>
-      <view class = "detail"><span>{{item.departure + '  '}}</span><arrow>→</arrow><span>{{' ' + item.arrival}}</span></view>
-      <view class = "detail">最早时间：<span>{{item.earliest}}</span></view>
-      <view class = "detail">最晚时间：<span>{{item.latest}}</span></view>
-      <view class = "detail">人数：<span>{{item.pNumber}}</span></view>
-    </view>
   </view>
-</view>
+  <view wx:else >
+    <view class="hint">当前没有发布的信息</view>
+  </view>
 </view>
