@@ -72,6 +72,7 @@ Page({
 
   formSubmit: function (e) {
     var event = e.detail.value
+    var omit = ''
     if (event.eDate.length > 0 && event.eTime.length > 0 && event.lDate.length > 0 && event.lTime.length > 0) {
       if (e.detail.value.eDate <= e.detail.value.lDate) {
         var timeNow = new Date();
@@ -119,9 +120,13 @@ Page({
       }
     }
     else {
+      if(event.eDate.length == 0){omit = omit + ' 最早日期' }
+      if (event.eTime.length == 0) { omit = omit + ' 最早时间' }
+      if (event.lDate.length == 0) { omit = omit + ' 最晚日期' }
+      if (event.lTime.length == 0) { omit = omit + ' 最晚时间' }
       wx.showModal({
         title: '提示',
-        content: '请填写必要信息！',
+        content: '请填写:'+omit+'!',
         showCancel: false
       })
     }
