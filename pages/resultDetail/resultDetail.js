@@ -7,9 +7,6 @@ Page({
     eventDetail: ''
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     var result = app.globalData.detailEvent;
     this.setData({

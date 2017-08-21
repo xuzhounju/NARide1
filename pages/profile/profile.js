@@ -1,5 +1,4 @@
-//index.js
-//获取应用实例
+
 var app = getApp()
 Page({
   data: {
@@ -15,7 +14,6 @@ Page({
   //事件处理函数
   
   onShow: function () {
-    console.log('onLoad')
     this.setData({
       loadingHidden: false
     })
@@ -26,12 +24,10 @@ Page({
     wx.login({
       success: function (res) {
         var js_code = res.code;//调用登录接口获得的用户的登录凭证code
-        console.log(js_code)
         wx.request({
           url: 'https://kunwang.us/user/' + js_code,
           method: 'GET',
           success: function (res) {
-            console.log('res.data[0].fields=', res.data)
            
             var i = 0
             var rawArray = res.data[1]
@@ -76,7 +72,6 @@ Page({
   },
 
   detailTap: function(e){
-    console.log(parseInt(e.currentTarget.dataset.id))
     app.globalData.detailSelfPostID = parseInt(e.currentTarget.dataset.id)
     wx.navigateTo({
       url: '../detailSelfPost/detailSelfPost',

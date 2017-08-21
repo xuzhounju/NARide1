@@ -28,7 +28,7 @@ Page({
     var arrival = 0;
     var sResult = [];
     wx.request({
-      url: 'https://kunwang.us/list/' + nowTime + '/' + latestTime + '/' + departure + '/' + arrival + '/', //仅为示例，并非真实的接口地址 //仅为示例，并非真实的接口地址
+      url: 'https://kunwang.us/list/' + nowTime + '/' + latestTime + '/' + departure + '/' + arrival + '/', 
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },

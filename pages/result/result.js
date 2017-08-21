@@ -10,9 +10,7 @@ Page({
     gender: ['unknown.png','male.png','female.png']
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
     var result = app.globalData.searchResult;
     var sResult = [];
@@ -58,10 +56,8 @@ Page({
   },
   detailTap: function (e) {
     var a = app.globalData.sResult;
-    console.log(parseInt(e.currentTarget.dataset.id));
     var b = parseInt(e.currentTarget.dataset.id);
     app.globalData.detailEvent = a[b];
-    console.log(app.globalData.detailQuestEvent);
     wx.navigateTo({
       url: '../resultDetail/resultDetail',
     })

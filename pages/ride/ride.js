@@ -21,7 +21,6 @@ Page({
     lTime: ''
   },
   onLoad: function () {
-    console.log('onLoad')
     var that = this
     app.globalData.searchTap = 0;
     //调用应用实例的方法获取全局数据
@@ -34,46 +33,38 @@ Page({
   },
 
   radioChange: function (e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value)
     app.globalData.searchTap = e.detail.value
   },
 
   bindDeparturePickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       departure: e.detail.value
     })
   },
 
   bindarrivalPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       arrival: e.detail.value
     })
   },
 
   bindEDateChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-
     this.setData({
       eDate: e.detail.value
     })
   },
   bindETimeChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       eTime: e.detail.value
     })
   },
 
   bindLDateChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       lDate: e.detail.value
     })
   },
   bindLTimeChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       lTime: e.detail.value
     })
@@ -81,7 +72,6 @@ Page({
 
   formSubmit: function (e) {
     var event = e.detail.value
-    console.log(event);
     if (event.eDate.length > 0 && event.eTime.length > 0 && event.lDate.length > 0 && event.lTime.length > 0) {
       if (e.detail.value.eDate <= e.detail.value.lDate) {
         var timeNow = new Date();
@@ -144,7 +134,7 @@ Page({
     var departure = 0;
     var arrival = 0;
     wx.request({
-      url: 'https://kunwang.us/list/' + nowTime + '/' + latestTime + '/' + departure + '/' + arrival + '/', //仅为示例，并非真实的接口地址 //仅为示例，并非真实的接口地址
+      url: 'https://kunwang.us/list/' + nowTime + '/' + latestTime + '/' + departure + '/' + arrival + '/', 
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
