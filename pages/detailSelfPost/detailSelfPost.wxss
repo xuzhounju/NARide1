@@ -50,3 +50,9 @@
   text-align: center;
   color: white;
 }
+
+.person-count-down .person-count-up{
+    font-size: 35rpx;
+    width: 50rpx;
+    height: 100%;
+}
