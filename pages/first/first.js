@@ -42,6 +42,9 @@ Page({
             that.setData({
               loadingHidden: true
             })
+            app.globalData.weixin = mydata.weixin
+            app.globalData.phone = mydata.phone
+            app.globalData.email = mydata.email
             wx.showModal({
               title: '提示',
               content: '修改成功！',
@@ -49,7 +52,7 @@ Page({
               success:function(res){
                 if(res.confirm){
                   wx.switchTab({
-                    url:'../index/index'
+                    url:'../post/post'
                   })
       
                 }

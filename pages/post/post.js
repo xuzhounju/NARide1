@@ -4,8 +4,9 @@ var util = require('../../utils/util.js')
 var app = getApp()
 Page({
   data: {
-    nowDate: '',
-    endDate: '',
+    nowDate: '2017-01-01',
+    endDate: '2030-12-30',
+    lEndDate:'',
     placeArray: app.globalData.place,
 
     numArray:[1,2,3,4,5,6],
@@ -14,25 +15,50 @@ Page({
     departure: 0,
     arrival:1,
     eDate:'',
-    eTime:'',
+    eTime:'12:00',
     lDate:'',
-    lTime:'', 
+    lTime:'12:00', 
     pNumber: 1, 
     memo:'',
     text: '',
     agree: true,
-    loadingHidden: true
+    loadingHidden: true,
+    dChecked: true
   },
-  onLoad: function(){
 
-    var that = this
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
+
+  onLoad: function(){
+    console.log("onload")
+    var d = new Date(Date.now()+24*60*60*1000)
+    var year = d.getFullYear()
+    var month =d.getMonth()+1
+    if (month<10){
+      month='0'+month
+    }
+    var day =d.getDate()
+    if(day<10){
+      day='0'+day
+    }
+
+
+    this.setData({
+      eDate: year + '-' + month + '-' + day,
+      lDate: year + '-' + month + '-' + day,
+   
+
     })
+
   },
+  // onLoad: function(){
+
+  //   var that = this
+  //   app.getUserInfo(function (userInfo) {
+  //     //更新数据
+  //     that.setData({
+  //       userInfo: userInfo
+  //     })
+  //   })
+  // },
 
 
   bindPNumberPickerChange: function (e) {
@@ -58,9 +84,25 @@ Page({
   },
 
   bindEDateChange: function (e) {
+    var rawE = e.detail.value + ' ' + '00:00'
+    var d = new Date(rawE.replace(/-/g, "/"))
+    var d = new Date(d.getTime() + 7* 24 * 60 * 60 * 1000)
+    var year = d.getFullYear()
+    var month = d.getMonth() + 1
+    if (month < 10) {
+      month = '0' + month
+    }
+    var day = d.getDate()
+    if (day < 10) {
+      day = '0' + day
+    }
     this.setData({
-      eDate: e.detail.value
+      eDate: e.detail.value,
+      lEndDate: year + '-' + month + '-' + day,
+
     })
+
+
   },
   bindETimeChange: function (e) {
     this.setData({
@@ -122,7 +164,7 @@ Page({
         mydata.driver = false
       }
 
-      if (earlist < latest && (app.globalData.weixin.length > 0 || parseInt(app.globalData.phone) )) {
+      if (earlist <= latest && (app.globalData.weixin.length > 0 || parseInt(app.globalData.phone) )) {
 
         this.setData({
           loadingHidden: false
@@ -140,12 +182,19 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
+            console.log(res.statusCode)
             that.setData({
               loadingHidden: true
             })
+            var notice
+            if(res.statusCode==403){
+              notice = '你已超过一天可允许的发帖量（10次），请明日再发!'
+            }else{
+              notice = '提交成功！' 
+            }
             wx.showModal({
               title: '提示',
-              content: '提交成功！',
+              content: notice ,
               showCancel: false,
               success: function (res) {
                 if (res.confirm) {
@@ -160,7 +209,7 @@ Page({
            
           }
         })
-      } else  if (earlist>=latest){
+      } else  if (earlist>latest){
         wx.showModal({
           title: '提示',
           content: '请确认最晚时间晚于最早时间！',
@@ -201,13 +250,17 @@ Page({
       departure: 0,
       arrival: 1,
       eDate: '',
-      eTime: '',
+      eTime: '12:00',
       lDate: '',
-      lTime: '',
+      lTime: '12:00',
       pNumber: 1,
       memo: '',
-      text:''
+      text: '',
+      agree: true,
+      loadingHidden: true,
+      dChecked: true
     })
+    this.onLoad()
   },
 
   clickTerm: function(e){

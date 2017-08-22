@@ -20,6 +20,31 @@ Page({
     lDate: '',
     lTime: ''
   },
+
+
+
+  onShow: function () {
+    var d = new Date(Date.now() + 24 * 60 * 60 * 1000)
+    var year = d.getFullYear()
+    var month = d.getMonth() + 1
+    if (month < 10) {
+      month = '0' + month
+    }
+    var day = d.getDate()
+    if (day < 10) {
+      day = '0' + day
+    }
+
+
+    this.setData({
+      eTime: '12:00',
+      lTime: '12:00',
+      eDate: year + '-' + month + '-' + day,
+      lDate: year + '-' + month + '-' + day
+
+    })
+
+  },
   onLoad: function () {
     var that = this
     app.globalData.searchTap = 0;

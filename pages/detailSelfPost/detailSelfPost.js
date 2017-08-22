@@ -38,35 +38,46 @@ Page({
   },
 
   deletePost: function(e){
-    var mydata = this.data.detailPost.fields
-    mydata.removed = true
-    var etime = new Date(this.data.detailPost.fields.earliest)
-    var ltime = new Date(this.data.detailPost.fields.latest)
-    var post_pk = this.data.detailPost.pk
-    mydata.earliest = etime.getTime()/1000.0
-    mydata.latest = ltime.getTime()/1000.0
+    var that =this
+    wx.showModal({
+      title: '警告',
+      content: '确定要删除此信息？',
+      showCancel: true,
+      success:function(res){
+        if(res.confirm){
+          var mydata = that.data.detailPost.fields
+          mydata.removed = true
+          var etime = new Date(that.data.detailPost.fields.earliest)
+          var ltime = new Date(that.data.detailPost.fields.latest)
+          var post_pk = that.data.detailPost.pk
+          mydata.earliest = etime.getTime() / 1000.0
+          mydata.latest = ltime.getTime() / 1000.0
 
-    wx.request({
-      url: 'https://kunwang.us/entry/'+post_pk+'/'+app.globalData.openid+'/',
-      data: mydata,
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        wx.showModal({
-          title: '提示',
-          content: '提交成功！',
-          showCancel: false,
-          success: function (res) {
-            if (res.confirm) {
-              wx.navigateBack({
+          wx.request({
+            url: 'https://kunwang.us/entry/' + post_pk + '/' + app.globalData.openid + '/',
+            data: mydata,
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              wx.showModal({
+                title: '提示',
+                content: '提交成功！',
+                showCancel: false,
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.navigateBack({
+                    })
+                  }
+                }
               })
             }
-          }
-        })
+          })
+        }
       }
     })
+
   }
 
   
