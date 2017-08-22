@@ -45,6 +45,7 @@ Page({
             app.globalData.weixin = mydata.weixin
             app.globalData.phone = mydata.phone
             app.globalData.email = mydata.email
+            app.globalData.newProfile = true
             wx.showModal({
               title: '提示',
               content: '修改成功！',

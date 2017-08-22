@@ -29,6 +29,13 @@
   height: 50rpx;
 }
 
+.memo-container{
+  background: lightgray;
+  margin: 20rpx 10rpx;
+  border-radius: 8% ;
+  font-size: 35rpx;
+}
+
 
 .purpose-container{
   flex-direction: column;
