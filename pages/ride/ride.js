@@ -8,6 +8,7 @@ Page({
       { name: '我是司机', value: 0, checked: 'true' },
       { name: '我是乘客', value: 1 },
     ],
+    numArray: [1, 2, 3, 4, 5, 6],
     identityValue: 0,
     nowDate: '',
     endDate: '',
@@ -18,7 +19,8 @@ Page({
     eDate: '',
     eTime: '',
     lDate: '',
-    lTime: ''
+    lTime: '',
+    pNumber:''
   },
 
 
@@ -93,6 +95,13 @@ Page({
     this.setData({
       lTime: e.detail.value
     })
+  },
+
+  bindPNumberPickerChange: function (e) {
+    this.setData({
+      pNumber: parseInt(e.detail.value) + 1
+    })
+    app.globalData.perferN = parseInt(e.detail.value) + 1
   },
 
   formSubmit: function (e) {

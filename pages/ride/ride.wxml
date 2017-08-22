@@ -64,6 +64,17 @@
     </view>
   </view>
 
+  <view class="section_title">乘客数/载客数</view>
+    <view class="Grid">
+    <view class="Grid-cell 4-1">
+      <picker name="pNumber" bindchange="bindPNumberPickerChange"  range="{{numArray}}">
+        <view class="picker">
+          乘客数：<span>{{pNumber}}</span>
+        </view>
+      </picker>
+    </view>
+  </view>
+
   <view class="section_title">以何种身份搜索</view>
   <radio-group class="radio-group" bindchange="radioChange">
     <label class="radio" wx:for="{{identity}}">
