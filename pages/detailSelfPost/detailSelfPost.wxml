@@ -25,7 +25,13 @@
 </view>
 
 <view class="text-container" >
-  <view>乘客数：<span>{{detailPost.fields.pNumber}}</span></view>
+                    
+<view>乘客数：
+  <text class="person-count-down" bindtap="minusCount">-</text>
+  <span>{{"    " + detailPost.fields.pNumber + "    "}}</span>
+  <text class="person-count-up" bindtap="minusCount">+</text>
+
+</view>
 </view>
 
 <view class="text-container" >
