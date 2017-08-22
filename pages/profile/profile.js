@@ -12,8 +12,15 @@ Page({
     loadingHidden: true
   },
   //事件处理函数
+
+  onShow: function(){
+    if (app.globalData.newProfile){
+      this.onLoad()
+      app.globalData.newProfile = false
+    }
+  },
   
-  onShow: function () {
+  onLoad: function () {
     this.setData({
       loadingHidden: false
     })

@@ -40,6 +40,7 @@ App({
     place: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC','Mount Holyoke College','Smith College'],
     searchTab:null,
     currentTap:0,
-    perferN:null
+    perferN:null,
+    newProfile: false
   }
 })

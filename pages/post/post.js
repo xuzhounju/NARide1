@@ -191,6 +191,7 @@ Page({
               notice = '你已超过一天可允许的发帖量（10次），请明日再发!'
             }else{
               notice = '提交成功！' 
+              app.globalData.newProfile = true 
             }
             wx.showModal({
               title: '提示',
