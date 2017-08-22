@@ -122,7 +122,7 @@ Page({
         mydata.driver = false
       }
 
-      if (earlist < latest && (app.globalData.weixin.length > 0 || app.globalData.phone.length > 0)) {
+      if (earlist < latest && (app.globalData.weixin.length > 0 || parseInt(app.globalData.phone) )) {
 
         this.setData({
           loadingHidden: false
@@ -166,7 +166,7 @@ Page({
           content: '请确认最晚时间晚于最早时间！',
           showCancel: false
         })
-      } else if (app.globalData.weixin.length == 0 && app.globalData.phone.length == 0) {
+      } else if (app.globalData.weixin.length == 0 && ! parseInt(app.globalData.phone)) {
         wx.showModal({
           title: '提示',
           content: '请填写微信号或者手机号，便于其他用户联系！',
