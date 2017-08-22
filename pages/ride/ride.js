@@ -20,7 +20,7 @@ Page({
     eTime: '',
     lDate: '',
     lTime: '',
-    pNumber:1
+    pNumber:''
   },
 
 
