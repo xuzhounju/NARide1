@@ -31,9 +31,9 @@ Page({
           result[i].fields.latest = result[i].fields.latest.toLocaleString([], {month:'numeric',day:'2-digit', hour: '2-digit', minute: '2-digit' } );
           result[i].fields.post_time = new Date(result[i].fields.post_time);
           result[i].fields.post_time = Date.parse(result[i].fields.post_time) / 1000;
+          result[i].fields.pNumber = parseInt(result[i].fields.pNumber);
           if(result[i].fields.pNumber == pNumber) {
             tmp1.push(result[i].fields);
-            console.log(tmp1);
           }
           else {
             tmp2.push(result[i].fields);
@@ -65,12 +65,10 @@ Page({
     function sortNumber(a, b) {
       return b.post_time - a.post_time;
     }
-    console.log(1);
-    console.log(tmp1);
     tmp1 = tmp1.sort(sortNumber);
     tmp2 = tmp2.sort(sortNumber);
-    sResult.push(tmp1);
-    sResult.push(tmp2);
+    sResult = tmp1;
+    Array.prototype.push.apply(sResult, tmp2);
     app.globalData.sResult = sResult;
     this.setData({
       sResult: sResult
