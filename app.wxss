@@ -6,9 +6,7 @@ page {
   padding-top: 40rpx ;
 }
 
-span{
-  font-family: fantasy
-}
+
 
 
 button{

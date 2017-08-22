@@ -31,6 +31,7 @@ Page({
           result[i].fields.latest = result[i].fields.latest.toLocaleString([], {month:'numeric',day:'2-digit', hour: '2-digit', minute: '2-digit' } );
           result[i].fields.post_time = new Date(result[i].fields.post_time);
           result[i].fields.post_time = Date.parse(result[i].fields.post_time) / 1000;
+          console.log(result[i].fields.pNumber) 
           if(result[i].fields.pNumber == pNumber) {
             tmp1.push(result[i].fields);
             console.log(tmp1);

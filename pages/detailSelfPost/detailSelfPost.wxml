@@ -24,18 +24,19 @@
   <view>最晚出发时间：<span>{{latest}}</span></view>
 </view>
 
-<view class="text-container" >
-                    
-<view>乘客数：
-  <text class="person-count-down" bindtap="minusCount">-</text>
-  <span>{{"    " + detailPost.fields.pNumber + "    "}}</span>
-  <text class="person-count-up" bindtap="minusCount">+</text>
+<view class="text-container-1" >
+  乘客数：
+  <view class="person-count-down" bindtap="minusCount">-</view>
+  <span>{{pNumber }}</span>
+  <view class="person-count-up" bindtap="addCount">+</view>
 
 </view>
+
+<view class="text-container-1" >
+  备注：
+  <input  bindinput="bindKeyInput" value="{{memo}}"/>
 </view>
 
-<view class="text-container" >
-  <view>备注：<span>{{detailPost.fields.memo}}</span></view>
-</view>
 
- <button bindtap="deletePost" type="warn">删除请求</button>
+<button bindtap="changeNumber" type="primary">修改人数</button>
+<button bindtap="deletePost" type="warn">删除请求</button>

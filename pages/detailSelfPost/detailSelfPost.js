@@ -12,7 +12,9 @@ Page({
     purposeID: 1,
     earliest:'',
     latest:'',
-    userInfo:''
+    userInfo:'',
+    pNumber:'',
+    memo:''
   },
 
   /**
@@ -28,7 +30,9 @@ Page({
     var ltime = new Date(this.data.detailPost.fields.latest)
     this.setData({
       earliest: etime.toLocaleString(),
-      latest: ltime.toLocaleString()
+      latest: ltime.toLocaleString(),
+      pNumber: this.data.detailPost.fields.pNumber,
+      memo: this.data.detailPost.fields.memo
     })
     if (this.data.detailPost.fields.driver){
       this.setData({
@@ -45,6 +49,8 @@ Page({
       showCancel: true,
       success:function(res){
         if(res.confirm){
+          app.globalData.newProfile = true
+
           var mydata = that.data.detailPost.fields
           mydata.removed = true
           var etime = new Date(that.data.detailPost.fields.earliest)
@@ -78,7 +84,78 @@ Page({
       }
     })
 
+  },
+
+
+  changeNumber: function (e) {
+    var that = this
+    wx.showModal({
+      title: '警告',
+      content: '确定修改信息？',
+      showCancel: true,
+      success: function (res) {
+        if (res.confirm) {
+          app.globalData.newProfile = true
+
+          var mydata = that.data.detailPost.fields
+          mydata.pNumber  = that.data.pNumber
+          mydata.memo = that.data.memo
+          var etime = new Date(that.data.detailPost.fields.earliest)
+          var ltime = new Date(that.data.detailPost.fields.latest)
+          var post_pk = that.data.detailPost.pk
+          mydata.earliest = etime.getTime() / 1000.0
+          mydata.latest = ltime.getTime() / 1000.0
+
+          wx.request({
+            url: 'https://kunwang.us/entry/' + post_pk + '/' + app.globalData.openid + '/',
+            data: mydata,
+            method: "POST",
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              wx.showModal({
+                title: '提示',
+                content: '提交成功！',
+                showCancel: false,
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.navigateBack({
+                    })
+                  }
+                }
+              })
+            }
+          })
+        }
+      }
+    })
+
+  },
+
+  minusCount: function(e){
+    if (this.data.pNumber > 1 ){
+      this.setData({
+        pNumber: this.data.pNumber - 1
+      })
+    }
+   
+  },
+  addCount: function (e) {
+    if (this.data.pNumber <6 ) {
+      this.setData({
+        pNumber: this.data.pNumber + 1
+      })
+    }
+
+  },
+
+  bindKeyInput:function(e){
+    this.setData({
+      memo: e.detail.value
+    })
   }
+  
 
   
 })
