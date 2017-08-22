@@ -16,6 +16,9 @@ Page({
   onLoad: function (options) {
     var result = app.globalData.searchResult;
     var sResult = [];
+    var tmp1 = [];
+    var tmp2 = [];
+    var pNumber = app.globalData.perferN;
     var placeArray = app.globalData.place;
     if (app.globalData.searchTap == 0) {
       for (var i = 0; i < result.length; i++) {
@@ -28,7 +31,13 @@ Page({
           result[i].fields.latest = result[i].fields.latest.toLocaleString([], {month:'numeric',day:'2-digit', hour: '2-digit', minute: '2-digit' } );
           result[i].fields.post_time = new Date(result[i].fields.post_time);
           result[i].fields.post_time = Date.parse(result[i].fields.post_time) / 1000;
-          sResult.push(result[i].fields);
+          if(result[i].fields.pNumber == pNumber) {
+            tmp1.push(result[i].fields);
+            console.log(tmp1);
+          }
+          else {
+            tmp2.push(result[i].fields);
+          }
         }
       }
     } 
@@ -43,19 +52,31 @@ Page({
           result[i].fields.latest = result[i].fields.latest.toLocaleString([], {month:'numeric',day:'2-digit', hour: '2-digit', minute: '2-digit' } );
           result[i].fields.post_time = new Date(result[i].fields.post_time);
           result[i].fields.post_time = Date.parse(result[i].fields.post_time) / 1000;
-          sResult.push(result[i].fields);
+          if (result[i].fields.pNumber == pNumber) {
+            tmp1.push(result[i].fields)
+          }
+          else {
+            tmp2.push(result[i].fields);
+          }
         }
       }
     }
+
     function sortNumber(a, b) {
       return b.post_time - a.post_time;
     }
-    sResult = sResult.sort(sortNumber);
+    console.log(1);
+    console.log(tmp1);
+    tmp1 = tmp1.sort(sortNumber);
+    tmp2 = tmp2.sort(sortNumber);
+    sResult.push(tmp1);
+    sResult.push(tmp2);
     app.globalData.sResult = sResult;
     this.setData({
       sResult: sResult
     })
   },
+
   detailTap: function (e) {
     var a = app.globalData.sResult;
     var b = parseInt(e.currentTarget.dataset.id);

@@ -20,7 +20,7 @@ Page({
     eTime: '',
     lDate: '',
     lTime: '',
-    pNumber:''
+    pNumber:1
   },
 
 
@@ -37,7 +37,6 @@ Page({
       day = '0' + day
     }
 
-
     this.setData({
       eTime: '12:00',
       lTime: '12:00',
@@ -47,6 +46,7 @@ Page({
     })
 
   },
+
   onLoad: function () {
     var that = this
     app.globalData.searchTap = 0;
@@ -101,12 +101,12 @@ Page({
     this.setData({
       pNumber: parseInt(e.detail.value) + 1
     })
-    app.globalData.perferN = parseInt(e.detail.value) + 1
   },
 
   formSubmit: function (e) {
     var event = e.detail.value
     var omit = ''
+    app.globalData.perferN = this.data.pNumber;
     if (event.eDate.length > 0 && event.eTime.length > 0 && event.lDate.length > 0 && event.lTime.length > 0) {
       if (e.detail.value.eDate <= e.detail.value.lDate) {
         var timeNow = new Date();
