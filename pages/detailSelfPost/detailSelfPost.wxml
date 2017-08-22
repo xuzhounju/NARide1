@@ -38,5 +38,5 @@
 </view>
 
 
-<button bindtap="changeNumber" type="primary">修改人数</button>
+<button bindtap="changeNumber" type="primary">修改信息</button>
 <button bindtap="deletePost" type="warn">删除请求</button>
