@@ -15,7 +15,7 @@ Page({
   },
   phoneCall: function (e){
     wx.makePhoneCall({
-      phoneNumber: app.globalData.detailEvent.poster[6]
+      phoneNumber: app.globalData.detailEvent.poster[6].toString()
     })
   },
 
