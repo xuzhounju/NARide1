@@ -42,19 +42,31 @@ Page({
             that.setData({
               loadingHidden: true
             })
+            var notice
+            var flag = false
+            if (res.statusCode == 400) {
+              notice = '请填写正确的联系方式!'
+            } else {
+              notice = '提交成功！'
+              flag = true
+              app.globalData.newProfile = true
+            }
             app.globalData.weixin = mydata.weixin
             app.globalData.phone = mydata.phone
             app.globalData.email = mydata.email
             app.globalData.newProfile = true
             wx.showModal({
               title: '提示',
-              content: '修改成功！',
+              content: notice,
               showCancel: false,
               success:function(res){
                 if(res.confirm){
-                  wx.switchTab({
-                    url:'../post/post'
-                  })
+                  if (flag){
+                    wx.switchTab({
+                      url: '../post/post'
+                    })
+                  }
+                  
       
                 }
               }
