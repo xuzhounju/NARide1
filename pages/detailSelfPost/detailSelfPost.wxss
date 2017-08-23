@@ -61,8 +61,8 @@
 .person-count-down, .person-count-up {
     font-weight:900;
     color: palevioletred;
-    margin-left: 30rpx;
-    margin-right: 30rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
 }
 
 .text-container-1{
