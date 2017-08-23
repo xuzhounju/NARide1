@@ -57,9 +57,8 @@
     width: 40rpx;
     height: 40rpx;
     text-align: center;
-    border-radius: 50%;
-    border: white solid 1rpx;
-    margin-right: 20rpx;
+  
+    margin-right: 35rpx;
     color: palevioletred;
 }
 
@@ -70,9 +69,8 @@
 
     height: 40rpx;
     text-align: center;
-    border-radius: 50%;
-    border: white solid 1rpx;
-    margin-left: 20rpx;
+   
+    margin-left: 35rpx;
     color: palevioletred;
     
 }
@@ -84,4 +82,15 @@
   border-radius: 8% ;
   font-size: 35rpx;
   height: 50rpx;
+}
+
+
+
+.memo{
+  margin-top: 10rpx;
+}
+
+input{
+  font-size: 35rpx;
+  margin-bottom: 10rpx;
 }
