@@ -27,7 +27,7 @@
 
       {
         "pagePath": "pages/ride/ride",
-        "text": "筛选",
+        "text": "搜索",
         "iconPath": "images/filter.png",
         "selectedIconPath": "images/filter_c.png"
       },
