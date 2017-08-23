@@ -52,7 +52,7 @@
   color: white;
 }
 
-.person-count-down {
+.person-count-down, .person-count-up {
     font-size: 40rpx;
     width: 40rpx;
     height: 40rpx;
@@ -63,19 +63,6 @@
     color: palevioletred;
 }
 
-
-.person-count-up {
-    font-size: 40rpx;
-    width: 40rpx;
-
-    height: 40rpx;
-    text-align: center;
-    border-radius: 50%;
-    border: white solid 1rpx;
-    margin-left: 20rpx;
-    color: palevioletred;
-    
-}
 .text-container-1{
   padding-top:10rpx;
   display: flex;
