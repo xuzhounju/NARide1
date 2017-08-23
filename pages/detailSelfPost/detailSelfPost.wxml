@@ -25,15 +25,15 @@
 </view>
 
 <view class="text-container-1" >
-  乘客数：
-  <view class="person-count-down" bindtap="minusCount">-</view>
-  {{pNumber }}
-  <view class="person-count-up" bindtap="addCount">+</view>
+  <span class="passenger-number">乘客数：</span>
+  <view class="passenger-number person-count-down" bindtap="minusCount">-</view>
+  <span class="passenger-number">{{pNumber }}</span>
+  <view class="passenger-number person-count-up" bindtap="addCount">+</view>
 
 </view>
 
 <view class="text-container-1" >
-  <view class="memo">备注：</view>
+  备注：
   <input  bindinput="bindKeyInput" value="{{memo}}"/>
 </view>
 
