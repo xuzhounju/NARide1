@@ -52,21 +52,10 @@
   color: white;
 }
 
-<<<<<<< HEAD
-.person-count-down {
-    font-size: 40rpx;
-    width: 40rpx;
-    height: 40rpx;
-    text-align: center;
-  
-    margin-right: 35rpx;
-    color: palevioletred;
 
-=======
 .passenger-number {
   display:inline-block;
   vertical-align:10rpx;
->>>>>>> 66a44adedd95f1c684154ae7d56afb981522b961
 }
 
 .person-count-down, .person-count-up {
