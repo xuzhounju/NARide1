@@ -44,3 +44,16 @@
 }
 
 
+.contact{
+  position:fixed;
+  right:60rpx;
+  bottom:60rpx;
+}
+
+.contact-text{
+  position: fixed;
+  right:35rpx;
+  bottom:35rpx;
+  color:#6c686d;
+  font-size:30rpx;
+}

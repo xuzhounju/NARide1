@@ -34,7 +34,7 @@
 
 <view class="text-container-1" >
   备注：
-  <input  bindinput="bindKeyInput" value="{{memo}}"/>
+  <input  bindinput="bindKeyInput" value="{{memo}}" focus="true"/>
 </view>
 
 

@@ -24,7 +24,6 @@
         "iconPath": "images/index.png",
         "selectedIconPath": "images/index_c.png"
       },
-
       {
         "pagePath": "pages/ride/ride",
         "text": "搜索",
@@ -37,7 +36,6 @@
         "iconPath": "images/post.png",
         "selectedIconPath": "images/post_c.png"
       },
-      
       {
         "pagePath": "pages/profile/profile",
         "text": "我的",

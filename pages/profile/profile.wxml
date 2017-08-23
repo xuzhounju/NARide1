@@ -29,5 +29,11 @@
 <view wx:else>
   <view class="hint">您当前没有发布过进行中的信息</view>
 </view>
-
-
+<contact-button 
+  class= "contact"
+  type="default-dark" 
+  size="27"
+  session-from="weapp"
+>
+</contact-button>
+<text class="contact-text">联系客服</text>

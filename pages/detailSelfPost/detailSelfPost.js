@@ -49,6 +49,9 @@ Page({
       showCancel: true,
       success:function(res){
         if(res.confirm){
+          wx.showLoading({
+            title: '加载中',
+          })
           app.globalData.newProfile = true
 
           var mydata = that.data.detailPost.fields
@@ -67,6 +70,8 @@ Page({
               'content-type': 'application/x-www-form-urlencoded'
             },
             success: function (res) {
+              wx.hideLoading()
+
               wx.showModal({
                 title: '提示',
                 content: '提交成功！',
@@ -96,7 +101,9 @@ Page({
       success: function (res) {
         if (res.confirm) {
           app.globalData.newProfile = true
-
+          wx.showLoading({
+            title: '加载中',
+          })
           var mydata = that.data.detailPost.fields
           mydata.pNumber  = that.data.pNumber
           mydata.memo = that.data.memo
@@ -114,6 +121,8 @@ Page({
               'content-type': 'application/x-www-form-urlencoded'
             },
             success: function (res) {
+              wx.hideLoading()
+
               wx.showModal({
                 title: '提示',
                 content: '提交成功！',
