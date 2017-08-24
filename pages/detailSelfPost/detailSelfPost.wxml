@@ -32,9 +32,9 @@
 
 </view>
 
-<view class="text-container-1" >
-  备注：
-  <textarea  bindinput="bindKeyInput" maxlength="100" auto-height="true" value="{{memo}}" focus="true"/>
+<view class="text-container-2">
+  <view class= "memo-text">备注：</view>
+  <textarea bindinput="bindKeyInput" maxlength="100" auto-height="true" value="{{memo}}" focus="true"/>
 </view>
 
 
