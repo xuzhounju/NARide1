@@ -80,7 +80,7 @@
 }
 
 
-input{
+textarea{
   display: inline-block;
   overflow: visible;
   font-size: 35rpx;
