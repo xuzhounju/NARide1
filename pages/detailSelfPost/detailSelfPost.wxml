@@ -34,7 +34,7 @@
 
 <view class="text-container-1" >
   备注：
-  <input  bindinput="bindKeyInput" value="{{memo}}" focus="true"/>
+  <textarea  bindinput="bindKeyInput" maxlength="100" auto-height="true" value="{{memo}}" focus="true"/>
 </view>
 
 

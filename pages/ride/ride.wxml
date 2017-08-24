@@ -69,7 +69,7 @@
     <view class="Grid-cell 4-1">
       <picker name="pNumber" bindchange="bindPNumberPickerChange"  range="{{numArray}}">
         <view class="picker">
-          乘客数：<span>{{pNumber}}</span>
+          人数：<span>{{pNumber}}</span>
         </view>
       </picker>
     </view>
@@ -86,8 +86,3 @@
     <button formType="submit" type="primary">搜索</button>
   </view>
 </form>
-<!-- <form bindsubmit="justLook">
-  <view class="btn-area">
-    <button formType="submit">随便看看</button>
-  </view>
-</form> -->

@@ -37,7 +37,7 @@
 </view>
 
 <view class="memo-container" >
-  <view >备注信息：<span>{{eventDetail.memo}}</span></view>
+  <view >备注：<span>{{eventDetail.memo}}</span></view>
 </view>
 
 <view class="btn-area">

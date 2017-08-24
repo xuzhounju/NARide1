@@ -86,8 +86,8 @@
   </radio-group>
 
   <view class="section_title">备注：</view>
-  <view class="Grid-cell 5-1">
-    <input name="memo" placeholder="可输入心目中的价格，司机可输入车型"  />
+  <view class="Grid-cell-5-1">
+    <textarea name="memo" maxlength="100" auto-height="true" placeholder="价格，车型，特殊要求等。"  />
   </view>
 
 
