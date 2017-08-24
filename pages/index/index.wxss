@@ -22,7 +22,7 @@ page {
 .top-tab{
   width: 650rpx;
   height: 100rpx;
-  background: lightgray;
+  background: #0099cc;
   color: black;
   font-size: 28rpx;
   line-height: 100rpx;
@@ -101,7 +101,7 @@ page {
   left: 649rpx;
   display:flex;
   height: 100rpx;
-  background: lightgray;
+  background: #0099cc;
   line-height: 100rpx;
   box-shadow: 0 2px 2px #bebebe;
   margin: 0 0 8rpx 0;

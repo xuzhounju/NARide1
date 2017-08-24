@@ -71,14 +71,7 @@
   margin: 20rpx 10rpx;
   border-radius: 8% ;
   font-size: 35rpx;
-}
-
-.text-container-2{
-  padding-top:10rpx;
-  background: lightgray;
-  margin: 20rpx 10rpx;
-  border-radius: 8% ;
-  font-size: 35rpx;
+ 
 }
 
 .memo{
@@ -90,4 +83,8 @@
   overflow: visible;
   font-size: 35rpx;
   margin-bottom: 10rpx;
+}
+
+.shit{
+  display: inline-block;
 }

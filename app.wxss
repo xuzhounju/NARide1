@@ -6,9 +6,6 @@ page {
   padding-top: 40rpx ;
 }
 
-
-
-
 button{
   height: 80rpx;
   width: 300rpx;

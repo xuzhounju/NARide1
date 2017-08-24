@@ -10,16 +10,18 @@ Page({
     ],
     numArray: [1, 2, 3, 4, 5, 6],
     identityValue: 0,
-    nowDate: '',
-    endDate: '',
+    nowDate: '2017-01-01',
+    endDate: '2018-12-30',
+    lEndDate: '',
+    
     placeArray: app.globalData.place,
     userInfo: {},
     departure: 0,
     arrival: 1,
     eDate: '',
-    eTime: '',
+    eTime: '12:00',
     lDate: '',
-    lTime: '',
+    lTime: '12:00',
     pNumber:''
   },
 
@@ -27,24 +29,37 @@ Page({
 
   onShow: function () {
     var d = new Date(Date.now() + 24 * 60 * 60 * 1000)
+    var ld = new Date(Date.now() + 61 * 24 * 60 * 60 * 1000)
     var year = d.getFullYear()
+    var lyear = ld.getFullYear()
     var month = d.getMonth() + 1
+    var lmonth = ld.getMonth() + 1
+
     if (month < 10) {
       month = '0' + month
     }
+    if (lmonth < 10) {
+      lmonth = '0' + lmonth
+    }
     var day = d.getDate()
+    var lday = ld.getDate()
+
     if (day < 10) {
       day = '0' + day
     }
 
+    if (lday < 10) {
+      lday = '0' + lday
+    }
+
+
+
     this.setData({
-      eTime: '12:00',
-      lTime: '12:00',
       eDate: year + '-' + month + '-' + day,
-      lDate: year + '-' + month + '-' + day
+      lDate: year + '-' + month + '-' + day,
+      lEndDate: lyear + '-' + lmonth + '-' + lday,
 
     })
-
   },
 
   onLoad: function () {
@@ -76,8 +91,22 @@ Page({
   },
 
   bindEDateChange: function (e) {
+    var rawE = e.detail.value + ' ' + '00:00'
+    var d = new Date(rawE.replace(/-/g, "/"))
+    var d = new Date(d.getTime() + 60 * 24 * 60 * 60 * 1000)
+    var year = d.getFullYear()
+    var month = d.getMonth() + 1
+    if (month < 10) {
+      month = '0' + month
+    }
+    var day = d.getDate()
+    if (day < 10) {
+      day = '0' + day
+    }
     this.setData({
-      eDate: e.detail.value
+      eDate: e.detail.value,
+      lEndDate: year + '-' + month + '-' + day,
+
     })
   },
   bindETimeChange: function (e) {
@@ -118,7 +147,7 @@ Page({
         var rawL = e.detail.value.lDate + ' ' + e.detail.value.lTime
         var latest = new Date(rawL.replace(/-/g, "/"))
         latest = latest.getTime() / 1000.0
-        if (earlist < latest && earlist > nowTime) {
+        if (earlist <= latest && earlist > nowTime) {
           var mydata = e.detail.value;
           mydata.earliest = earlist;
           mydata.latest = latest;

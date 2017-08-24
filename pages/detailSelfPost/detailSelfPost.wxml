@@ -32,9 +32,10 @@
 
 </view>
 
-<view class="text-container-2">
-  <view class= "memo-text">备注：</view>
-  <textarea bindinput="bindKeyInput" maxlength="100" auto-height="true" value="{{memo}}" focus="true"/>
+<view class="text-container-1" >
+  <view cass="shit">备注：</view>
+  <textarea  bindinput="bindKeyInput" maxlength="100"  placeholder="价格，车型，特殊要求等。" auto-height="true" value="{{memo}}" focus="true"/>
+>>>>>>> 409fcf0ce2a8b6349bca3fdd00e6e017d7026ec4
 </view>
 
 
