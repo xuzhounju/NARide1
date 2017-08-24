@@ -48,7 +48,7 @@
   <view class="section_title">最晚出发时间</view>
   <view class="Grid">
     <view class="Grid-cell 3-1">
-      <picker name="lDate" mode="date" value="{{lDate}}" start="{{eDate}}" end="{{endDate}}" bindchange="bindLDateChange">
+      <picker name="lDate" mode="date" value="{{lDate}}" start="{{eDate}}" end="{{lEndDate}}" bindchange="bindLDateChange">
         <view class="picker">
           日期: <span>{{lDate}}</span>
         </view>

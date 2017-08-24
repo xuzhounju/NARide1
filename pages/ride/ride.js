@@ -10,8 +10,10 @@ Page({
     ],
     numArray: [1, 2, 3, 4, 5, 6],
     identityValue: 0,
-    nowDate: '',
-    endDate: '',
+    nowDate: '2017-01-01',
+    endDate: '2018-12-30',
+    lEndDate: '',
+    
     placeArray: app.globalData.place,
     userInfo: {},
     departure: 0,
@@ -76,8 +78,22 @@ Page({
   },
 
   bindEDateChange: function (e) {
+    var rawE = e.detail.value + ' ' + '00:00'
+    var d = new Date(rawE.replace(/-/g, "/"))
+    var d = new Date(d.getTime() + 30 * 24 * 60 * 60 * 1000)
+    var year = d.getFullYear()
+    var month = d.getMonth() + 1
+    if (month < 10) {
+      month = '0' + month
+    }
+    var day = d.getDate()
+    if (day < 10) {
+      day = '0' + day
+    }
     this.setData({
-      eDate: e.detail.value
+      eDate: e.detail.value,
+      lEndDate: year + '-' + month + '-' + day,
+
     })
   },
   bindETimeChange: function (e) {
@@ -118,7 +134,7 @@ Page({
         var rawL = e.detail.value.lDate + ' ' + e.detail.value.lTime
         var latest = new Date(rawL.replace(/-/g, "/"))
         latest = latest.getTime() / 1000.0
-        if (earlist < latest && earlist > nowTime) {
+        if (earlist <= latest && earlist > nowTime) {
           var mydata = e.detail.value;
           mydata.earliest = earlist;
           mydata.latest = latest;

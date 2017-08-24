@@ -5,7 +5,7 @@ var app = getApp()
 Page({
   data: {
     nowDate: '2017-01-01',
-    endDate: '2030-12-30',
+    endDate: '2018-12-30',
     lEndDate:'',
     placeArray: app.globalData.place,
 
@@ -124,6 +124,7 @@ Page({
   formSubmit: function (e) {
     var that =this
     var event=e.detail.value
+    
     if (this.data.agree == false){
       wx.showModal({
         title: '提示',
@@ -152,6 +153,15 @@ Page({
       var rawL = e.detail.value.lDate + ' ' + e.detail.value.lTime
       var latest = new Date(rawL.replace(/-/g, "/"))
       latest = latest.getTime() / 1000.0
+      var nowT =Date.now()/1000.0
+      if(nowT > earlist){
+        wx.showModal({
+          title: '提示',
+          content: '请确认最早时间晚于现在！',
+          showCancel: false
+        })
+        return
+      }
       var mydata = e.detail.value;
       mydata.earliest = earlist;
       mydata.latest = latest;

@@ -71,6 +71,7 @@
   margin: 20rpx 10rpx;
   border-radius: 8% ;
   font-size: 35rpx;
+ 
 }
 
 
@@ -85,4 +86,8 @@ textarea{
   overflow: visible;
   font-size: 35rpx;
   margin-bottom: 10rpx;
+}
+
+.shit{
+  display: inline-block;
 }
