@@ -30,21 +30,35 @@ Page({
   onLoad: function(){
     console.log("onload")
     var d = new Date(Date.now()+24*60*60*1000)
+    var ld = new Date(Date.now() + 61*24 * 60 * 60 * 1000)
     var year = d.getFullYear()
+    var lyear = ld.getFullYear()
     var month =d.getMonth()+1
+    var lmonth = ld.getMonth() + 1
+
     if (month<10){
       month='0'+month
     }
+    if (lmonth < 10) {
+      lmonth = '0' + lmonth
+    }
     var day =d.getDate()
+    var lday = ld.getDate()
+
     if(day<10){
       day='0'+day
     }
+
+    if (lday < 10) {
+      lday = '0' + lday
+    }
+
 
 
     this.setData({
       eDate: year + '-' + month + '-' + day,
       lDate: year + '-' + month + '-' + day,
-   
+      lEndDate: lyear + '-' + lmonth + '-' + lday,
 
     })
 
@@ -86,7 +100,7 @@ Page({
   bindEDateChange: function (e) {
     var rawE = e.detail.value + ' ' + '00:00'
     var d = new Date(rawE.replace(/-/g, "/"))
-    var d = new Date(d.getTime() + 7* 24 * 60 * 60 * 1000)
+    var d = new Date(d.getTime() + 60 * 24 * 60 * 60 * 1000)
     var year = d.getFullYear()
     var month = d.getMonth() + 1
     if (month < 10) {

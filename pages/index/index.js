@@ -21,7 +21,7 @@ Page({
 
     var that = this
     var nowTime = new Date();
-    var latestTime = new Date(nowTime.getTime() + 2 * 30 * 24 * 3600 * 1000);
+    var latestTime = new Date(nowTime.getTime() + 3 * 30 * 24 * 3600 * 1000);
     nowTime = Math.floor(nowTime.getTime() / 1000.0);
     latestTime = Math.floor(latestTime.getTime() / 1000.0);
     var departure = 0;
