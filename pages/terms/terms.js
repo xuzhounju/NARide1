@@ -12,6 +12,9 @@ Page({
     })
     var that = this
     if (app.globalData.firstLogin){
+      wx.showLoading({
+        title: '加载中',
+      })
       wx.login({
         success: function (res) {
           var js_code = res.code
@@ -23,6 +26,7 @@ Page({
               'content-type': 'application/x-www-form-urlencoded'
             },
             success: function (res) {
+              wx.hideLoading()
               app.globalData.firstLogin= false
             }
           })
