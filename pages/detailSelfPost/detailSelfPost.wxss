@@ -70,14 +70,11 @@
  
 }
 
-
-
 .memo{
   margin-top: 10rpx;
 }
 
-
-textarea{
+.content{
   display: inline-block;
   overflow: visible;
   font-size: 35rpx;
