@@ -5,7 +5,6 @@ Page({
     userInfo: {},
     openid: '',
     count:'',
-    array:'',
     placeArray: app.globalData.place,
     weixin:'',
     phone:'',
@@ -43,11 +42,7 @@ Page({
             var i = 0
             var rawArray = res.data[1]
             app.globalData.onGoingPost = res.data[1]
-            for (i; i < rawArray.length; i++) {
-              var d = new Date(rawArray[i].fields.post_time)
-              rawArray[i].fields.post_time = d.toLocaleString([], {month:'numeric',day:'2-digit', hour: '2-digit', minute: '2-digit' } )
-
-            }
+            
             app.globalData.weixin = res.data[0].fields.weixin
             app.globalData.phone = res.data[0].fields.phone
             app.globalData.email = res.data[0].fields.email
@@ -57,7 +52,6 @@ Page({
               phone: app.globalData.phone,
               email: app.globalData.email,
               userInfo: app.globalData.userInfo,
-              array: rawArray,
               loadingHidden:true
             })
             

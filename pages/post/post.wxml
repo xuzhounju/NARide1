@@ -9,7 +9,7 @@
     <view class="Grid-cell 1-1">
       <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{departure}}" range="{{placeArray}}">
         <view class="picker">
-           出发地:<span class="long">{{placeArray[departure]}}</span>
+           <space class="da">出发地:</space><span class="long">{{placeArray[departure]}}</span>
         </view>
       </picker>
     </view>
@@ -23,14 +23,18 @@
     <view class= "Grid-cell 1-2">
       <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{arrival}}" range="{{placeArray}}">
         <view class="picker">
-          目的地:<span class='long'>{{placeArray[arrival]}}</span>
+          <space class="da">目的地:</space><span class='long'>{{placeArray[arrival]}}</span>
         </view>
       </picker>
     </view>
   </view>
 
   <view class ="Grid">
-    <view class="Grid-cell 1-2" >出发时间:</view>
+    <view class="Grid-cell 1-2" >
+      <view class="picker">
+        <space>出发时间:</space>
+      </view>
+    </view>
   </view>
 
   <view class="Grid">
@@ -39,14 +43,14 @@
 
       <picker name="eDate" mode="date" value="{{eDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindEDateChange">
         <view class="picker">
-          日期: <span class="short">{{eDate}}</span>
+          <space>日期:</space><span class="date">{{eDate}}</span>
         </view>
       </picker>
     </view>
     <view class="Grid-cell d2-2">
       <picker name="eTime" mode="time" value="{{eTime}}" bindchange="bindETimeChange">
         <view class="time-picker">
-          时间: <span class="short">{{eTime}}</span>
+          <space>时间:</space><span class="short">{{eTime}}</span>
         </view>
       </picker>
       <picker name="lTime" mode="time" value="{{lTime}}" bindchange="bindLTimeChange">
@@ -64,23 +68,26 @@
     <view class="Grid-cell 4-1">
       <picker name="pNumber" bindchange="bindPNumberPickerChange"  range="{{numArray}}">
         <view class="picker">
-          乘客数/载客数:<span class="middle">{{pNumber}}</span>
+          <space>乘客数/载客数:</space><span class="middle">{{pNumber}}</span>
         </view>
       </picker>
     </view>
   </view>
 
   <view class="Grid memo">
-    备注：<input name="memo" maxlength="100" auto-height="true" placeholder="  价格，车型，特殊要求等。"  />
+    <space>备注:</space><input name="memo" maxlength="100" auto-height="true" placeholder="  价格，车型，特殊要求等。"  />
   </view>
 
-
+  <view class="picker">
     <radio-group class="Grid " bindchange="radioChange">
       <label class="Grid-cell" wx:for="{{identity}}">
-        {{item.name}}  <radio value="{{item.value}}" checked="{{item.checked}}"/>     
+        <radio-name>
+          {{item.name}}
+        </radio-name>  
+        <radio value="{{item.value}}" checked="{{item.checked}}"/>     
       </label>
     </radio-group>
-
+  </view>
 
 
 

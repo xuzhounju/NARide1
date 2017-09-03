@@ -78,8 +78,10 @@ Page({
                 showCancel: false,
                 success: function (res) {
                   if (res.confirm) {
-                    wx.navigateBack({
+                    wx.switchTab({
+                      url: '../profile/profile'
                     })
+                    
                   }
                 }
               })
@@ -129,7 +131,8 @@ Page({
                 showCancel: false,
                 success: function (res) {
                   if (res.confirm) {
-                    wx.navigateBack({
+                    wx.switchTab({
+                      url: '../profile/profile'
                     })
                   }
                 }

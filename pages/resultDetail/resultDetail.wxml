@@ -2,44 +2,54 @@
 <view class="top-margin flex-tab"></view>
 <view class="userinfo">
   <image class="userinfo-avatar" src="{{eventDetail.poster[3]}}" background-size="cover"></image>
-  <text class="userinfo-nickname">{{eventDetail.poster[2]}}</text>
-</view>
-
-<view class="purpose-container" >
-  <view class = "driver" wx:if="{{eventDetail.driver}}">司机</view>
-  <view class = "passenger" wx:else> 乘客</view>
-</view>
-
-
-<view class="text-container" >
-  旅程:<span>{{eventDetail.departure+'   '}}<arrow>→</arrow>{{eventDetail.arrival}}</span>
+  <view class="purpose-container" >
+    <view class = "driver" wx:if="{{eventDetail.driver}}">司机</view>
+    <view class = "passenger" wx:else> 乘客</view>
+    <text class="userinfo-nickname">{{eventDetail.poster[2]}}</text>
+    
+  </view>
+  
 </view>
 
 
 
 <view class="text-container" >
-  最早出发:<span>{{eventDetail.earliest}}</span>
+  <space>旅程:</space><span class="travel">{{eventDetail.departure+'   '}}<arrow>→</arrow>{{eventDetail.arrival}}</span>
+</view>
+
+
+
+<view class="text-container" >
+  <space>最早出发:</space><span class="time">{{eventDetail.earliest}}</span>
 </view>
 
 <view class="text-container" >
-  最晚出发:<span>{{eventDetail.latest}}</span>
+  <space>最晚出发:</space><span class="time">{{eventDetail.latest}}</span>
+</view>
+
+<view class="text-container" wx:if="{{eventDetail.poster[5].length>0}}">
+  <space>微信号:</space><span class="contact">{{eventDetail.poster[5]}}</span>
+</view>
+<view class="text-container" wx:else>
+  <space>微信号:</space><span class="contact">（未填）</span>
+</view>
+
+
+<view class="text-container" >
+  <space>手机号:</space><span class="contact">{{eventDetail.poster[6]}}</span>
 </view>
 
 <view class="text-container" >
-  微信号:<span>{{eventDetail.poster[5]}}</span>
+  <space>人数:</space><span>{{eventDetail.pNumber}}</span>
 </view>
 
-<view class="text-container" >
-    手机号：<span>{{eventDetail.poster[6]}}</span>
+<view class="text-container" wx:if="{{eventDetail.memo.length>0}}">
+  <space>备注:</space><span class="memo">{{eventDetail.memo}}</span>
+</view>
+<view class="text-container" wx:else>
+  <space>备注:</space><span class="memo">(无)</span>
 </view>
 
-<view class="text-container" >
-  人数：<span>{{eventDetail.pNumber}}</span>
-</view>
-
-<view class="memo-container" >
-  <view>备注：</view><view class="memo">{{eventDetail.memo}}</view>
-</view>
 
 
 <view class="btn-area">

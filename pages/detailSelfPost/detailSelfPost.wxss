@@ -1,8 +1,10 @@
 /* detailSelfPost.wxss */
 .userinfo {
+  margin-top:50rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 30rpx;
 }
 
 .userinfo-avatar {
@@ -22,34 +24,24 @@
 }
 
 .purpose-container{
-  flex-direction: column;
+  margin-top:20rpx;
   display: flex;
-  align-items: center;
-  margin: 40rpx 10rpx;
-  color:blue;
+  margin-bottom: 50rpx;
 }
+
+
+
+
 
 .text-container{
-  margin: 20rpx 10rpx;
+  padding:15rpx;
+  margin: 5rpx 50rpx;
   border-radius: 8% ;
-  font-size: 35rpx;
+  font-size: 30rpx;
   height: 50rpx;
-  padding-top:15rpx
 }
 
-.driver{
-  background: green;
-  width: 300rpx;
-  text-align: center;
-  color: white;
-}
 
-.passenger{
-  background: darkcyan;
-  width: 300rpx;
-  text-align: center;
-  color: white;
-}
 .passenger-number {
   display:inline-block;
 }
@@ -63,11 +55,11 @@
 }
 
 .text-container-1{
-  padding-top:10rpx;
-  margin: 20rpx 10rpx;
+  padding:15rpx;
+  margin: 5rpx 50rpx;
   border-radius: 8% ;
-  font-size: 35rpx;
- 
+  font-size: 30rpx;
+  height: 50rpx;
 }
 
 .memo{
@@ -87,7 +79,7 @@
 
 
 .btn-area{
-  margin-top:50rpx;
+  margin-top:100rpx;
   display: flex;
 }
 
@@ -115,11 +107,20 @@ span{
   background: white;
   border-radius: 10rpx;
   padding: 5rpx;
-  padding-right: 100rpx;
+  padding-right: 50rpx;
+  display:inline-block;
 }
 textarea{
   background: white;
   border-radius: 10rpx;
   padding: 5rpx;
-  padding-right: 100rpx;
+  width:600rpx;
+}
+
+.travel{
+    width:480rpx;
+
+}
+.time{
+  width:420rpx
 }

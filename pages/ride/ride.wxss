@@ -22,40 +22,41 @@ span{
   background: white;
   border-radius: 10rpx;
   padding: 5rpx;
+  display: inline-block;
 }
 
 .long{
-  width: 475rpx;
-  left:200rpx;
-  position:fixed;
+  width: 485rpx;
+  
 
 }
 
 .middle{
-  width: 375rpx;
-  left:300rpx;
-  position:fixed;
+  width: 415rpx;
+  
 }
 
-space{
-  position: fixed;
-  width:20rpx;
-  height: 50rpx;
-  display: flex
+.short{
+  width:70rpx;
+}
+
+.date{
+  width:200rpx;
+}
+.da{
+  margin-right:40rpx;
 }
 page{
   padding-top:100rpx;
 }
 
-.short{
-  padding-right: 40rpx;
-}
+
 .d2-1{
-  flex: 40%
+  flex: 50%
 }
 
 .d2-2{
-  flex: 60%
+  flex: 50%
 }
 
 .bottom{
@@ -74,3 +75,7 @@ button{
 
 }
 
+radio-name{
+  margin-top:10rpx;
+  margin-right:20rpx;
+}

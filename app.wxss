@@ -31,6 +31,7 @@ arrow{
   width: 100rpx;
   text-align: center;
   color: white;
+  margin-right:20rpx; 
 }
 
 .passenger{
@@ -38,6 +39,7 @@ arrow{
   width: 100rpx;
   text-align: center;
   color: white;
+  margin-right:20rpx;
 }
 
 .hyperLink{
@@ -56,4 +58,8 @@ arrow{
   width: 750rpx;
   height: 20rpx;
   background:#2198cc;
+}
+
+space{
+  margin-right: 20rpx
 }

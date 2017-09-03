@@ -2,31 +2,31 @@
 
 <view class="userinfo">
   <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-  <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <view class="purpose-container" >
+    <view class = "driver" wx:if="{{detailPost.fields.driver}}">司机</view>
+    <view class = "passenger" wx:else> 乘客</view>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
 </view>
 
-
-<view class="purpose-container" >
-  <view class = "driver" wx:if="{{detailPost.fields.driver}}">司机</view>
-  <view class = "passenger" wx:else> 乘客</view>
-</view>
-<view class="text-container" >
-
-  <view>旅程:<span>{{placeArray[detailPost.fields.departure-1]+'  '}}<arrow>→</arrow>{{' '+placeArray[detailPost.fields.arrival-1]}}</span></view>
-
-</view>
 
 
 <view class="text-container" >
-  <view>最早出发:<span>{{earliest}}</span></view>
+  <space>旅程:</space><span class="travel">{{placeArray[detailPost.fields.departure-1]+'  '}}<arrow>→</arrow>{{' '+placeArray[detailPost.fields.arrival-1]}}</span>
+
+</view>
+
+
+<view class="text-container" >
+  <space>最早出发:</space><span class="time">{{earliest}}</span>
 </view>
 
 <view class="text-container" >
-  <view>最晚出发:<span>{{latest}}</span></view>
+  <space>最晚出发:</space><span class="time">{{latest}}</span>
 </view>
 
 <view class="text-container-1" >
-  乘客数/载客数:<span class="passenger-number">
+  <space>乘客数/载客数:</space><span class="passenger-number">
   <view class="passenger-number person-count-down" bindtap="minusCount">-</view>
   {{pNumber }}
   <view class="passenger-number person-count-up" bindtap="addCount">+</view></span>
@@ -34,7 +34,7 @@
 </view>
 
 <view class="text-container-1" >
-  <view cass="shit">备注:</view>
+  <space>备注:</space>
   <textarea  bindinput="bindKeyInput" maxlength="100"  placeholder="价格，车型，特殊要求等。" auto-height="true" value="{{memo}}" focus="true"/>
 </view>
 

@@ -1,8 +1,10 @@
 /* resultDetail.wxss */
 .userinfo {
+  margin-top:50rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size:30rpx;
 }
 
 .userinfo-avatar {
@@ -10,6 +12,7 @@
   height: 180rpx;
   margin: 400 rpx;
   border-radius: 50%;
+  
 }
 
 .userinfo-nickname {
@@ -23,45 +26,23 @@
 
 .text-container{
   padding:15rpx;
-  margin: 5rpx 10rpx;
+  margin: 5rpx 50rpx;
   border-radius: 8% ;
   font-size: 30rpx;
-  height: 50rpx;
+
 }
 
-.memo-container{
-  padding:15rpx;
-
-  margin: 0rpx 10rpx;
-  border-radius: 8% ;
-  font-size: 30rpx;
-  
-}
 
 
 .purpose-container{
-  flex-direction: column;
+  margin-top:20rpx;
   display: flex;
-  align-items: center;
-  margin: 40rpx 10rpx;
-  color:blue;
+  margin-bottom: 50rpx;
 }
 
 
 
-.driver{
-  background: green;
-  width: 300rpx;
-  text-align: center;
-  color: white;
-}
 
-.passenger{
-  background: darkcyan;
-  width: 300rpx;
-  text-align: center;
-  color: white;
-}
 
 .copyButton{
   background: #ab14e2;
@@ -73,17 +54,21 @@ span{
   border-radius: 10rpx;
   padding: 5rpx;
   padding-right: 100rpx;
+  display:inline-block;
+  
 }
 
 .memo{
   background: white;
   border-radius: 10rpx;
   padding: 5rpx;
+  position:fixed;
   padding-right: 100rpx;
+  width:430rpx;
 }
 
 .btn-area{
-  margin-top:20rpx;
+  margin-top:50rpx;
   display: flex;
 }
 
@@ -104,4 +89,16 @@ button{
 .greenB{
   margin-left: 30rpx;
   background: #8fc31f;
+}
+
+.travel{
+    width:430rpx;
+
+}
+.time{
+  width:250rpx
+}
+
+.contact{
+  width:280rpx
 }

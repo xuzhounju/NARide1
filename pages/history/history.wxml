@@ -6,10 +6,10 @@
 
 <view wx:if="{{array.length>0}}"> 
   <view wx:for="{{array}}"class="ongoingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
-    <view class = "driver" wx:if="{{item.fields.driver}}">司机</view>
+    <view class = "driver" wx:if="{{item[3]}}">司机</view>
     <view class = "passenger" wx:else> 乘客</view>
-    <view>{{index+1}}.<span>{{placeArray[item.fields.departure-1]+'   '}}</span><arrow>→</arrow><span>{{placeArray[item.fields.arrival-1]}}</span>;</view>
-    <view>申请时间:<span>{{item.fields.post_time}}</span></view>  
+    <view>{{index+1}}.<span>{{placeArray[item[0]-1]+'   '}}</span><arrow>→</arrow><span>{{placeArray[item[1]-1]}}</span>;</view>
+    <view>申请时间:<span>{{item[2]}}</span></view>  
   </view>
 </view>
 <view wx:else>

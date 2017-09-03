@@ -11,15 +11,21 @@ Page({
   },
 
 
-  onLoad: function (options) {
-    var i = 0
-    var rawArray = app.globalData.onGoingPost
+  onShow: function (options) {
+  
+    var rawArray = []
     console.log(rawArray)
-    for (i; i < rawArray.length; i++) {
-      var d = new Date(rawArray[i].fields.post_time)
-      rawArray[i].fields.post_time = d.toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' })
+    console.log(app.globalData.onGoingPost)
+    for (var i = 0; i < app.globalData.onGoingPost.length; i++) {
+      rawArray.push([app.globalData.onGoingPost[i].fields.departure, app.globalData.onGoingPost[i].fields.arrival, app.globalData.onGoingPost[i].fields.post_time, app.globalData.onGoingPost[i].driver])
+      var d = new Date(rawArray[i][2])
+      console.log(d)
+      rawArray[i][2] = d.toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' })
 
     }
+
+    console.log(app.globalData.onGoingPost)
+
     this.setData({
       array:rawArray
     })

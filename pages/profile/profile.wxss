@@ -22,8 +22,7 @@
 .userdetails{
   font-size: 25rpx;
   display: flex;
-  padding-left:30rpx;
-  padding-right:30rpx;
+  padding-left:50rpx;
 
 }
 .top{
@@ -61,8 +60,8 @@
   display: flex;
 }
 .pic{
-  width: 120rpx;
-  height: 136rpx;
+  width: 80rpx;
+  height: 91rpx;
   margin: auto;
 }
 .history{
