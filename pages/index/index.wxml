@@ -2,15 +2,15 @@
 	加载中...
 </loading>
 
-  <view class="top-tab flex-wrp flex-tab">
-    <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
-      {{itemName}}
-    </view>
-    
+<view class="top-margin flex-tab"></view>
+
+<view class="top-tab flex-wrp flex-tab">
+  <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
+    <view wx:if="{{idx <3}}"> {{itemName}} </view>
+    <view wx:else>  <image class="search" src="../../images/search.png"></image> </view>      
   </view>
-  <view class= "top-search" bindtap="searchTap">
-      <image class="search" src="../../images/search.png"></image>
-  </view>
+</view>
+
  
 
 <view class = "container">

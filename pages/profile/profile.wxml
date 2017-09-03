@@ -2,38 +2,45 @@
 <loading hidden="{{loadingHidden}}">
 	加载中...
 </loading>
+<view class="top-margin flex-tab"></view>
 <view class="Grid"> 
   <view class="Grid-cell userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
-  <view class = "Grid-cell userdetails" bindtap="bindMessageButtonTap">
-    <view class="details">发布次数：{{count}}</view>  
-    <view class="details">微信号：{{weixin}}</view>
-    <view class="details">手机号：{{phone}}</view>
-    <view class="hint">(点击修改)</view>
-  </view>
+
 </view>
-<view class="Grid">
-  <view class="section_title">当前发布：</view>
+<view class="info" bindtap="bindMessageButtonTap">
+  <view class = "Grid userdetails top" >
+    <view class="details">性别:{{'   '+gender[genderID]}}</view>
+    <view class="details">发布次数:{{'   '+count}}</view>  
+    
+  </view>
+  <view class = "Grid userdetails bot" >
+    <view class="details">微信号:{{'   '+weixin}}</view>
+    <view class="details">手机号:{{'   '+phone}}</view>
+  
+  </view>
 </view>
 
-<view wx:if="{{array.length>0}}"> 
-  <view wx:for="{{array}}"class="ongoingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
-    <view class = "driver" wx:if="{{item.fields.driver}}">司机</view>
-    <view class = "passenger" wx:else> 乘客</view>
-    <view>{{index+1}}.<span>{{placeArray[item.fields.departure-1]+'   '}}</span><arrow>→</arrow><span>{{placeArray[item.fields.arrival-1]}}</span>;</view>
-    <view>申请时间:<span>{{item.fields.post_time}}</span></view>  
+
+<view class="icon-bar">
+  <view class="icon" bindtap="showHistory">
+    <image class="pic history" src="../../images/history.png"></image>
+  </view>
+  <view class="icon">
+    <image class="pic contact" src="../../images/contact.png" ></image>
+    <contact-button class="b1"type="default-light" size="27"session-from="weapp"></contact-button>
+    <contact-button class="b2"type="default-light" size="27"session-from="weapp"></contact-button>
+    <contact-button class="b3"type="default-light" size="27"session-from="weapp"></contact-button>
+    <contact-button class="b4"type="default-light" size="27"session-from="weapp"></contact-button>
+    <contact-button class="b5"type="default-light" size="27"session-from="weapp"></contact-button>
+    <contact-button class="b6"type="default-light" size="27"session-from="weapp"></contact-button>
+    <contact-button class="b7"type="default-light" size="27"session-from="weapp"></contact-button>
+    <contact-button class="b8"type="default-light" size="27"session-from="weapp"></contact-button>
+    <contact-button class="b9"type="default-light" size="27"session-from="weapp"></contact-button>
+
+
   </view>
 </view>
-<view wx:else>
-  <view class="hint">您当前没有发布过进行中的信息</view>
-</view>
-<contact-button 
-  class= "contact"
-  type="default-dark" 
-  size="27"
-  session-from="weapp"
->
-</contact-button>
-<text class="contact-text">联系客服</text>
+

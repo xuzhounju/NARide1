@@ -5,7 +5,7 @@ var app=getApp()
 Page({
 
   data: {
-    navTab: ["全部", "我是司机", "我是乘客"],
+    navTab: ["全部", "我是司机", "我是乘客",""],
     currentNavtab: app.globalData.currentTap,
     userInfo:'',
     genderUrl: '../../images/',
@@ -125,6 +125,13 @@ Page({
   },
 
   switchTab: function (e) {
+    console.log()
+    if (e.currentTarget.dataset.idx==3){
+      wx.switchTab({
+        url: '../ride/ride',
+      })
+      return
+    }
     this.setData({
       currentNavtab: e.currentTarget.dataset.idx
     });
@@ -168,11 +175,7 @@ Page({
     })
   },
 
-  searchTap:function(e){
-    wx.switchTab({
-      url: '../ride/ride',
-    })
-  },
+ 
 
   onShareAppMessage: function () {
 

@@ -12,7 +12,6 @@ Page({
     identityValue: 0,
     nowDate: '2017-01-01',
     endDate: '2018-12-30',
-    lEndDate: '',
     
     placeArray: app.globalData.place,
     userInfo: {},
@@ -22,42 +21,33 @@ Page({
     eTime: '12:00',
     lDate: '',
     lTime: '12:00',
-    pNumber:''
+    pNumber:1,
   },
 
 
 
   onShow: function () {
     var d = new Date(Date.now() + 24 * 60 * 60 * 1000)
-    var ld = new Date(Date.now() + 61 * 24 * 60 * 60 * 1000)
     var year = d.getFullYear()
-    var lyear = ld.getFullYear()
     var month = d.getMonth() + 1
-    var lmonth = ld.getMonth() + 1
 
     if (month < 10) {
       month = '0' + month
     }
-    if (lmonth < 10) {
-      lmonth = '0' + lmonth
-    }
+  
     var day = d.getDate()
-    var lday = ld.getDate()
 
     if (day < 10) {
       day = '0' + day
     }
 
-    if (lday < 10) {
-      lday = '0' + lday
-    }
+  
 
 
 
     this.setData({
       eDate: year + '-' + month + '-' + day,
       lDate: year + '-' + month + '-' + day,
-      lEndDate: lyear + '-' + lmonth + '-' + lday,
 
     })
   },
@@ -91,22 +81,10 @@ Page({
   },
 
   bindEDateChange: function (e) {
-    var rawE = e.detail.value + ' ' + '00:00'
-    var d = new Date(rawE.replace(/-/g, "/"))
-    var d = new Date(d.getTime() + 60 * 24 * 60 * 60 * 1000)
-    var year = d.getFullYear()
-    var month = d.getMonth() + 1
-    if (month < 10) {
-      month = '0' + month
-    }
-    var day = d.getDate()
-    if (day < 10) {
-      day = '0' + day
-    }
+
     this.setData({
       eDate: e.detail.value,
-      lEndDate: year + '-' + month + '-' + day,
-
+      lDate:e.detail.value
     })
   },
   bindETimeChange: function (e) {
@@ -115,11 +93,6 @@ Page({
     })
   },
 
-  bindLDateChange: function (e) {
-    this.setData({
-      lDate: e.detail.value
-    })
-  },
   bindLTimeChange: function (e) {
     this.setData({
       lTime: e.detail.value
@@ -136,16 +109,16 @@ Page({
     var event = e.detail.value
     var omit = ''
     app.globalData.perferN = this.data.pNumber;
-    if (event.eDate.length > 0 && event.eTime.length > 0 && event.lDate.length > 0 && event.lTime.length > 0) {
-      if (e.detail.value.eDate <= e.detail.value.lDate) {
+    if (event.eDate.length > 0 && event.eTime.length > 0  && event.lTime.length > 0) {
+      if (e.detail.value.eTime <= e.detail.value.lTime) {
         var timeNow = new Date();
         var nowTime = new Date(timeNow.getTime() - 2 * 60 * 1000);
         nowTime = Math.floor(nowTime.getTime() / 1000.0);
         var rawE = e.detail.value.eDate + ' ' + e.detail.value.eTime
         var earlist = new Date(rawE.replace(/-/g, "/"))
         earlist = earlist.getTime() / 1000.0
-        var rawL = e.detail.value.lDate + ' ' + e.detail.value.lTime
-        var latest = new Date(rawL.replace(/-/g, "/"))
+        var rawE = e.detail.value.eDate + ' ' + e.detail.value.lTime
+        var latest = new Date(rawE.replace(/-/g, "/"))
         latest = latest.getTime() / 1000.0
         if (earlist <= latest && earlist > nowTime) {
           var mydata = e.detail.value;
@@ -183,9 +156,8 @@ Page({
       }
     }
     else {
-      if(event.eDate.length == 0){omit = omit + ' 最早日期' }
+      if(event.eDate.length == 0){omit = omit + ' 日期' }
       if (event.eTime.length == 0) { omit = omit + ' 最早时间' }
-      if (event.lDate.length == 0) { omit = omit + ' 最晚日期' }
       if (event.lTime.length == 0) { omit = omit + ' 最晚时间' }
       wx.showModal({
         title: '提示',

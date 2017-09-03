@@ -9,7 +9,9 @@ Page({
     placeArray: app.globalData.place,
     weixin:'',
     phone:'',
-    loadingHidden: true
+    loadingHidden: true,
+    gender: ['未知', '男', '女'],
+    genderID:'',
   },
   //事件处理函数
 
@@ -21,8 +23,10 @@ Page({
   },
   
   onLoad: function () {
+
     this.setData({
-      loadingHidden: false
+      loadingHidden: false,
+      genderID: parseInt(app.globalData.userInfo.gender)
     })
     var that = this
     //调用应用实例的方法获取全局数据
@@ -78,13 +82,12 @@ Page({
     })
   },
 
-  detailTap: function(e){
-    app.globalData.detailSelfPostID = parseInt(e.currentTarget.dataset.id)
+ 
+  showHistory: function(e){
     wx.navigateTo({
-      url: '../detailSelfPost/detailSelfPost',
+      url: '../history/history',
     })
   },
-
 
    onShareAppMessage: function () {
 

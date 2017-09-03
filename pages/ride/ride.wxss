@@ -1,29 +1,76 @@
 .Grid {
   display: flex; 
+  font-size:30rpx;
+  padding-left:50rpx;
+  font-weight: 300;
+
 }
 
 .Grid-cell{
   flex: 1;
   height: 50rpx;
   margin: 20rpx 10rpx;
-  background: lightgray;
   border-radius: 8%;
+  display: flex;
 }
 
-.picker{
-  font-size: 35rpx;
+
+
+
+
+span{
+  background: white;
+  border-radius: 10rpx;
+  padding: 5rpx;
 }
 
-.section_title{
-  font-size: 35rpx;
+.long{
+  width: 475rpx;
+  left:200rpx;
+  position:fixed;
+
 }
 
-.radio-group{
-  flex: 1;
-  height: 300 rpx;
-  margin: 20rpx 10rpx;
-  background: lightgray;
-  border-radius: 8%;
-  font-size: 35rpx;
-  background: lightgray;
+.middle{
+  width: 375rpx;
+  left:300rpx;
+  position:fixed;
 }
+
+space{
+  position: fixed;
+  width:20rpx;
+  height: 50rpx;
+  display: flex
+}
+page{
+  padding-top:100rpx;
+}
+
+.short{
+  padding-right: 40rpx;
+}
+.d2-1{
+  flex: 40%
+}
+
+.d2-2{
+  flex: 60%
+}
+
+.bottom{
+  margin-top:50rpx
+}
+
+button{
+  background: #f8b62d;
+  color:white;
+  height: 60rpx;
+  width: 200rpx;
+  font-size: 30rpx;
+  text-align: center;
+  margin-top:150rpx;
+  line-height: 60rpx;
+
+}
+

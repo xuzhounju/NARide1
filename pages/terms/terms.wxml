@@ -1,4 +1,5 @@
 <!--terms.wxml-->
+<view class="top-margin flex-tab"></view>
 <view class="title">
   <text class="terms-title">免责申明</text>
 </view>

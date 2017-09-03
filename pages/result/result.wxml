@@ -1,4 +1,5 @@
 <!--result.wxml-->
+<view class="top-margin flex-tab"></view>
 <view wx:if="{{sResult.length>0}}">
   <view wx:for="{{sResult}}"class="ongoingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
     <view class="Grid"> 

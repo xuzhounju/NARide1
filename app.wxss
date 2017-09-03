@@ -2,8 +2,10 @@
 
 
 page {
-  background: #F0F4F3;  
+  background: #fcf5e5;  
   padding-top: 40rpx ;
+  font-weight: 300;
+
 }
 
 
@@ -43,4 +45,18 @@ arrow{
 
 .hyperLink{
   color: blue;
+}
+
+.flex-tab{
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: stretch;
+  position: fixed;
+}
+
+.top-margin{
+  top:0;
+  width: 750rpx;
+  height: 20rpx;
+  background:#2198cc;
 }

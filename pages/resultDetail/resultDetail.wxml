@@ -1,4 +1,5 @@
 <!--resultDetail.wxml-->
+<view class="top-margin flex-tab"></view>
 <view class="userinfo">
   <image class="userinfo-avatar" src="{{eventDetail.poster[3]}}" background-size="cover"></image>
   <text class="userinfo-nickname">{{eventDetail.poster[2]}}</text>
@@ -11,40 +12,37 @@
 
 
 <view class="text-container" >
-  <view><span>{{eventDetail.departure+'   '}}</span><arrow>→</arrow><span>{{eventDetail.arrival}}</span></view>
+  旅程:<span>{{eventDetail.departure+'   '}}<arrow>→</arrow>{{eventDetail.arrival}}</span>
 </view>
 
 
 
 <view class="text-container" >
-  <view>最早出发时间：<span>{{eventDetail.earliest}}</span></view>
+  最早出发:<span>{{eventDetail.earliest}}</span>
 </view>
 
 <view class="text-container" >
-  <view>最晚出发时间：<span>{{eventDetail.latest}}</span></view>
+  最晚出发:<span>{{eventDetail.latest}}</span>
 </view>
 
 <view class="text-container" >
-  <view>微信号：<span>{{eventDetail.poster[5]}}</span></view>
+  微信号:<span>{{eventDetail.poster[5]}}</span>
 </view>
 
 <view class="text-container" >
-  <view>手机号：<span>{{eventDetail.poster[6]}}</span></view>
+    手机号：<span>{{eventDetail.poster[6]}}</span>
 </view>
 
 <view class="text-container" >
-  <view>人数：<span>{{eventDetail.pNumber}}</span></view>
+  人数：<span>{{eventDetail.pNumber}}</span>
 </view>
 
 <view class="memo-container" >
-  <view >备注：<span>{{eventDetail.memo}}</span></view>
+  <view>备注：</view><view class="memo">{{eventDetail.memo}}</view>
 </view>
+
 
 <view class="btn-area">
-    <button class ="copyButton" bindtap="copyWechat">复制微信号</button>
+    <button class="yellowB" bindtap="copyWechat">复制微信号</button>
+    <button class="greenB" bindtap="phoneCall">拨打电话</button>
 </view>
-
-<view class="btn-area">
-    <button bindtap="phoneCall" type="primary">拨打电话</button>
-</view>
-

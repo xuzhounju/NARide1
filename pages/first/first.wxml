@@ -1,4 +1,5 @@
 <!--first.wxml-->
+<view class="top-margin flex-tab"></view>
 
 <loading hidden="{{loadingHidden}}">
 	加载中...
@@ -26,7 +27,7 @@
   </view>
 
   <view class="btn-area">
-    <button formType="submit"type="primary">提交修改</button>
+    <button formType="submit">提交修改</button>
   </view>
 
 </form>

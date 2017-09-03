@@ -1,6 +1,23 @@
 /* first.wxss */
 .section-cell{
-  background: lightgrey;
+  background:white;
   margin: 20rpx 10rpx;
-  border-radius: 8%; 
+  border-radius: 10rpx; 
+}
+
+
+button{
+  background: #f8b62d;
+  color:white;
+  height: 60rpx;
+  width: 200rpx;
+  font-size: 30rpx;
+  text-align: center;
+  margin-top:100rpx;
+  line-height: 60rpx;
+
+}
+.section{
+  margin: 20rpx 20rpx;
+
 }

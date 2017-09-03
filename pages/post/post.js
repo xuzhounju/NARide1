@@ -4,9 +4,12 @@ var util = require('../../utils/util.js')
 var app = getApp()
 Page({
   data: {
+    identity: [
+      { name: '我是司机', value: 0, checked: 'true' },
+      { name: '我是乘客', value: 1 },
+    ],
     nowDate: '2017-01-01',
     endDate: '2018-12-30',
-    lEndDate:'',
     placeArray: app.globalData.place,
 
     numArray:[1,2,3,4,5,6],
@@ -23,34 +26,25 @@ Page({
     text: '',
     agree: true,
     loadingHidden: true,
-    dChecked: true
+    checkedID:0
+
   },
 
 
   onLoad: function(){
     console.log("onload")
     var d = new Date(Date.now()+24*60*60*1000)
-    var ld = new Date(Date.now() + 61*24 * 60 * 60 * 1000)
     var year = d.getFullYear()
-    var lyear = ld.getFullYear()
     var month =d.getMonth()+1
-    var lmonth = ld.getMonth() + 1
 
     if (month<10){
       month='0'+month
     }
-    if (lmonth < 10) {
-      lmonth = '0' + lmonth
-    }
+   
     var day =d.getDate()
-    var lday = ld.getDate()
-
+  
     if(day<10){
       day='0'+day
-    }
-
-    if (lday < 10) {
-      lday = '0' + lday
     }
 
 
@@ -58,21 +52,11 @@ Page({
     this.setData({
       eDate: year + '-' + month + '-' + day,
       lDate: year + '-' + month + '-' + day,
-      lEndDate: lyear + '-' + lmonth + '-' + lday,
 
     })
 
   },
-  // onLoad: function(){
 
-  //   var that = this
-  //   app.getUserInfo(function (userInfo) {
-  //     //更新数据
-  //     that.setData({
-  //       userInfo: userInfo
-  //     })
-  //   })
-  // },
 
 
   bindPNumberPickerChange: function (e) {
@@ -97,26 +81,13 @@ Page({
     })
   },
 
+
   bindEDateChange: function (e) {
-    var rawE = e.detail.value + ' ' + '00:00'
-    var d = new Date(rawE.replace(/-/g, "/"))
-    var d = new Date(d.getTime() + 60 * 24 * 60 * 60 * 1000)
-    var year = d.getFullYear()
-    var month = d.getMonth() + 1
-    if (month < 10) {
-      month = '0' + month
-    }
-    var day = d.getDate()
-    if (day < 10) {
-      day = '0' + day
-    }
+
     this.setData({
       eDate: e.detail.value,
-      lEndDate: year + '-' + month + '-' + day,
-
+      lDate: e.detail.value
     })
-
-
   },
   bindETimeChange: function (e) {
     this.setData({
@@ -132,6 +103,13 @@ Page({
   bindLTimeChange: function (e) {
     this.setData({
       lTime: e.detail.value
+    })
+  },
+
+  radioChange: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      checkedID: e.detail.value
     })
   },
 
@@ -158,13 +136,12 @@ Page({
 
       return
     }
-    //if (app.global.)
     var omit=''
-    if(event.eDate.length>0&&event.eTime.length>0&&event.lDate.length>0&&event.lTime.length>0){
+    if(event.eDate.length>0&&event.eTime.length>0&&event.lTime.length>0){
       var rawE = e.detail.value.eDate + ' ' + e.detail.value.eTime
       var earlist = new Date(rawE.replace(/-/g, "/"))
       earlist = earlist.getTime() / 1000.0
-      var rawL = e.detail.value.lDate + ' ' + e.detail.value.lTime
+      var rawL = e.detail.value.eDate + ' ' + e.detail.value.lTime
       var latest = new Date(rawL.replace(/-/g, "/"))
       latest = latest.getTime() / 1000.0
       var nowT =Date.now()/1000.0
@@ -182,11 +159,12 @@ Page({
       mydata.departure = parseInt(mydata.departure) + 1;
       mydata.arrival = parseInt(mydata.arrival) + 1;
       mydata.pNumber = this.data.pNumber
-      if(parseInt(mydata.driver)== 1){
+      if(parseInt(that.data.checkedID)==0){
         mydata.driver = true
       } else{
         mydata.driver = false
       }
+      console.log('driver:',mydata.driver)
 
       if (earlist <= latest && (app.globalData.weixin.length > 0 || parseInt(app.globalData.phone) )) {
 
@@ -255,9 +233,8 @@ Page({
         })
       }
     }else{
-      if (event.eDate.length ==0){omit=omit+' 最早日期'}
+      if (event.eDate.length ==0){omit=omit+' 日期'}
       if (event.eTime.length==0){omit=omit+' 最早时间'}
-      if (event.lDate.length == 0) { omit = omit + ' 最晚日期' }
       if (event.lTime.length == 0) { omit = omit + ' 最晚时间' }
 
 
@@ -272,6 +249,10 @@ Page({
     
   formReset: function () {
     this.setData({
+      identity: [
+        { name: '我是司机', value: 0, checked: 'true' },
+        { name: '我是乘客', value: 1 },
+      ],
       departure: 0,
       arrival: 1,
       eDate: '',
@@ -283,7 +264,6 @@ Page({
       text: '',
       agree: true,
       loadingHidden: true,
-      dChecked: true
     })
     this.onLoad()
   },

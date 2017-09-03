@@ -2,38 +2,35 @@
 
 page {
   height: 100%;
-  background: #F0F4F3; 
+  background: #fcf5e5; 
   padding-top: 0rpx;
 }
 
 .flex-wrp{
   display: flex;
 }
-.flex-tab{
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: stretch;
-  position: fixed;
-}
+
 .flex-item{
   flex-grow: 1;
   text-align: center;
 }
 .top-tab{
-  width: 650rpx;
-  height: 100rpx;
-  background: #0099cc;
+  width: 750rpx;
+  height: 80rpx;
+  background: #ffffff;
   color: black;
   font-size: 28rpx;
-  line-height: 100rpx;
+  line-height: 80rpx;
   box-shadow: 0 2px 2px #bebebe;
   margin: 0 0 8rpx 0;
-  top: 0;
+  top: 20rpx;
   z-index: 9999;
 }
+
+
 .toptab.active{
-  color: #ffffff;
-  border-bottom: solid 2px #ffffff;
+  color: #2198cc;
+  border-bottom: solid 2px #2198cc;
 }
 
 .container{
@@ -95,22 +92,9 @@ page {
 }
 
 
-.top-search{
-  position: fixed;
-  width: 110rpx;
-  left: 649rpx;
-  display:flex;
-  height: 100rpx;
-  background: #0099cc;
-  line-height: 100rpx;
-  box-shadow: 0 2px 2px #bebebe;
-  margin: 0 0 8rpx 0;
-  top: 0;
- 
-
-}
 .search{
-  width:50rpx;
-  height:50rpx;
-  margin: auto;
+  width:45rpx;
+  height:45rpx;
+  margin-top: 20rpx;
+  margin-left:auto;
 }

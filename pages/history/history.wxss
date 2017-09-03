@@ -1,0 +1,15 @@
+/* history.wxss */
+
+.section_title{
+  flex:0 0 100%;
+  display: flex;
+  font-size: 30 rpx;
+  font-weight: bold;
+}
+
+.ongoingPost{
+  margin: 30rpx 10rpx;
+  font-size: 35rpx;
+  background: #efeaea;
+  border-radius: 8%;  
+}

@@ -30,7 +30,6 @@
 }
 
 .text-container{
-  background: lightgray;
   margin: 20rpx 10rpx;
   border-radius: 8% ;
   font-size: 35rpx;
@@ -51,12 +50,10 @@
   text-align: center;
   color: white;
 }
-
-
 .passenger-number {
   display:inline-block;
-  vertical-align:10rpx;
 }
+
 
 .person-count-down, .person-count-up {
     font-weight:900;
@@ -67,7 +64,6 @@
 
 .text-container-1{
   padding-top:10rpx;
-  background: lightgray;
   margin: 20rpx 10rpx;
   border-radius: 8% ;
   font-size: 35rpx;
@@ -90,4 +86,43 @@ textarea{
 
 .shit{
   display: inline-block;
+}
+
+
+.btn-area{
+  margin-top:50rpx;
+  display: flex;
+}
+
+button{
+  background: #f8b62d;
+  color:white;
+  height: 50rpx;
+  width: 250rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 50rpx;
+
+}
+
+.yellowB{
+  margin-right:30rpx;
+}
+.greenB{
+  margin-left: 30rpx;
+  background: #8fc31f;
+}
+
+
+span{
+  background: white;
+  border-radius: 10rpx;
+  padding: 5rpx;
+  padding-right: 100rpx;
+}
+textarea{
+  background: white;
+  border-radius: 10rpx;
+  padding: 5rpx;
+  padding-right: 100rpx;
 }

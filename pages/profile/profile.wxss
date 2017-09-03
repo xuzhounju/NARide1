@@ -9,51 +9,113 @@
 
 }
 .userinfo{
-  flex:0 0 40%;
   text-align: center;
-  color: grey;
   
 
 }
+
+.info{
+  background: white;
+  border-radius: 10rpx;
+  margin: 50rpx 100rpx;
+}
 .userdetails{
-  font-size: 35rpx;
+  font-size: 25rpx;
+  display: flex;
+  padding-left:30rpx;
+  padding-right:30rpx;
+
+}
+.top{
+  padding-top:40rpx;
+  padding-bottom: 10rpx;
+}
+
+.bot{
+  padding-bottom: 40rpx;
+  padding-top: 10rpx;
+}
+.details{
+  flex:50%;
 }
 
 
 .userinfo-avatar {
-  width: 150rpx;
-  height: 150rpx;
+  width: 250rpx;
+  height: 250rpx;
   border-radius: 50%;
   margin: auto;
+  margin-bottom: 20rpx;
+  margin-top: 100rpx;
   display: flex;
           
 }
 
-.section_title{
-  flex:0 0 100%;
+.icon-bar{
+  margin-top:100rpx;
   display: flex;
-  font-size: 30 rpx;
-  font-weight: bold;
+  height: 100rpx;
 }
-
-.ongoingPost{
-  margin: 30rpx 10rpx;
-  font-size: 35rpx;
-  background: #efeaea;
-  border-radius: 8%;  
+.icon{
+  flex:50%;
+  display: flex;
 }
-
-
+.pic{
+  width: 120rpx;
+  height: 136rpx;
+  margin: auto;
+}
+.history{
+  margin-right: 40rpx; 
+}
 .contact{
-  position:fixed;
-  right:60rpx;
-  bottom:60rpx;
+  margin-left:40rpx;
+}
+contact-button{
+  position: fixed;
+  opacity: 0;
+ 
+}
+.b1{
+  right:280rpx;
+}
+.b2{
+  right:230rpx;
+}
+.b3{
+  right:180rpx;
 }
 
-.contact-text{
-  position: fixed;
-  right:35rpx;
-  bottom:35rpx;
-  color:#6c686d;
-  font-size:30rpx;
+.b4{
+  right:280rpx;
+  margin-top:50rpx 
 }
+
+.b5{
+  right:230rpx;
+  margin-top:50rpx 
+}
+
+.b6{
+  right:180rpx;
+  margin-top:50rpx 
+}
+
+.b7{
+  right:280rpx;
+  margin-top:100rpx 
+}
+
+
+.b8{
+  right:230rpx;
+  margin-top:100rpx 
+}
+
+
+.b9{
+  right:180rpx;
+  margin-top:100rpx 
+}
+
+

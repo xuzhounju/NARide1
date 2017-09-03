@@ -1,3 +1,4 @@
+<view class="top-margin flex-tab"></view>
 
 <view class="userinfo">
   <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
@@ -11,32 +12,35 @@
 </view>
 <view class="text-container" >
 
-  <view><span>{{placeArray[detailPost.fields.departure-1]+'  '}}</span><arrow>→</arrow><span>{{' '+placeArray[detailPost.fields.arrival-1]}}</span></view>
+  <view>旅程:<span>{{placeArray[detailPost.fields.departure-1]+'  '}}<arrow>→</arrow>{{' '+placeArray[detailPost.fields.arrival-1]}}</span></view>
 
 </view>
 
 
 <view class="text-container" >
-  <view>最早出发时间：<span>{{earliest}}</span></view>
+  <view>最早出发:<span>{{earliest}}</span></view>
 </view>
 
 <view class="text-container" >
-  <view>最晚出发时间：<span>{{latest}}</span></view>
+  <view>最晚出发:<span>{{latest}}</span></view>
 </view>
 
 <view class="text-container-1" >
-  <span class="passenger-number">乘客数：</span>
+  乘客数/载客数:<span class="passenger-number">
   <view class="passenger-number person-count-down" bindtap="minusCount">-</view>
-  <span class="passenger-number">{{pNumber }}</span>
-  <view class="passenger-number person-count-up" bindtap="addCount">+</view>
+  {{pNumber }}
+  <view class="passenger-number person-count-up" bindtap="addCount">+</view></span>
 
 </view>
 
 <view class="text-container-1" >
-  <view cass="shit">备注：</view>
+  <view cass="shit">备注:</view>
   <textarea  bindinput="bindKeyInput" maxlength="100"  placeholder="价格，车型，特殊要求等。" auto-height="true" value="{{memo}}" focus="true"/>
 </view>
 
 
-<button bindtap="changeNumber" type="primary">修改信息</button>
-<button bindtap="deletePost" type="warn">删除请求</button>
+
+<view class="btn-area">
+    <button class="yellowB" bindtap="changeNumber" >修改信息</button>
+    <button class="greenB" bindtap="deletePost">删除请求</button>
+</view>
