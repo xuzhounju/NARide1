@@ -23,6 +23,8 @@ span{
   border-radius: 10rpx;
   padding: 5rpx;
   display: inline-block;
+  height:40rpx;
+  line-height: 40rpx;
 }
 
 .long{
@@ -32,7 +34,7 @@ span{
 }
 
 .middle{
-  width: 415rpx;
+  width: 405rpx;
   
 }
 

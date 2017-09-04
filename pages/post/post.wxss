@@ -24,6 +24,8 @@ span{
   border-radius: 10rpx;
   padding: 5rpx;
   display: inline-block;
+  height: 40rpx;
+  line-height:40rpx;
 }
 
 .long{
@@ -36,7 +38,7 @@ span{
   width:200rpx;
 }
 .middle{
-  width: 415rpx;
+  width: 405rpx;
   
 }
 
@@ -72,7 +74,7 @@ page{
 
 input{
   background: white;
-  width:550rpx;
+  width:540rpx;
   height:50rpx;
   border-radius: 10rpx;
 }

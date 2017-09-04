@@ -26,10 +26,11 @@
 
 .text-container{
   padding:15rpx;
-  margin: 5rpx 50rpx;
+  margin-top: 5rpx;
+  margin-bottom: 5rpx;
+  margin-left: 75rpx; 
   border-radius: 8% ;
   font-size: 30rpx;
-
 }
 
 
@@ -53,7 +54,6 @@ span{
   background: white;
   border-radius: 10rpx;
   padding: 5rpx;
-  padding-right: 100rpx;
   display:inline-block;
   
 }
@@ -62,13 +62,13 @@ span{
   background: white;
   border-radius: 10rpx;
   padding: 5rpx;
-  position:fixed;
-  padding-right: 100rpx;
-  width:430rpx;
+  width:480rpx;
+  height: 100rpx;
+  line-height: 30rpx;
 }
 
 .btn-area{
-  margin-top:50rpx;
+  margin-top:30rpx;
   display: flex;
 }
 
@@ -92,13 +92,13 @@ button{
 }
 
 .travel{
-    width:430rpx;
+    width:480rpx;
 
 }
 .time{
-  width:250rpx
+  width:300rpx
 }
 
 .contact{
-  width:280rpx
+  width:330rpx
 }

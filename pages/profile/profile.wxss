@@ -72,7 +72,7 @@
 }
 contact-button{
   position: fixed;
-  opacity: 0;
+  opacity:0;  
  
 }
 .b1{

@@ -36,7 +36,7 @@
 .text-container{
   padding:15rpx;
   margin: 5rpx 50rpx;
-  border-radius: 8% ;
+  border-radius: 10rpx ;
   font-size: 30rpx;
   height: 50rpx;
 }
@@ -57,7 +57,7 @@
 .text-container-1{
   padding:15rpx;
   margin: 5rpx 50rpx;
-  border-radius: 8% ;
+  border-radius: 10rpx ;
   font-size: 30rpx;
   height: 50rpx;
 }

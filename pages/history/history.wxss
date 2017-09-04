@@ -11,5 +11,5 @@
   margin: 30rpx 10rpx;
   font-size: 35rpx;
   background: #efeaea;
-  border-radius: 8%;  
+  border-radius: 10rpx;  
 }

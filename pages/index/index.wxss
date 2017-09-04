@@ -76,7 +76,7 @@ page {
   margin: 20rpx 10rpx;
   font-size: 35rpx;
   background: #efeaea;
-  border-radius: 5%  
+  border-radius: 10rpx;  
 }
 
 .gender{
