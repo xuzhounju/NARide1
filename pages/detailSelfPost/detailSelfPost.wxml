@@ -39,8 +39,11 @@
 </view>
 
 
+<form bindsubmit="formSubmit"  report-submit>
+  <view class="btn-area">
+      <button class="yellowB" form-type="submit" >修改信息</button>
+      <button class="greenB" bindtap="deletePost">删除请求</button>
 
-<view class="btn-area">
-    <button class="yellowB" bindtap="changeNumber" >修改信息</button>
-    <button class="greenB" bindtap="deletePost">删除请求</button>
-</view>
+  </view>
+</form>
+

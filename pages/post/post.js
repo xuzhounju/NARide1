@@ -159,6 +159,7 @@ Page({
       mydata.departure = parseInt(mydata.departure) + 1;
       mydata.arrival = parseInt(mydata.arrival) + 1;
       mydata.pNumber = this.data.pNumber
+      mydata.formId = e.detail.formId
       console.log("formId:",e.detail.formId)
       if(parseInt(that.data.checkedID)==0){
         mydata.driver = true

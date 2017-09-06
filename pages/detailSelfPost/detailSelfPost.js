@@ -94,7 +94,9 @@ Page({
   },
 
 
-  changeNumber: function (e) {
+  formSubmit: function (e) {
+    var formId = e.detail.formId
+    console.log('formId:',formId)
     var that = this
     wx.showModal({
       title: '警告',
@@ -114,6 +116,7 @@ Page({
           var post_pk = that.data.detailPost.pk
           mydata.earliest = etime.getTime() / 1000.0
           mydata.latest = ltime.getTime() / 1000.0
+          mydata.formId = formId
 
           wx.request({
             url: 'https://kunwang.us/entry/' + post_pk + '/' + app.globalData.openid + '/',
