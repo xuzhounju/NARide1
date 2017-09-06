@@ -1,9 +1,9 @@
 // terms.js
-var app =getApp()
+var app = getApp()
 Page({
 
   data: {
-    gender:''
+    gender: ''
   },
 
   onLoad: function (options) {
@@ -11,7 +11,7 @@ Page({
       gender: app.globalData.userInfo.gender
     })
     var that = this
-    if (app.globalData.firstLogin){
+    if (app.globalData.firstLogin) {
       wx.showLoading({
         title: '加载中',
       })
@@ -27,7 +27,7 @@ Page({
             },
             success: function (res) {
               wx.hideLoading()
-              app.globalData.firstLogin= false
+              app.globalData.firstLogin = false
             }
           })
         }
@@ -35,12 +35,12 @@ Page({
     }
   },
 
-  agreeButton: function(e){
+  agreeButton: function (e) {
     wx.navigateBack({
 
     })
   },
   onShareAppMessage: function () {
-  
+
   }
 })

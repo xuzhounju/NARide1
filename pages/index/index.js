@@ -1,13 +1,13 @@
 // index.js
 var util = require('../../utils/util.js')
 
-var app=getApp()
+var app = getApp()
 Page({
 
   data: {
-    navTab: ["全部", "我是司机", "我是乘客",""],
+    navTab: ["全部", "我是司机", "我是乘客", ""],
     currentNavtab: app.globalData.currentTap,
-    userInfo:'',
+    userInfo: '',
     genderUrl: '../../images/',
     gender: ['unknown.png', 'male.png', 'female.png'],
     loadingHidden: true
@@ -28,7 +28,7 @@ Page({
     var arrival = 0;
     var sResult = [];
     wx.request({
-      url: 'https://kunwang.us/list/' + nowTime + '/' + latestTime + '/' + departure + '/' + arrival + '/', 
+      url: 'https://kunwang.us/list/' + nowTime + '/' + latestTime + '/' + departure + '/' + arrival + '/',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
@@ -40,9 +40,9 @@ Page({
             result[i].fields.departure = placeArray[result[i].fields.departure - 1];
             result[i].fields.arrival = placeArray[result[i].fields.arrival - 1];
             result[i].fields.earliest = new Date(result[i].fields.earliest);
-            result[i].fields.earliest = result[i].fields.earliest.toLocaleString([], {month:'numeric',day:'2-digit', hour: '2-digit', minute: '2-digit' } );
+            result[i].fields.earliest = result[i].fields.earliest.toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' });
             result[i].fields.latest = new Date(result[i].fields.latest);
-            result[i].fields.latest = result[i].fields.latest.toLocaleString([], {month:'numeric',day:'2-digit', hour: '2-digit', minute: '2-digit' } );
+            result[i].fields.latest = result[i].fields.latest.toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' });
             result[i].fields.post_time = new Date(result[i].fields.post_time);
             result[i].fields.post_time = Date.parse(result[i].fields.post_time) / 1000;
             sResult.push(result[i].fields);
@@ -88,8 +88,8 @@ Page({
         }
       }
     })
-    
-    
+
+
 
     wx.login({
       success: function (res) {
@@ -109,8 +109,8 @@ Page({
             app.globalData.weixin = res.data[0].fields.weixin
             app.globalData.phone = res.data[0].fields.phone
             app.globalData.email = res.data[0].fields.email
-            
-     
+
+
           }
         })
       }
@@ -126,7 +126,7 @@ Page({
 
   switchTab: function (e) {
     console.log()
-    if (e.currentTarget.dataset.idx==3){
+    if (e.currentTarget.dataset.idx == 3) {
       wx.switchTab({
         url: '../ride/ride',
       })
@@ -138,7 +138,7 @@ Page({
     app.globalData.currentTap = this.data.currentNavtab;
     var currentN = this.data.currentNavtab;
     var result = app.globalData.sResult;
-    if(currentN == 1) {
+    if (currentN == 1) {
       var temp = [];
       for (var i = 0; i < result.length; i++) {
         if (!result[i].driver) {
@@ -175,10 +175,9 @@ Page({
     })
   },
 
- 
+
 
   onShareAppMessage: function () {
 
   }
 })
-

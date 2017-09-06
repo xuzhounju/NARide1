@@ -4,7 +4,7 @@
 	加载中...
 </loading>
 <view class="top-margin flex-tab"></view>
-<form bindsubmit="formSubmit" bindreset="formReset" id="js-postform">
+<form bindsubmit="formSubmit" bindreset="formReset" id="js-postform" report-submit>
    <view class= "Grid">
     <view class="Grid-cell 1-1">
       <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{departure}}" range="{{placeArray}}">
