@@ -4,10 +4,7 @@
 	加载中...
 </loading>
 <view class="top-margin flex-tab"></view>
-<form bindsubmit="formIdTaker"  id="js-postform" report-submit>
-  <button class="transparentB"formType="submit" ></button>
 
-</form>
 
 
 <view class="top-tab flex-wrp flex-tab">
@@ -43,13 +40,7 @@
       </view>
     </view>
 
-    <view class ="Grid">
-      <view class="Grid-cell 1-2" >
-        <view class="picker">
-          <space>出发时间:</space>
-        </view>
-      </view>
-    </view>
+
 
     <view class="Grid">
       
@@ -94,6 +85,19 @@
       </view>
     </view>
 
+
+
+
+    <view class="Grid">
+      <view class="Grid-cell memo">
+        <form bindsubmit="addForm"  id="js-postform" report-submit>
+          <space>接受通知数量:</space><span>{{formNumber}}</span><space></space>  <button class="increase"formType="submit" >+</button>
+
+        </form>
+      </view>
+    </view>
+
+
     <view class="picker">
       <radio-group class="Grid " bindchange="radioChange">
         <label class="Grid-cell" wx:for="{{identity}}">
@@ -125,32 +129,25 @@
 </view>
 
 <view class="container" wx:else>
-  <form bindsubmit="formSubmit_1" bindreset="formReset_1" id="js-postform" report-submit>
+  <form bindsubmit="formSubmit" bindreset="formReset" id="js-postform" report-submit>
     <view class="Grid">
       <view class="Grid-cell memo">
-        <space>用途:</space><input name="memo" maxlength="100" auto-height="true" placeholder=" (帮人)练车，搬家，考permit，专车等。"  />
+        <space>用途:</space><input name="purpose" maxlength="100" auto-height="true" placeholder=" (帮人)练车，搬家，考permit，去outlets等。"  />
       </view>
     </view>
-    
-    <view class ="Grid">
-      <view class="Grid-cell 1-2" >
-        <view class="picker">
-          <space>用车时间:</space>
-        </view>
-      </view>
-    </view>
+ 
 
     <view class="Grid">
       <view class="Grid-cell d2-1">
         <picker name="eDate" mode="date" value="{{eDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindEDateChange">
           <view class="picker">
-            <space>日期:</space><span class="date">{{eDate}}</span>
+            <space>用车日期:</space><span class="date">{{eDate}}</span>
           </view>
         </picker>
 
-        <picker name="eDate" mode="date" value="{{eDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindEDateChange">
+        <picker name="lDate" mode="date" value="{{lDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindLDateChange">
           <view class="picker">
-            —<span class="date">{{eDate}}</span>
+            —<span class="date">{{lDate}}</span>
           </view>
         </picker>
       </view> 
@@ -161,6 +158,16 @@
         <space>备注:</space><input name="memo" maxlength="100" auto-height="true" placeholder=" 价格，车型，特殊要求等。"  />
       </view>
     </view>
+
+    <view class="Grid">
+      <view class="Grid-cell memo">
+        <form bindsubmit="addForm"  id="js-postform" report-submit>
+          <space>接受通知数量:</space><span>{{formNumber}}</span><space></space>  <button class="increase"formType="submit" >+</button>
+
+        </form>
+      </view>
+    </view>
+
 
     <view class="picker">
       <radio-group class="Grid " bindchange="radioChange">

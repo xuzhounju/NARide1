@@ -29,8 +29,8 @@ Page({
     text: '',
     agree: true,
     loadingHidden: true,
-    checkedID:0
-
+    checkedID:0,
+    formNumber:1
   },
 
 
@@ -88,7 +88,6 @@ Page({
 
     this.setData({
       eDate: e.detail.value,
-      lDate: e.detail.value
     })
   },
   bindETimeChange: function (e) {
@@ -140,115 +139,115 @@ Page({
       return
     }
     var omit=''
-    if(event.eDate.length>0&&event.eTime.length>0&&event.lTime.length>0){
+    var mydata = e.detail.value;
+    if (that.data.currentNavtab==0){
       var rawE = e.detail.value.eDate + ' ' + e.detail.value.eTime
-      var earlist = new Date(rawE.replace(/-/g, "/"))
-      earlist = earlist.getTime() / 1000.0
-      var rawL = e.detail.value.eDate + ' ' + e.detail.value.lTime
-      var latest = new Date(rawL.replace(/-/g, "/"))
-      latest = latest.getTime() / 1000.0
-      var nowT =Date.now()/1000.0
-      if(nowT > earlist){
-        wx.showModal({
-          title: '提示',
-          content: '请确认最早时间晚于现在！',
-          showCancel: false
-        })
-        return
-      }
-      var mydata = e.detail.value;
-      mydata.earliest = earlist;
-      mydata.latest = latest;
-      mydata.departure = parseInt(mydata.departure) + 1;
-      mydata.arrival = parseInt(mydata.arrival) + 1;
-      mydata.pNumber = this.data.pNumber
-      mydata.formId = e.detail.formId
-      console.log("formId:",e.detail.formId)
-      if(parseInt(that.data.checkedID)==0){
-        mydata.driver = true
-      } else{
-        mydata.driver = false
-      }
-      console.log('driver:',mydata.driver)
-
-      if (earlist <= latest && (app.globalData.weixin.length > 0 || parseInt(app.globalData.phone) )) {
-
-        this.setData({
-          loadingHidden: false
-        })
         
-        wx.request({
-          url: 'https://kunwang.us/new/' + app.globalData.openid + '/', 
-
-          data: mydata,
-
-
-          method: "POST",
-
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success: function (res) {
-            console.log(res.statusCode)
-            that.setData({
-              loadingHidden: true
-            })
-            var notice
-            if(res.statusCode==403){
-              notice = '你已超过一天可允许的发帖量（10次），请明日再发!'
-            }else{
-              notice = '提交成功！' 
-              app.globalData.newProfile = true 
-            }
-            wx.showModal({
-              title: '提示',
-              content: notice ,
-              showCancel: false,
-              success: function (res) {
-                if (res.confirm) {
-                  wx.switchTab({
-                    url: '../index/index'
-                  })
-
-                }
-              }
-             
-            })
-           
-          }
-        })
-      } else  if (earlist>latest){
-        wx.showModal({
-          title: '提示',
-          content: '请确认最晚时间晚于最早时间！',
-          showCancel: false
-        })
-      } else if (app.globalData.weixin.length == 0 && ! parseInt(app.globalData.phone)) {
-        wx.showModal({
-          title: '提示',
-          content: '请填写微信号或者手机号，便于其他用户联系！',
-          showCancel: false,
-          success: function (res) {
-            if (res.confirm) {
-              wx.navigateTo({
-                url: '../first/first',
-              })
-            }
-          }
-        })
-      }
+      var rawL = e.detail.value.eDate + ' ' + e.detail.value.lTime
+      mydata.purpose=''
+       
     }else{
-      if (event.eDate.length ==0){omit=omit+' 日期'}
-      if (event.eTime.length==0){omit=omit+' 最早时间'}
-      if (event.lTime.length == 0) { omit = omit + ' 最晚时间' }
+      var rawE = e.detail.value.eDate + ' ' + '00:00'
+      var rawL = e.detail.value.lDate + ' ' + '00:00'
+      mydata.arrival = app.globalData.place.length+1
+      mydata.departure = app.globalData.place.length + 1
+      mydata.pNumber=0
 
-
+    }
+    var earlist = new Date(rawE.replace(/-/g, "/"))
+    earlist = earlist.getTime() / 1000.0
+    var latest = new Date(rawL.replace(/-/g, "/"))
+    latest = latest.getTime() / 1000.0
+    var nowT = Date.now() / 1000.0
+    if(nowT > earlist){
       wx.showModal({
         title: '提示',
-        content: '请填写:'+omit+ '!',
+        content: '请确认最早时间晚于现在！',
         showCancel: false
       })
+      return
     }
+
+    let formId = e.detail.formId;
+    that.dealFormIds(formId); //处理保存推送码
+    mydata.earliest = earlist;
+    mydata.latest = latest;
+    mydata.departure = parseInt(mydata.departure) + 1;
+    mydata.arrival = parseInt(mydata.arrival) + 1;
+    mydata.pNumber = this.data.pNumber
+    mydata.formIds = app.globalData.gloabalFomIds
+    console.log("formId:",e.detail.formId)
+    if(parseInt(that.data.checkedID)==0){
+      mydata.driver = true
+    } else{
+      mydata.driver = false
+    }
+    console.log('driver:',mydata.driver)
+
+    if (earlist <= latest && (app.globalData.weixin.length > 0 || parseInt(app.globalData.phone) )) {
+
+      this.setData({
+        loadingHidden: false
+      })
+        
+      wx.request({
+        url: 'https://kunwang.us/new/' + app.globalData.openid + '/', 
+        data: mydata,
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          console.log(res.statusCode)
+          that.setData({
+            loadingHidden: true
+          })
+          var notice
+          if(res.statusCode==403){
+            notice = '你已超过一天可允许的发帖量（10次），请明日再发!'
+          }else{
+            notice = '提交成功！' 
+            app.globalData.newProfile = true 
+            app.globalData.gloabalFomIds=[]
+          }
+          wx.showModal({
+            title: '提示',
+            content: notice ,
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                wx.switchTab({
+                  url: '../index/index'
+                })
+
+              }
+            }
+             
+          })
+           
+        }
+      })
+    } else  if (earlist>latest){
+      wx.showModal({
+        title: '提示',
+        content: '请确认最晚时间晚于最早时间！',
+        showCancel: false
+      })
+    } else if (app.globalData.weixin.length == 0 && ! parseInt(app.globalData.phone)) {
+      wx.showModal({
+        title: '提示',
+        content: '请填写微信号或者手机号，便于其他用户联系！',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '../first/first',
+            })
+          }
+        }
+      })
+    }
+
  
   },
     
@@ -298,8 +297,26 @@ Page({
     app.globalData.currentTap = this.data.currentNavtab_post;
   },
 
-  formIdTaker:function(e){
-    console.log(e)
+  addForm:function(e){
+    var formNumber = this.data.formNumber
+    this.setData({
+      formNumber:formNumber+1
+    })
+
+    let formId = e.detail.formId;
+    this.dealFormIds(formId); //处理保存推送码
+  },
+
+
+  dealFormIds: function (formId) {
+    let formIds = app.globalData.gloabalFomIds;//获取全局数据中的推送码gloabalFomIds数组
+    if (!formIds) formIds = [];
+    let data = {
+      formId: formId,
+      expire: parseInt(new Date().getTime() / 1000) + 604800 //计算7天后的过期时间时间戳
+    }
+    formIds.push(data);//将data添加到数组的末尾
+    app.globalData.gloabalFomIds = formIds; //保存推送码并赋值给全局变量
   },
   onShareAppMessage: function () {
 
