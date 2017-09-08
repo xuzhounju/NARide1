@@ -298,9 +298,7 @@ Page({
     app.globalData.currentTap = this.data.currentNavtab_post;
   },
 
-  formIdTaker:function(e){
-    console.log(e)
-  },
+
   onShareAppMessage: function () {
 
   }
