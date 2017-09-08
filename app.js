@@ -26,7 +26,7 @@ App({
   },
 
   globalData: {
-    userInfo: null,
+    userInfo:null,
     openid:null,
     searchResult: null,
     sResult:null,
@@ -40,7 +40,9 @@ App({
     place: ['Amherst', 'BDL Airport', 'Boston', 'Logan Airport', 'NYC','Mount Holyoke College','Smith College','Holyoke Mall'],
     searchTab:null,
     currentTap:0,
+    currentTap_post:0,
     perferN:null,
     newProfile: false
+    
   }
 })

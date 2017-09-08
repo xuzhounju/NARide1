@@ -4,6 +4,9 @@ var util = require('../../utils/util.js')
 var app = getApp()
 Page({
   data: {
+    navTab: ["普通拼车","特殊用车"],
+    currentNavtab: app.globalData.currentTap_post,
+    
     identity: [
       { name: '我是司机', value: 0, checked: 'true' },
       { name: '我是乘客', value: 1 },
@@ -32,7 +35,6 @@ Page({
 
 
   onLoad: function(){
-    console.log("onload")
     var d = new Date(Date.now()+24*60*60*1000)
     var year = d.getFullYear()
     var month =d.getMonth()+1
@@ -114,6 +116,7 @@ Page({
   },
 
   formSubmit: function (e) {
+    console.log(e)
     var that =this
     var event=e.detail.value
     
@@ -288,6 +291,16 @@ Page({
     }
   },
 
+  switchTab:function(e){
+    this.setData({
+      currentNavtab: e.currentTarget.dataset.idx
+    });
+    app.globalData.currentTap = this.data.currentNavtab_post;
+  },
+
+  formIdTaker:function(e){
+    console.log(e)
+  },
   onShareAppMessage: function () {
 
   }

@@ -22,9 +22,17 @@ Page({
   formSubmit: function (e) {
     var that = this
     var mydata = e.detail.value
-    mydata.gender = app.globalData.userInfo.gender
-    mydata.nickName = app.globalData.userInfo.nickName
-    mydata.avatarUrl = app.globalData.userInfo.avatarUrl
+    if (app.globalData.userInfo){
+      mydata.gender = app.globalData.userInfo.gender
+      mydata.nickName = app.globalData.userInfo.nickName
+      mydata.avatarUrl = app.globalData.userInfo.avatarUrl
+    }else{
+      mydata.gender = 0
+      mydata.nickName = "未知"
+      mydata.avatarUrl = 'http://server.myspace-shack.com/d23/b74dba9d-ec33-446d-81d3-7efd254f1b85.png'
+
+    }
+    
     this.setData({
       loadingHidden: false
     })

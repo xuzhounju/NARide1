@@ -61,5 +61,37 @@ arrow{
 }
 
 space{
-  margin-right: 20rpx
+  margin:auto;
+  margin-left:0;
+  margin-right: 20rpx;
+  display: inline-block;
+}
+
+
+
+.flex-wrp{
+  display: flex;
+}
+
+.flex-item{
+  flex-grow: 1;
+  text-align: center;
+}
+.top-tab{
+  width: 750rpx;
+  height: 80rpx;
+  background: #ffffff;
+  color: black;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  box-shadow: 0 2px 2px #bebebe;
+  margin: 0 0 8rpx 0;
+  top: 20rpx;
+  z-index: 9999;
+}
+
+
+.toptab.active{
+  color: #2198cc;
+  border-bottom: solid 2px #2198cc;
 }

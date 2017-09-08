@@ -4,107 +4,189 @@
 	加载中...
 </loading>
 <view class="top-margin flex-tab"></view>
-<form bindsubmit="formSubmit" bindreset="formReset" id="js-postform" report-submit>
-   <view class= "Grid">
-    <view class="Grid-cell 1-1">
-      <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{departure}}" range="{{placeArray}}">
-        <view class="picker">
-           <space class="da">出发地:</space><span class="long">{{placeArray[departure]}}</span>
-        </view>
-      </picker>
-    </view>
-    
+<form bindsubmit="formIdTaker"  id="js-postform" report-submit>
+  <button class="transparentB"formType="submit" ></button>
+
+</form>
+
+
+<view class="top-tab flex-wrp flex-tab">
+  <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
+    {{itemName}} 
   </view>
+</view>
+<view class="container" wx:if="{{currentNavtab==0}}">
 
 
-
-  <view class= "Grid">
-    
-    <view class= "Grid-cell 1-2">
-      <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{arrival}}" range="{{placeArray}}">
-        <view class="picker">
-          <space class="da">目的地:</space><span class='long'>{{placeArray[arrival]}}</span>
-        </view>
-      </picker>
+  <form bindsubmit="formSubmit" bindreset="formReset" id="js-postform" report-submit>
+    <view class= "Grid">
+      <view class="Grid-cell 1-1">
+        <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{departure}}" range="{{placeArray}}">
+          <view class="picker">
+            <space class="da">出发地:</space><span class="long">{{placeArray[departure]}}</span>
+          </view>
+        </picker>
+      </view>
+      
     </view>
-  </view>
 
-  <view class ="Grid">
-    <view class="Grid-cell 1-2" >
-      <view class="picker">
-        <space>出发时间:</space>
+
+
+    <view class= "Grid">
+      
+      <view class= "Grid-cell 1-2">
+        <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{arrival}}" range="{{placeArray}}">
+          <view class="picker">
+            <space class="da">目的地:</space><span class='long'>{{placeArray[arrival]}}</span>
+          </view>
+        </picker>
       </view>
     </view>
-  </view>
 
-  <view class="Grid">
+    <view class ="Grid">
+      <view class="Grid-cell 1-2" >
+        <view class="picker">
+          <space>出发时间:</space>
+        </view>
+      </view>
+    </view>
+
+    <view class="Grid">
+      
+      <view class="Grid-cell d2-1">
+
+        <picker name="eDate" mode="date" value="{{eDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindEDateChange">
+          <view class="picker">
+            <space>日期:</space><span class="date">{{eDate}}</span>
+          </view>
+        </picker>
+      </view>
+      <view class="Grid-cell d2-2">
+        <picker name="eTime" mode="time" value="{{eTime}}" bindchange="bindETimeChange">
+          <view class="time-picker">
+            <space>时间:</space><span class="short">{{eTime}}</span>
+          </view>
+        </picker>
+        <picker name="lTime" mode="time" value="{{lTime}}" bindchange="bindLTimeChange">
+          <view class="time-picker">
+            —<span class="short">{{lTime}}</span>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+
+
+
+    <view class="Grid">
+      <view class="Grid-cell 4-1">
+        <picker name="pNumber" bindchange="bindPNumberPickerChange"  range="{{numArray}}">
+          <view class="picker">
+            <space>乘客数/载客数:</space><span class="middle">{{pNumber}}</span>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="Grid">
+      <view class="Grid-cell memo">
+        <space>备注:</space><input name="memo" maxlength="100" auto-height="true" placeholder="  价格，车型，特殊要求等。"  />
+      </view>
+    </view>
+
+    <view class="picker">
+      <radio-group class="Grid " bindchange="radioChange">
+        <label class="Grid-cell" wx:for="{{identity}}">
+          <radio-name>
+            {{item.name}}
+          </radio-name>  
+          <radio value="{{item.value}}" checked="{{item.checked}}"/>     
+        </label>
+      </radio-group>
+    </view>
+
+
+
+
+
+    <view class="Grid bottom">
+      <view class="term">  
+        <checkbox-group bindchange="agreeTerm">
+          <checkbox value="true" checked="{{agree}}" />我已阅读并同意<text class="hyperLink" bindtap="clickTerm">《免责申明》</text>
+        </checkbox-group>
+      </view>
+    </view>
+
+    <view class="btn-area">
+      <button class="yellowB"formType="submit" >发布拼车</button>
+      <button class="greenB"form-type="reset">重置信息</button>
+    </view>
+  </form>
+</view>
+
+<view class="container" wx:else>
+  <form bindsubmit="formSubmit_1" bindreset="formReset_1" id="js-postform" report-submit>
+    <view class="Grid">
+      <view class="Grid-cell memo">
+        <space>用途:</space><input name="memo" maxlength="100" auto-height="true" placeholder=" (帮人)练车，搬家，考permit，专车等。"  />
+      </view>
+    </view>
     
-    <view class="Grid-cell d2-1">
-
-      <picker name="eDate" mode="date" value="{{eDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindEDateChange">
+    <view class ="Grid">
+      <view class="Grid-cell 1-2" >
         <view class="picker">
-          <space>日期:</space><span class="date">{{eDate}}</span>
+          <space>用车时间:</space>
         </view>
-      </picker>
+      </view>
     </view>
-    <view class="Grid-cell d2-2">
-      <picker name="eTime" mode="time" value="{{eTime}}" bindchange="bindETimeChange">
-        <view class="time-picker">
-          <space>时间:</space><span class="short">{{eTime}}</span>
-        </view>
-      </picker>
-      <picker name="lTime" mode="time" value="{{lTime}}" bindchange="bindLTimeChange">
-        <view class="time-picker">
-          —<span class="short">{{lTime}}</span>
-        </view>
-      </picker>
+
+    <view class="Grid">
+      <view class="Grid-cell d2-1">
+        <picker name="eDate" mode="date" value="{{eDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindEDateChange">
+          <view class="picker">
+            <space>日期:</space><span class="date">{{eDate}}</span>
+          </view>
+        </picker>
+
+        <picker name="eDate" mode="date" value="{{eDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindEDateChange">
+          <view class="picker">
+            —<span class="date">{{eDate}}</span>
+          </view>
+        </picker>
+      </view> 
     </view>
-  </view>
 
-
-
-
-  <view class="Grid">
-    <view class="Grid-cell 4-1">
-      <picker name="pNumber" bindchange="bindPNumberPickerChange"  range="{{numArray}}">
-        <view class="picker">
-          <space>乘客数/载客数:</space><span class="middle">{{pNumber}}</span>
-        </view>
-      </picker>
+    <view class="Grid">
+      <view class="Grid-cell memo">
+        <space>备注:</space><input name="memo" maxlength="100" auto-height="true" placeholder=" 价格，车型，特殊要求等。"  />
+      </view>
     </view>
-  </view>
 
-  <view class="Grid memo">
-    <space>备注:</space><input name="memo" maxlength="100" auto-height="true" placeholder="  价格，车型，特殊要求等。"  />
-  </view>
-
-  <view class="picker">
-    <radio-group class="Grid " bindchange="radioChange">
-      <label class="Grid-cell" wx:for="{{identity}}">
-        <radio-name>
-          {{item.name}}
-        </radio-name>  
-        <radio value="{{item.value}}" checked="{{item.checked}}"/>     
-      </label>
-    </radio-group>
-  </view>
-
-
-
-
-
-  <view class="Grid bottom">
-    <view class="term">  
-      <checkbox-group bindchange="agreeTerm">
-        <checkbox value="true" checked="{{agree}}" />我已阅读并同意<text class="hyperLink" bindtap="clickTerm">《免责申明》</text>
-      </checkbox-group>
+    <view class="picker">
+      <radio-group class="Grid " bindchange="radioChange">
+        <label class="Grid-cell" wx:for="{{identity}}">
+          <radio-name>
+            {{item.name}}
+          </radio-name>  
+          <radio value="{{item.value}}" checked="{{item.checked}}"/>     
+        </label>
+      </radio-group>
     </view>
-  </view>
 
-  <view class="btn-area">
-    <button class="yellowB"formType="submit" >发布拼车</button>
-    <button class="greenB"form-type="reset">重置信息</button>
-  </view>
-</form>
+    <view class="Grid bottom">
+      <view class="term">  
+        <checkbox-group bindchange="agreeTerm">
+          <checkbox value="true" checked="{{agree}}" />我已阅读并同意<text class="hyperLink" bindtap="clickTerm">《免责申明》</text>
+        </checkbox-group>
+      </view>
+    </view>
+
+    <view class="btn-area">
+      <button class="yellowB"formType="submit" >发布拼车</button>
+      <button class="greenB"form-type="reset">重置信息</button>
+    </view>
+  
+  </form>
+</view>
 
 
