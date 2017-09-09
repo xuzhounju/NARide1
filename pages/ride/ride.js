@@ -18,9 +18,9 @@ Page({
     departure: 0,
     arrival: 1,
     eDate: '',
-    eTime: '12:00',
+    eTime: '00:00',
     lDate: '',
-    lTime: '12:00',
+    lTime: '23:59',
     pNumber:1,
   },
 

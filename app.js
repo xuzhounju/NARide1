@@ -42,7 +42,8 @@ App({
     currentTap:0,
     currentTap_post:0,
     perferN:null,
-    newProfile: false
+    newProfile: false,
+    gloabalFomIds:[],
     
   }
 })
