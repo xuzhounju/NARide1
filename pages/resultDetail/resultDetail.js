@@ -14,6 +14,25 @@ Page({
       })
 
     } else {
+      wx.showLoading({
+        title: '加载中',
+      })
+      wx.login({
+        success: function (res) {
+          var js_code = res.code;//调用登录接口获得的用户的登录凭证code
+          wx.request({
+            url: 'https://kunwang.us/user/' + js_code,
+            method: 'GET',
+            success: function (res) {
+              app.globalData.openid = res.data[0].fields.username
+              
+              app.globalData.userInfo.nickName= res.data[0].fields.nickName
+
+              wx.hideLoading()
+            }
+          })
+        }
+      })
       var text = options.text;
       this.setData({
         eventDetail: JSON.parse(text)

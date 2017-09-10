@@ -169,7 +169,7 @@ Page({
     var latest = new Date(rawL.replace(/-/g, "/"))
     latest = latest.getTime() / 1000.0
     var nowT = Date.now() / 1000.0
-    if(nowT > earlist){
+    if (that.data.currentNavtab == 0 && nowT > earlist){
       wx.showModal({
         title: '提示',
         content: '请确认最早时间晚于现在！',
