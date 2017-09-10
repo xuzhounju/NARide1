@@ -4,28 +4,37 @@ var app = getApp()
 
 Page({
   data: {
-    eventDetail: ''
+    eventDetail:''
   },
 
   onLoad: function (options) {
-    var result = app.globalData.detailEvent;
-    this.setData({
-      eventDetail: result
-    })
+    if(options.text=== undefined){
+      this.setData({
+        eventDetail: app.globalData.detailEvent
+      })
+
+    } else {
+      var text = options.text;
+      this.setData({
+        eventDetail: JSON.parse(text)
+      })
+    }
+    
+  
     console.log(this.data.eventDetail)
   },
   phoneCall: function (e){
    
     this.task_notify()
     wx.makePhoneCall({
-      phoneNumber: app.globalData.detailEvent.poster[6].toString()
+      phoneNumber: this.data.eventDetail.poster[6].toString()
     })
   },
 
   copyWechat: function (e){
     this.task_notify()
     wx.setClipboardData({
-      data: app.globalData.detailEvent.poster[5],
+      data: this.data.eventDetail.poster[5],
       success: function (res) {
         wx.getClipboardData({
           success: function (res) {

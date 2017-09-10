@@ -199,7 +199,7 @@
 </view>
 
 
-<view class="shareToGroup" wx:if="{{posted}}">
+<view class="shareToGroup" hidden="{{!posted}}">
   <view class="shareText" >分享到微信群？</view>
   <form bindsubmit="confirm"  id="js-postform" report-submit>
     <view class="btn-area">

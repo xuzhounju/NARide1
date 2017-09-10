@@ -31,7 +31,8 @@ Page({
     loadingHidden: true,
     checkedID:0,
     formNumber:1,
-    lastData:''
+    lastData:'',
+    pk:null
   },
 
 
@@ -206,9 +207,10 @@ Page({
           'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
-          console.log(res.statusCode)
+          
           that.setData({
-            loadingHidden: true
+            loadingHidden: true,
+            pk:res.data
           })
           var notice
           if(res.statusCode==403){
@@ -344,20 +346,43 @@ Page({
   onShareAppMessage: function () {
     var user= this.data.lastData
     var title=''
+    var eventDetail={}
+    eventDetail.driver=user.driver
     if (user.driver){
       title=title+'寻乘客：'
     }else{
       title=title+'寻司机：'
     }
     if (user.purpose.length==0){
-      title = title + this.data.placeArray[user.departure - 1] + '到' + this.data.placeArray[user.arrival - 1] + ';日期：' + user.eDate
-    }else{
-      title = title + user.purpose + ";日期：" + user.eDate
-    }
+      title = title + this.data.placeArray[user.departure - 1] + '到' + this.data.placeArray[user.arrival - 1] + '; 日期：' + user.eDate
+      eventDetail.arrival = this.data.placeArray[user.arrival - 1] 
+      eventDetail.departure = this.data.placeArray[user.departure - 1]
+     
 
+    }else{
+      title = title + user.purpose + "; 日期：" + user.eDate
+      eventDetail.departure = user.purpose
+      eventDetail.arrival=""
+      
+    }
+    user.earliest = new Date(user.earliest*1000)
+    user.latest = new Date(user.latest*1000)
+    eventDetail.earliest = user.earliest.toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+    eventDetail.latest = user.latest.toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+    eventDetail.memo=user.memo
+    eventDetail.pNumber = user.pNumber
+    eventDetail.pk = this.data.pk
+    eventDetail.purpose = user.purpose
+    eventDetail.poster = [0, app.globalData.userInfo.gender, app.globalData.userInfo.nickName, app.globalData.userInfo.avatarUrl, app.globalData.email, app.globalData.weixin, app.globalData.phone, 0]
+    console.log('detail',eventDetail)
+   
+    var text=JSON.stringify(eventDetail)
+   
     return {
       title: title,
-      path: 'pages/index/index?id=3',
+      path: 'pages/resultDetail/resultDetail?text='+text,
+      //data: data,
+      //path:'pages/index/index?id=3',
       imageUrl:'http://server.myspace-shack.com/d23/b74dba9d-ec33-446d-81d3-7efd254f1b85.png',
       success: function (res) {
         // 转发成功
