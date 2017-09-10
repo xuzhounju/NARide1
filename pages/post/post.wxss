@@ -133,23 +133,24 @@ radio-name{
 .shareToGroup{
   display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 3; /* Sit on top */
   top:35%;
-  left: 20%;
-
-  
-  width: 60%; /* Full width */
+  left:100rpx;  
+  width: 450rpx; /* Full width */
   height: 25%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background: lightgray;
+  background: white;
   border-radius: 10rpx;
-  padding:20rpx;  
+  padding:50rpx;  
 }
 
-
+.shareTitle{
+  font-size: 40rpx;
+  font-weight:  500;
+}
 .shareText{
   margin-top: 50rpx;
-  text-align: center;
+  color: gray;
 }
 
 .small{
@@ -159,3 +160,16 @@ radio-name{
 .cancel{
   background: #8fc31f;
 } 
+
+.prevent-screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  color: #fff;
+}

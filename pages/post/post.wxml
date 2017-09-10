@@ -199,15 +199,20 @@
 </view>
 
 
-<view class="shareToGroup" hidden="{{!posted}}">
+ <view class="shareToGroup" hidden="{{!posted}}"> 
+  <view class="shareTitle">提示</view>
   <view class="shareText" >分享到微信群？</view>
+  
   <form bindsubmit="confirm"  id="js-postform" report-submit>
     <view class="btn-area">
     
-      <button formType="submit"class="small confirm" open-type="share">确定</button>
+      <button class="small confirm" open-type="share">确定</button>
       <button formType="submit"class="small cancel">取消</button>
     </view>
 
   </form>
 
 </view>
+
+
+<view class="prevent-screen" hidden="{{!posted}}"></view>

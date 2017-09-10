@@ -52,7 +52,17 @@ Page({
     if (app.globalData.userInfo.nickName.length > 0) {
       wx.request({
         url: 'https://kunwang.us/task_notify/' + this.data.eventDetail.pk + '/' + app.globalData.openid + '/',
-        method: "GET"
+        method: "GET",
+        success:function(res){
+          if(res.statusCode==403){
+            wx.showModal({
+              title: '提示',
+              content: '该分享贴已被删除！',
+              showCancel: false,
+
+            })
+          }
+        }
       })
     }
     

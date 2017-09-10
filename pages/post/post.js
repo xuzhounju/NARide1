@@ -344,6 +344,9 @@ Page({
     })
   },
   onShareAppMessage: function () {
+    this.setData({
+      posted: false
+    })
     var user= this.data.lastData
     var title=''
     var eventDetail={}
@@ -377,7 +380,7 @@ Page({
     console.log('detail',eventDetail)
    
     var text=JSON.stringify(eventDetail)
-   
+
     return {
       title: title,
       path: 'pages/resultDetail/resultDetail?text='+text,
@@ -391,6 +394,9 @@ Page({
         // 转发失败
       }
     }
+    wx.switchTab({
+      url: '../index/index'
+    })
 
 
 

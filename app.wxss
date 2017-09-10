@@ -87,7 +87,7 @@ space{
   box-shadow: 0 2px 2px #bebebe;
   margin: 0 0 8rpx 0;
   top: 20rpx;
-  z-index: 9999;
+  z-index: 1;
 }
 
 
