@@ -13,8 +13,11 @@
 
 
 
-<view class="text-container" >
+<view class="text-container" wx:if="{{eventDetail.arrival.length>0}}" >
   <space>旅程:</space><span class="travel">{{eventDetail.departure+'   '}}<arrow>→</arrow>{{eventDetail.arrival}}</span>
+</view>
+<view class="text-container" wx:else >
+  <space>用途</space><span class="travel">{{eventDetail.departure+'   '}}{{eventDetail.arrival}}</span>
 </view>
 
 

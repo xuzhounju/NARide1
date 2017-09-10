@@ -12,14 +12,18 @@ Page({
     this.setData({
       eventDetail: result
     })
+    console.log(this.data.eventDetail)
   },
   phoneCall: function (e){
+   
+    this.task_notify()
     wx.makePhoneCall({
       phoneNumber: app.globalData.detailEvent.poster[6].toString()
     })
   },
 
   copyWechat: function (e){
+    this.task_notify()
     wx.setClipboardData({
       data: app.globalData.detailEvent.poster[5],
       success: function (res) {
@@ -34,5 +38,18 @@ Page({
         })
       }
     })
+  },
+  task_notify:function(){
+    if (app.globalData.userInfo.nickName.length > 0) {
+      wx.request({
+        url: 'https://kunwang.us/task_notify/' + this.data.eventDetail.pk + '/' + app.globalData.openid + '/',
+        method: "GET"
+      })
+    }
+    
+  },
+
+  onShareAppMessage: function () {
+ 
   }
 })

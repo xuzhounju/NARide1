@@ -81,7 +81,7 @@
 
     <view class="Grid">
       <view class="Grid-cell memo">
-        <space>备注:</space><input name="memo" maxlength="100" auto-height="true" placeholder="  价格，车型，特殊要求等。"  />
+        <space>备注:</space><input name="memo" maxlength="100" disabled="{{posted}}"auto-height="true" placeholder="  价格，车型，特殊要求等。"  />
       </view>
     </view>
 
@@ -122,17 +122,19 @@
     </view>
 
     <view class="btn-area">
-      <button class="yellowB"formType="submit" >发布拼车</button>
+      <button class="yellowB"formType="submit">发布拼车</button>
       <button class="greenB"form-type="reset">重置信息</button>
     </view>
   </form>
 </view>
 
+
+
 <view class="container" wx:else>
   <form bindsubmit="formSubmit" bindreset="formReset" id="js-postform" report-submit>
     <view class="Grid">
       <view class="Grid-cell memo">
-        <space>用途:</space><input name="purpose" maxlength="100" auto-height="true" placeholder=" (帮人)练车，搬家，考permit，去outlets等。"  />
+        <space>用途:</space><input name="purpose" maxlength="20" auto-height="true" placeholder=" (帮人)练车，搬家，考permit，去outlets等。"  />
       </view>
     </view>
  
@@ -189,7 +191,7 @@
     </view>
 
     <view class="btn-area">
-      <button class="yellowB"formType="submit" >发布拼车</button>
+      <button class="yellowB"formType="submit">发布拼车</button>
       <button class="greenB"form-type="reset">重置信息</button>
     </view>
   
@@ -197,3 +199,15 @@
 </view>
 
 
+<view class="shareToGroup" wx:if="{{posted}}">
+  <view class="shareText" >分享到微信群？</view>
+  <form bindsubmit="confirm"  id="js-postform" report-submit>
+    <view class="btn-area">
+    
+      <button formType="submit"class="small confirm" open-type="share">确定</button>
+      <button formType="submit"class="small cancel">取消</button>
+    </view>
+
+  </form>
+
+</view>

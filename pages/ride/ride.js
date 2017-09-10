@@ -188,6 +188,18 @@ Page({
     })
   },
   onShareAppMessage: function () {
+    return {
+      title: 'title',
+      desc: '自定义分享描述',
+      path:'pages/index/index?id=4',
+      imageUrl: 'http://server.myspace-shack.com/d23/b74dba9d-ec33-446d-81d3-7efd254f1b85.png',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
 
   }
 })

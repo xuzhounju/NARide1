@@ -27,7 +27,8 @@
         <view class = "Grid-cell infoDetails">
           <view class = "driver" wx:if="{{item.driver}}">司机</view>
           <view class = "passenger" wx:else> 乘客</view>
-          <view class = "detail"><span>{{item.departure + '  '}}</span><arrow>→</arrow><span>{{' ' + item.arrival}}</span></view>
+          <view class = "detail" wx:if="{{item.arrival.length>0}}"><span>{{item.departure + '  '}}</span><arrow>→</arrow><span>{{' ' + item.arrival}}</span></view>
+          <view class = "detail" wx:else><span>用途：{{item.departure + '  '}}</span><span>{{' ' + item.arrival}}</span></view>
           <view class = "detail">最早时间：<span>{{item.earliest}}</span></view>
           <view class = "detail">最晚时间：<span>{{item.latest}}</span></view>
           <view class = "detail">人数：<span>{{item.pNumber}}</span></view>

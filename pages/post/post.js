@@ -16,7 +16,7 @@ Page({
     placeArray: app.globalData.place,
 
     numArray:[1,2,3,4,5,6],
-   
+    posted:false,
     userInfo:{},
     departure: 0,
     arrival:1,
@@ -30,7 +30,8 @@ Page({
     agree: true,
     loadingHidden: true,
     checkedID:0,
-    formNumber:1
+    formNumber:1,
+    lastData:''
   },
 
 
@@ -147,10 +148,18 @@ Page({
       mydata.purpose=''
        
     }else{
+      if(mydata.purpose.length==0){
+        wx.showModal({
+          title: '警告',
+          content: '用途不能为空',
+          showCancel: false
+        })
+        return
+      }
       var rawE = e.detail.value.eDate + ' ' + '00:00'
       var rawL = e.detail.value.lDate + ' ' + '00:00'
-      mydata.arrival = app.globalData.place.length+1
-      mydata.departure = app.globalData.place.length + 1
+      mydata.arrival = app.globalData.place.length
+      mydata.departure = app.globalData.place.length 
       mydata.pNumber=0
 
     }
@@ -185,7 +194,8 @@ Page({
     if (earlist <= latest && (app.globalData.weixin.length > 0 || parseInt(app.globalData.phone) )) {
 
       this.setData({
-        loadingHidden: false
+        loadingHidden: false,
+        lastData:mydata
       })
         
       wx.request({
@@ -206,20 +216,15 @@ Page({
           }else{
             notice = '提交成功！' 
             app.globalData.newProfile = true 
-            app.globalData.gloabalFomIds=[]
+            that.setData({
+              posted:true
+            })
           }
           wx.showModal({
             title: '提示',
             content: notice ,
             showCancel: false,
-            success: function (res) {
-              if (res.confirm) {
-                wx.switchTab({
-                  url: '../index/index'
-                })
-
-              }
-            }
+         
              
           })
            
@@ -266,6 +271,8 @@ Page({
       text: '',
       agree: true,
       loadingHidden: true,
+      formNumber:1,
+
     })
     this.onLoad()
   },
@@ -307,6 +314,16 @@ Page({
     this.dealFormIds(formId); //处理保存推送码
   },
 
+  confirm:function(e){
+    let formId = e.detail.formId;
+    this.dealFormIds(formId); //处理保存推送码
+    this.setData({
+      posted:false
+    })
+    wx.switchTab({
+      url: '../index/index'
+    })
+  },
 
   dealFormIds: function (formId) {
     
@@ -325,6 +342,34 @@ Page({
     })
   },
   onShareAppMessage: function () {
+    var user= this.data.lastData
+    var title=''
+    if (user.driver){
+      title=title+'寻乘客：'
+    }else{
+      title=title+'寻司机：'
+    }
+    if (user.purpose.length==0){
+      title = title + this.data.placeArray[user.departure - 1] + '到' + this.data.placeArray[user.arrival - 1] + ';日期：' + user.eDate
+    }else{
+      title = title + user.purpose + ";日期：" + user.eDate
+    }
+
+    return {
+      title: title,
+      path: 'pages/index/index?id=3',
+      imageUrl:'http://server.myspace-shack.com/d23/b74dba9d-ec33-446d-81d3-7efd254f1b85.png',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+
+
+
+
 
   }
 

@@ -11,11 +11,15 @@
 
 
 
-<view class="text-container" >
+<view class="text-container" wx:if="{{detailPost.fields.departure<=placeArray.length}}">
   <space>旅程:</space><span class="travel">{{placeArray[detailPost.fields.departure-1]+'  '}}<arrow>→</arrow>{{' '+placeArray[detailPost.fields.arrival-1]}}</span>
 
 </view>
 
+<view class="text-container" wx:else>
+  <space>目的:</space><span class="travel">{{detailPost.fields.purpose}}</span>
+
+</view>
 
 <view class="text-container" >
   <space>最早出发:</space><span class="time">{{earliest}}</span>

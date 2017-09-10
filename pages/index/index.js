@@ -37,14 +37,21 @@ Page({
         var placeArray = app.globalData.place;
         for (var i = 0; i < result.length; i++) {
           if (result[i]) {
-            result[i].fields.departure = placeArray[result[i].fields.departure - 1];
-            result[i].fields.arrival = placeArray[result[i].fields.arrival - 1];
+            if (result[i].fields.departure<placeArray.length){
+              result[i].fields.departure = placeArray[result[i].fields.departure - 1];
+              result[i].fields.arrival = placeArray[result[i].fields.arrival - 1];
+            }
+            else{
+              result[i].fields.departure = result[i].fields.purpose
+              result[i].fields.arrival =""
+            }
             result[i].fields.earliest = new Date(result[i].fields.earliest);
             result[i].fields.earliest = result[i].fields.earliest.toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' });
             result[i].fields.latest = new Date(result[i].fields.latest);
             result[i].fields.latest = result[i].fields.latest.toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' });
             result[i].fields.post_time = new Date(result[i].fields.post_time);
             result[i].fields.post_time = Date.parse(result[i].fields.post_time) / 1000;
+            result[i].fields.pk = result[i].pk
             sResult.push(result[i].fields);
           }
         }
