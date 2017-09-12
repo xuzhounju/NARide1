@@ -24,7 +24,9 @@ Page({
 
     this.setData({
       userInfo:app.globalData.userInfo,
-      detailPost: app.globalData.onGoingPost[app.globalData.detailSelfPostID] 
+      detailPost: app.globalData.onGoingPost[app.globalData.detailSelfPostID], 
+      placeArray: app.globalData.place,
+
     })
     var etime = new Date(this.data.detailPost.fields.earliest)
     var ltime = new Date(this.data.detailPost.fields.latest)

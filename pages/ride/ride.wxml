@@ -1,29 +1,30 @@
 <!--page/one/index.wxml-->
 <view class="top-margin flex-tab"></view>
 <form bindsubmit="formSubmit" bindreset="formReset" id="js-postform">
-  <view class= "Grid">
-    <view class="Grid-cell 1-1">
-      <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{departure}}" range="{{placeArray}}">
-        <view class="picker">
-           <space class="da">出发地:</space><span class="long">{{placeArray[departure]}}</span>
-        </view>
-      </picker>
+   <view class= "Grid">
+      <view class="Grid-cell 1-1">
+        <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{dId}}" range="{{placeArray}}" range-key="name">
+          <view class="picker">
+            <space class="da">出发地:</space><span class="long">{{placeArray[dId].name}}</span>
+          </view>
+        </picker>
+      </view>
+      
     </view>
-    
-  </view>
 
 
 
-  <view class= "Grid">
-    
-    <view class= "Grid-cell 1-2">
-      <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{arrival}}" range="{{placeArray}}">
-        <view class="picker">
-          <space class="da">目的地:</space><span class='long'>{{placeArray[arrival]}}</span>
-        </view>
-      </picker>
+    <view class= "Grid">
+      
+      <view class= "Grid-cell 1-2">
+        <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{aId}}" range="{{placeArray}}" range-key="name">
+          <view class="picker">
+            <space class="da">目的地:</space><span class='long'>{{placeArray[aId].name}}</span>
+          </view>
+        </picker>
+      </view>
     </view>
-  </view>
+
 
   <view class ="Grid">
     <view class="Grid-cell 1-2" >

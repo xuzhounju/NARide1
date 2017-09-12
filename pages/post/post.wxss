@@ -173,3 +173,10 @@ radio-name{
   overflow: hidden;
   color: #fff;
 }
+
+.hidden{
+  color:grey;
+  margin: auto;
+  font-size:25rpx;
+  padding-left:135rpx;
+}

@@ -33,15 +33,17 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
+       
         var result = res.data;
         var placeArray = app.globalData.place;
         for (var i = 0; i < result.length; i++) {
           if (result[i]) {
-            if (result[i].fields.departure<placeArray.length){
+            if (result[i].fields.departure <=placeArray.length) {
               result[i].fields.departure = placeArray[result[i].fields.departure - 1];
               result[i].fields.arrival = placeArray[result[i].fields.arrival - 1];
             }
             else{
+              console.log(result[i].fields)
               result[i].fields.departure = result[i].fields.purpose
               result[i].fields.arrival =""
             }

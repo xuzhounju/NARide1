@@ -13,7 +13,7 @@ Page({
     nowDate: '2017-01-01',
     endDate: '2018-12-30',
     
-    placeArray: app.globalData.place,
+    placeArray: app.globalData.places,
     userInfo: {},
     departure: 0,
     arrival: 1,
@@ -22,11 +22,14 @@ Page({
     lDate: '',
     lTime: '23:59',
     pNumber:1,
+    aId:1,
+    dId:0
   },
 
 
 
   onShow: function () {
+    console.log("places",this.data.placeArray)
     var d = new Date(Date.now() + 24 * 60 * 60 * 1000)
     var year = d.getFullYear()
     var month = d.getMonth() + 1
@@ -46,6 +49,8 @@ Page({
 
 
     this.setData({
+      placeArray: app.globalData.places,
+
       eDate: year + '-' + month + '-' + day,
       lDate: year + '-' + month + '-' + day,
 
@@ -70,14 +75,20 @@ Page({
 
   bindDeparturePickerChange: function (e) {
     this.setData({
-      departure: e.detail.value
+      dId:e.detail.value ,
+      departure: this.data.placeArray[e.detail.value].id
     })
+    console.log(this.data.placeArray[e.detail.value])
+
   },
 
   bindarrivalPickerChange: function (e) {
     this.setData({
-      arrival: e.detail.value
+      aId: e.detail.value,
+
+      arrival: this.data.placeArray[e.detail.value].id
     })
+    console.log(this.data.placeArray[e.detail.value])
   },
 
   bindEDateChange: function (e) {
@@ -124,8 +135,10 @@ Page({
           var mydata = e.detail.value;
           mydata.earliest = earlist;
           mydata.latest = latest;
-          mydata.departure = parseInt(mydata.departure) + 1;
-          mydata.arrival = parseInt(mydata.arrival) + 1;
+          mydata.arrival = this.data.arrival 
+          mydata.departure = this.data.departure 
+          console.log(mydata.departure)
+          console.log(mydata.arrival)
           wx.request({
             url: 'https://kunwang.us/list/' + mydata.earliest + '/' + mydata.latest + '/' + mydata.departure + '/' + mydata.arrival + '/', //仅为示例，并非真实的接口地址 //仅为示例，并非真实的接口地址
             header: {
@@ -186,20 +199,6 @@ Page({
         })
       }
     })
-  },
-  onShareAppMessage: function () {
-    return {
-      title: 'title',
-      desc: '自定义分享描述',
-      path:'pages/index/index?id=4',
-      imageUrl: 'http://server.myspace-shack.com/d23/b74dba9d-ec33-446d-81d3-7efd254f1b85.png',
-      success: function (res) {
-        // 转发成功
-      },
-      fail: function (res) {
-        // 转发失败
-      }
-    }
-
   }
+
 })

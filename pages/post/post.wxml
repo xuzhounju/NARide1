@@ -18,9 +18,9 @@
   <form bindsubmit="formSubmit" bindreset="formReset" id="js-postform" report-submit>
     <view class= "Grid">
       <view class="Grid-cell 1-1">
-        <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{departure}}" range="{{placeArray}}">
+        <picker name= "departure" bindchange="bindDeparturePickerChange" value="{{dId}}" range="{{placeArray}}" range-key="name">
           <view class="picker">
-            <space class="da">出发地:</space><span class="long">{{placeArray[departure]}}</span>
+            <space class="da">出发地:</space><span class="long">{{placeArray[dId].name}}</span>
           </view>
         </picker>
       </view>
@@ -32,10 +32,11 @@
     <view class= "Grid">
       
       <view class= "Grid-cell 1-2">
-        <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{arrival}}" range="{{placeArray}}">
+        <picker name="arrival" bindchange="bindarrivalPickerChange" value="{{aId}}" range="{{placeArray}}" range-key="name">
           <view class="picker">
-            <space class="da">目的地:</space><span class='long'>{{placeArray[arrival]}}</span>
+            <space class="da">目的地:</space><span class='long'>{{placeArray[aId].name}}</span>
           </view>
+          <view class="hidden">其他地址请填写至特殊用车</view>
         </picker>
       </view>
     </view>
@@ -154,7 +155,15 @@
         </picker>
       </view> 
     </view>
-
+    <view class="Grid">
+      <view class="Grid-cell 4-1">
+        <picker name="pNumber" bindchange="bindPNumberPickerChange"  range="{{numArray}}">
+          <view class="picker">
+            <space>乘客数/载客数:</space><span class="middle">{{pNumber}}</span>
+          </view>
+        </picker>
+      </view>
+    </view>
     <view class="Grid">
       <view class="Grid-cell memo">
         <space>备注:</space><input name="memo" maxlength="100" auto-height="true" placeholder=" 价格，车型，特殊要求等。"  />

@@ -27,7 +27,8 @@ Page({
     console.log(app.globalData.onGoingPost)
 
     this.setData({
-      array:rawArray
+      array:rawArray,
+      placeArray: app.globalData.place
     })
   
   },
@@ -40,7 +41,5 @@ Page({
   },
 
   
-  onShareAppMessage: function () {
-  
-  }
+ 
 })

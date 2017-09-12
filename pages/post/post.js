@@ -13,13 +13,13 @@ Page({
     ],
     nowDate: '2017-01-01',
     endDate: '2018-12-30',
-    placeArray: app.globalData.place,
-
+    placeArray: app.globalData.places,
+    place: app.globalData.place,
     numArray:[1,2,3,4,5,6],
     posted:false,
     userInfo:{},
-    departure: 0,
-    arrival:1,
+    departure: 1,
+    arrival:2,
     eDate:'',
     eTime:'12:00',
     lDate:'',
@@ -32,7 +32,9 @@ Page({
     checkedID:0,
     formNumber:1,
     lastData:'',
-    pk:null
+    pk:null,
+    aId:1,
+    dId:0,
   },
 
 
@@ -54,6 +56,9 @@ Page({
 
 
     this.setData({
+      placeArray: app.globalData.places,
+      place: app.globalData.place,
+
       eDate: year + '-' + month + '-' + day,
       lDate: year + '-' + month + '-' + day,
 
@@ -75,14 +80,20 @@ Page({
 
   bindDeparturePickerChange: function (e) {
     this.setData({
-      departure: e.detail.value
+      dId: e.detail.value,
+      departure: this.data.placeArray[e.detail.value].id
     })
+    console.log(this.data.placeArray[e.detail.value])
+
   },
 
   bindarrivalPickerChange: function (e) {
     this.setData({
-      arrival: e.detail.value
+      aId: e.detail.value,
+
+      arrival: this.data.placeArray[e.detail.value].id
     })
+    console.log(this.data.placeArray[e.detail.value])
   },
 
 
@@ -147,7 +158,8 @@ Page({
         
       var rawL = e.detail.value.eDate + ' ' + e.detail.value.lTime
       mydata.purpose=''
-       
+      mydata.arrival=that.data.arrival
+      mydata.departure=that.data.departure
     }else{
       if(mydata.purpose.length==0){
         wx.showModal({
@@ -159,9 +171,8 @@ Page({
       }
       var rawE = e.detail.value.eDate + ' ' + '00:00'
       var rawL = e.detail.value.lDate + ' ' + '00:00'
-      mydata.arrival = app.globalData.place.length
-      mydata.departure = app.globalData.place.length 
-      mydata.pNumber=0
+      mydata.arrival = app.globalData.place.length+1
+      mydata.departure = app.globalData.place.length+1 
 
     }
     var earlist = new Date(rawE.replace(/-/g, "/"))
@@ -182,8 +193,6 @@ Page({
     that.dealFormIds(formId); //处理保存推送码
     mydata.earliest = earlist;
     mydata.latest = latest;
-    mydata.departure = parseInt(mydata.departure) + 1;
-    mydata.arrival = parseInt(mydata.arrival) + 1;
     mydata.pNumber = this.data.pNumber
     if(parseInt(that.data.checkedID)==0){
       mydata.driver = true
@@ -357,9 +366,9 @@ Page({
       title=title+'寻司机：'
     }
     if (user.purpose.length==0){
-      title = title + this.data.placeArray[user.departure - 1] + '到' + this.data.placeArray[user.arrival - 1] + '; 日期：' + user.eDate
-      eventDetail.arrival = this.data.placeArray[user.arrival - 1] 
-      eventDetail.departure = this.data.placeArray[user.departure - 1]
+      title = title + this.data.place[user.departure - 1] + '到' + this.data.place[user.arrival - 1] + '; 日期：' + user.eDate
+      eventDetail.arrival = this.data.place[user.arrival - 1] 
+      eventDetail.departure = this.data.place[user.departure - 1]
      
 
     }else{
@@ -384,9 +393,7 @@ Page({
     return {
       title: title,
       path: 'pages/resultDetail/resultDetail?text='+text,
-      //data: data,
-      //path:'pages/index/index?id=3',
-      imageUrl:'http://server.myspace-shack.com/d23/b74dba9d-ec33-446d-81d3-7efd254f1b85.png',
+     
       success: function (res) {
         // 转发成功
       },

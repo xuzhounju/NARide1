@@ -26,10 +26,10 @@ Page({
             success: function (res) {
               app.globalData.openid = res.data[0].fields.username
               
-              app.globalData.userInfo.nickName= res.data[0].fields.nickName
 
               wx.hideLoading()
             }
+          
           })
         }
       })
@@ -68,26 +68,60 @@ Page({
     })
   },
   task_notify:function(){
-    if (app.globalData.userInfo.nickName.length > 0) {
-      wx.request({
-        url: 'https://kunwang.us/task_notify/' + this.data.eventDetail.pk + '/' + app.globalData.openid + '/',
-        method: "GET",
-        success:function(res){
-          if(res.statusCode==403){
-            wx.showModal({
-              title: '提示',
-              content: '该分享贴已被删除！',
-              showCancel: false,
 
-            })
-          }
+    wx.request({
+      url: 'https://kunwang.us/task_notify/' + this.data.eventDetail.pk + '/' + app.globalData.openid + '/',
+      method: "GET",
+      success:function(res){
+        if(res.statusCode==403){
+          wx.showModal({
+            title: '提示',
+            content: '该分享贴已被删除！',
+            showCancel: false,
+
+          })
         }
-      })
-    }
+      }
+    })
+    
     
   },
 
   onShareAppMessage: function () {
- 
+    var text = JSON.stringify(this.data.eventDetail)
+    console.log(text)
+    var user = this.data.eventDetail
+    var title = ''
+    if (user.driver) {
+      title = title + '寻乘客：'
+    } else {
+      title = title + '寻司机：'
+    }
+
+    if (user.purpose.length == 0) {
+      title = title + user.departure + '到' + user.arrival + '; 日期：' + user.earliest
+     
+
+
+    } else {
+      title = title + user.purpose + "; 日期：" + user.earliest
+     
+
+    }
+
+    return {
+      title: title,
+      path: 'pages/resultDetail/resultDetail?text=' + text,
+    
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+    wx.switchTab({
+      url: '../index/index'
+    })
   }
 })
