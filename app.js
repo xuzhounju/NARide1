@@ -4,6 +4,19 @@ App({
     //调用API从本地缓存中获取数据
     wx.clearStorage()  
     var that= this
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        var latitude = res.latitude
+        var longitude = res.longitude
+        var accuracy = res.accuracy
+        console.log('latitude:',latitude)
+        console.log('longitude:', longitude)
+        console.log('accuracy:', accuracy)
+
+      }
+    })
+
     wx.request({
       url: 'https://Kunwang.us/all_places/',
       method:'GET',
