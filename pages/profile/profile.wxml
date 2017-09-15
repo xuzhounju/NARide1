@@ -17,8 +17,11 @@
     
   </view>
   <view class = "Grid userdetails bot" >
-    <view class="details">微信号:{{'   '+weixin}}</view>
-    <view class="details">手机号:{{'   '+phone}}</view>
+    <view class="details" wx:if="{{weixin.length>0}}">微信号:{{'   '+weixin}}</view>
+    <view class="details" wx:else>微信号:(未填)</view>
+    <view class="details" wx:if="{{phone}}" >手机号:{{'   '+phone}}</view>
+    <view class="details"  wx:else >手机号:(未填)</view>
+
   
   </view>
 </view>

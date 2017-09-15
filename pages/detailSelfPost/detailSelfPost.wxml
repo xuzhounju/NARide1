@@ -39,7 +39,7 @@
 
 <view class="text-container-1" >
   <space>备注:</space>
-  <textarea  bindinput="bindKeyInput" maxlength="100"  placeholder="价格，车型，特殊要求等。" auto-height="true" value="{{memo}}" focus="true"/>
+  <textarea  bindinput="bindKeyInput" maxlength="100"  placeholder="价格，车型，特殊要求等。" auto-height="true" value="{{memo}}" />
 </view>
 
 

@@ -38,8 +38,11 @@
 </view>
 
 
-<view class="text-container" >
+<view class="text-container"  wx:if="{{eventDetail.poster[6]}}" >
   <space>手机号:</space><span class="contact">{{eventDetail.poster[6]}}</span>
+</view>
+<view class="text-container" wx:else>
+  <space>手机号:</space><span class="contact">（未填）</span>
 </view>
 
 <view class="text-container" >
