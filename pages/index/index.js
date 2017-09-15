@@ -11,16 +11,16 @@ Page({
     genderUrl: '../../images/',
     gender: ['unknown.png', 'male.png', 'female.png'],
     loadingHidden: true,
-    filter:true,
-    placeArray:'',
-    dId:0,
-    filterDId:0,
-    rankId:0,
-    rankArray:["按出发时间","按发帖时间"]
+    filter: true,
+    placeArray: '',
+    dId: 0,
+    filterDId: 0,
+    rankId: 0,
+    rankArray: ["按出发时间", "按发帖时间"]
   },
 
   onShow: function (options) {
-   
+
     this.setData({
       loadingHidden: false,
       currentNavtab: app.globalData.currentTap,
@@ -71,10 +71,10 @@ Page({
             result[i].fields.post_time = new Date(result[i].fields.post_time);
             result[i].fields.post_time = Date.parse(result[i].fields.post_time) / 1000;
             result[i].fields.pk = result[i].pk
-            if(that.data.filterDId==0){
+            if (that.data.filterDId == 0) {
               sResult.push(result[i].fields);
-            }else{
-              if (filterDId == that.data.filterDId){
+            } else {
+              if (filterDId == that.data.filterDId) {
                 sResult.push(result[i].fields);
               }
             }
@@ -82,10 +82,10 @@ Page({
         }
 
         function sortNumber(a, b) {
-          if(that.data.rankId==0){
+          if (that.data.rankId == 0) {
             return a.e - b.e
           }
-          else{
+          else {
             return b.post_time - a.post_time;
           }
         }
@@ -166,7 +166,7 @@ Page({
     if (e.currentTarget.dataset.idx == 3) {
       this.setData({
         currentNavtab: e.currentTarget.dataset.idx,
-        filter:false
+        filter: false
       })
       return
     }
@@ -217,17 +217,17 @@ Page({
     this.setData({
       dId: e.detail.value,
       filterDId: this.data.placeArray[e.detail.value].id,
-      filter:true
+      filter: true
     })
     console.log(this.data.filterDId)
     this.onShow()
 
   },
 
-  rankMethod:function(e){
+  rankMethod: function (e) {
     this.setData({
-      rankId:e.detail.value,
-      filter:true
+      rankId: e.detail.value,
+      filter: true
     })
     console.log(this.data.rankId)
 
