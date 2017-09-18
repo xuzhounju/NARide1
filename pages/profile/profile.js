@@ -22,11 +22,18 @@ Page({
   },
   
   onLoad: function () {
-
-    this.setData({
-      loadingHidden: false,
-      genderID: parseInt(app.globalData.userInfo.gender)
-    })
+    if (app.globalData.userInfo){
+      this.setData({
+        loadingHidden: false,
+        genderID: parseInt(app.globalData.userInfo.gender)
+      })
+    }else{
+      this.setData({
+        loadingHidden: false,
+        genderID: 0
+      })
+    }
+   
     var that = this
     //调用应用实例的方法获取全局数据
 
@@ -38,7 +45,7 @@ Page({
           url: 'https://kunwang.us/user/' + js_code,
           method: 'GET',
           success: function (res) {
-           
+            console.log(res)
             var i = 0
             var rawArray = res.data[1]
             app.globalData.onGoingPost = res.data[1]
@@ -46,6 +53,13 @@ Page({
             app.globalData.weixin = res.data[0].fields.weixin
             app.globalData.phone = res.data[0].fields.phone
             app.globalData.email = res.data[0].fields.email
+            app.globalData.monitor_place_from = res.data[0].fields.monitor_place_from
+            app.globalData.monitor_place_to = res.data[0].fields.monitor_place_to
+            app.globalData.monitor_time_from = res.data[0].fields.monitor_time_from
+            app.globalData.monitor_time_to = res.data[0].fields.monitor_time_to
+
+
+
             that.setData({
               count: res.data[0].fields.count,
               weixin: app.globalData.weixin,
@@ -82,6 +96,12 @@ Page({
       url: '../history/history',
     })
   },
+
+  showBook:function(e){
+    wx.navigateTo({
+      url: '../book/book',
+    })
+  }
 
  
 })

@@ -31,7 +31,7 @@ Page({
     loadingHidden: true,
     checkedID:0,
     formNumber:1,
-    lastData:'',
+    lastData:null,
     pk:null,
     aId:1,
     dId:0,
@@ -39,6 +39,58 @@ Page({
 
 
   onLoad: function(){
+    wx.getSetting({
+      success(res) {
+        console.log(res)
+        if (!res.authSetting['scope.userInfo']) {
+          wx.showModal({
+            title: '提示',
+            content: '尚未授权小程序获得头像昵称等信息，是否授权？',
+            success(res) {
+              if (res.confirm) {
+                wx.openSetting({
+                  success: function (res) {
+                    app.getUserInfo(function (userInfo) {
+
+                    })
+                    app.globalData.newProfile = true
+                    var mydata={}
+                    mydata.gender = app.globalData.userInfo.gender
+                    mydata.nickName = app.globalData.userInfo.nickName
+                    mydata.avatarUrl = app.globalData.userInfo.avatarUrl
+                    mydata.weixin = app.globalData.weixin
+                    mydata.phone = app.globalData.phone
+                    mydata.email = app.globalData.email
+                    console.log('info:',mydata)
+                    wx.showLoading({
+                      title: '加载中',
+                    })
+                    wx.login({
+                      success: function (res) {
+                        var js_code = res.code
+                        wx.request({
+                          url: 'https://kunwang.us/user/' + js_code + '/',
+                          data: mydata,
+                          method: "POST",
+                          header: {
+                            'content-type': 'application/x-www-form-urlencoded'
+                          },
+                          success: function (res) {
+                            wx.hideLoading()
+                          }
+                        })
+                      }
+                    })
+                  }
+                })
+
+              }
+            }
+          })
+          
+        }
+      }
+    })
     var d = new Date(Date.now()+24*60*60*1000)
     var year = d.getFullYear()
     var month =d.getMonth()+1
@@ -171,8 +223,8 @@ Page({
       }
       var rawE = e.detail.value.eDate + ' ' + '00:00'
       var rawL = e.detail.value.lDate + ' ' + '00:00'
-      mydata.arrival = app.globalData.place.length+1
-      mydata.departure = app.globalData.place.length+1 
+      mydata.arrival = 12
+      mydata.departure = 12 
 
     }
     var earlist = new Date(rawE.replace(/-/g, "/"))
@@ -190,7 +242,7 @@ Page({
     }
 
     let formId = e.detail.formId;
-    that.dealFormIds(formId); //处理保存推送码
+    app.dealFormIds(formId); //处理保存推送码
     mydata.earliest = earlist;
     mydata.latest = latest;
     mydata.pNumber = this.data.pNumber
@@ -202,11 +254,41 @@ Page({
     console.log('driver:',mydata.driver)
 
     if (earlist <= latest && (app.globalData.weixin.length > 0 || parseInt(app.globalData.phone) )) {
+      function stringToTime(date) {
+        var d = new Date(date)
+        return d.getTime() / 1000.0
+      }
+      console.log('l:', app.globalData.onGoingPost.length)
+      for(var i=0;i<app.globalData.onGoingPost.length;i++){
+        app.globalData.detailSelfPostID = i
+        var data = app.globalData.onGoingPost[i].fields
+        var earliest = stringToTime(data.earliest)
+        var lastest = stringToTime(data.earliest)
+        console.log('ongoing time',earliest)
+        if (earliest == mydata.earliest && latest == mydata.latest && data.departure == mydata.departure && data.arrival == mydata.arrival) {
+          wx.showModal({
+            title: '提示',
+            content: '你已发过相同内容帖子！是否跳转修改',
+            success:function(res){
+              if(res.confirm){
+                wx.navigateTo({
+                  url: '../detailSelfPost/detailSelfPost',
+                })
+              }
+            }
+          })
+          return
+        }
 
+      }
+ 
       this.setData({
         loadingHidden: false,
         lastData:mydata
       })
+
+
+  
         
       wx.request({
         url: 'https://kunwang.us/new/' + app.globalData.openid + '/', 
@@ -222,19 +304,63 @@ Page({
             pk:res.data
           })
           var notice
+          var flag
           if(res.statusCode==403){
             notice = '你已超过一天可允许的发帖量（10次），请明日再发!'
+            flag=false
           }else{
             notice = '提交成功！' 
             app.globalData.newProfile = true 
-            that.setData({
-              posted:true
-            })
+            flag=true
+           
           }
           wx.showModal({
             title: '提示',
             content: notice ,
             showCancel: false,
+            success:function(res){
+              if (res.confirm && flag ){
+                that.setData({
+                  posted: true
+                })
+                wx.request({
+                  url: 'https://kunwang.us/list/' + mydata.earliest + '/' + mydata.latest + '/' + mydata.departure + '/' + mydata.arrival + '/', //仅为示例，并非真实的接口地址 //仅为示例，并非真实的接口地址
+                  header: {
+                    'content-type': 'application/x-www-form-urlencoded'
+                  },
+                  success: function (res) {
+                    var flag =true
+                    var i = 0
+                    while (i<res.data.length&&flag){
+                      if(res.data[i].fields.driver!=mydata.driver){
+                        flag=false 
+                        app.globalData.searchResult = res.data;
+                        if (mydata.driver){
+                          app.globalData.searchTap = 0;
+                        }else{
+                          app.globalData.searchTap = 1;
+
+                        }
+                        wx.showModal({
+                          title: '提示',
+                          content: '已有符合您要求的帖子，是否前往查看？',
+                          success:function(res){
+                            if(res.confirm){
+                              wx.navigateTo({
+                                url: '../result/result',
+                              })
+                            }
+                          }
+                        })
+                        
+                      }
+                      i=i+1
+                    }
+                    
+                  }
+                })
+              }
+            }
          
              
           })
@@ -322,12 +448,12 @@ Page({
     })
 
     let formId = e.detail.formId;
-    this.dealFormIds(formId); //处理保存推送码
+    app.dealFormIds(formId); //处理保存推送码
   },
 
   confirm:function(e){
     let formId = e.detail.formId;
-    this.dealFormIds(formId); //处理保存推送码
+    app.dealFormIds(formId); //处理保存推送码
     this.setData({
       posted:false
     })
@@ -336,27 +462,19 @@ Page({
     })
   },
 
-  dealFormIds: function (formId) {
-    
-    let data = {
-      formId: formId,
-      expire_time: parseInt(new Date().getTime() / 1000) + 604800 //计算7天后的过期时间时间戳
-    }
-    
-    wx.request({
-      url: 'https://kunwang.us/weixintoken/'+app.globalData.openid+'/',
-      data: data,
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-    })
-  },
+  
   onShareAppMessage: function () {
     this.setData({
       posted: false
     })
     var user= this.data.lastData
+    if(this.data.lastData.length==0){
+      wx.showModal({
+        title: '提示',
+        content: '此分享为空，请点击下方发布拼车后再分享至群',
+        showCancel:false
+      })
+    }
     var title=''
     var eventDetail={}
     eventDetail.driver=user.driver
@@ -385,7 +503,12 @@ Page({
     eventDetail.pNumber = user.pNumber
     eventDetail.pk = this.data.pk
     eventDetail.purpose = user.purpose
-    eventDetail.poster = [0, app.globalData.userInfo.gender, app.globalData.userInfo.nickName, app.globalData.userInfo.avatarUrl, app.globalData.email, app.globalData.weixin, app.globalData.phone, 0]
+    if (app.globalData.userInfo){
+      eventDetail.poster = [0, app.globalData.userInfo.gender, app.globalData.userInfo.nickName, app.globalData.userInfo.avatarUrl, app.globalData.email, app.globalData.weixin, app.globalData.phone, 0]
+    }else{
+      eventDetail.poster = [0, 0, "未知", 'http://server.myspace-shack.com/d23/b74dba9d-ec33-446d-81d3-7efd254f1b85.png', app.globalData.email, app.globalData.weixin, app.globalData.phone, 0]
+    }
+    
     console.log('detail',eventDetail)
    
     var text=JSON.stringify(eventDetail)

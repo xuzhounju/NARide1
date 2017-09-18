@@ -1,0 +1,106 @@
+/* pages/book/book.wxss */
+.Grid {
+  display: flex; 
+  font-size:30rpx;
+  padding-left:50rpx;
+  font-weight: 300;
+
+}
+
+.Grid-cell{
+  flex: 1;
+  height: 50rpx;
+  margin: 20rpx 10rpx;
+  border-radius: 8%;
+  display: flex;
+}
+
+
+
+
+
+span{
+  background: white;
+  border-radius: 10rpx;
+  padding: 5rpx;
+  display: inline-block;
+  height:40rpx;
+  line-height: 40rpx;
+}
+
+.long{
+  width: 485rpx;
+  
+
+}
+
+.middle{
+  width: 405rpx;
+  
+}
+
+.short{
+  width:70rpx;
+}
+
+.date{
+  width:200rpx;
+}
+.da{
+  margin-right:40rpx;
+}
+page{
+  padding-top:100rpx;
+}
+
+
+.d2-1{
+  flex: 50%
+}
+
+.d2-2{
+  flex: 50%
+}
+
+.bottom{
+  margin-top:50rpx
+}
+
+.btn-area{
+  margin-top:50rpx;
+  display: flex;
+}
+
+button{
+  background: #f8b62d;
+  color:white;
+  height: 50rpx;
+  width: 250rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 50rpx;
+
+}
+
+
+.increase{
+  height:30rpx;
+  width:30rpx;
+  border:none;
+  padding:0;
+  margin:0;
+  line-height:30rpx;
+  background: transparent;
+  color:pink;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+
+.yellowB{
+  margin-right:30rpx;
+}
+.greenB{
+  margin-left: 30rpx;
+  background: #8fc31f;
+}

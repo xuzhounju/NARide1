@@ -70,51 +70,16 @@
 .contact{
   margin-left:40rpx;
 }
-contact-button{
+.contactButton{
   position: fixed;
-  opacity:0;  
+  opacity:0;
+  z-index: 99;
+  margin-left: 20rpx
  
 }
-.b1{
-  right:280rpx;
+
+
+
+.sec{
+  margin-top: 50rpx;
 }
-.b2{
-  right:230rpx;
-}
-.b3{
-  right:180rpx;
-}
-
-.b4{
-  right:280rpx;
-  margin-top:50rpx 
-}
-
-.b5{
-  right:230rpx;
-  margin-top:50rpx 
-}
-
-.b6{
-  right:180rpx;
-  margin-top:50rpx 
-}
-
-.b7{
-  right:280rpx;
-  margin-top:100rpx 
-}
-
-
-.b8{
-  right:230rpx;
-  margin-top:100rpx 
-}
-
-
-.b9{
-  right:180rpx;
-  margin-top:100rpx 
-}
-
-

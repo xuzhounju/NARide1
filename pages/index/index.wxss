@@ -3,52 +3,87 @@
 page {
   height: 100%;
   background: #fcf5e5; 
-  padding-top: 0rpx;
+  padding-top: 0;
+}
+.container{
+  top:0;
+  margin:0;
+}
+.top-image{
+  display: flex;
+  width:750rpx;
+  height:320rpx;
+  position: relative;
 }
 
-.flex-wrp{
+.top-filter{
+  top:280rpx;
+  left:70rpx;
+  width: 450rpx;
+  height: 80rpx;
+  background: white;
+  border-radius: 20rpx;
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  color:grey;
+  display: -webkit-inline-flex;
+  line-height: 80rpx;
+  font-size:30rpx;
+  padding-left:80rpx;
+  padding-right:80rpx;
+}
+
+
+.flex-wrp1{
   display: flex;
 }
 
-.flex-item{
+.flex-item1{
   flex-grow: 1;
   text-align: center;
 }
-.top-tab{
-  width: 750rpx;
-  height: 80rpx;
-  background: #ffffff;
+.top-tab1{
+  margin-top:70rpx;
+  margin-left:45rpx;
+  width: 660rpx;
+  height: 150rpx;
   color: black;
   font-size: 28rpx;
   line-height: 80rpx;
-  box-shadow: 0 2px 2px #bebebe;
-  margin: 0 0 8rpx 0;
-  top: 20rpx;
-  z-index: 9999;
+}
+
+.tap-image{
+  width:100rpx;
+  height: 128rpx;
 }
 
 .filter{
   font-size:30rpx;
-  padding:20rpx;
+  padding-top:100rpx;
   position: fixed;
-  top:100rpx;
-  right:0rpx;
-  width:230rpx;
-  height:200rpx;
+  bottom:0;
+  width:750rpx;
+  height:300rpx;
   background: #ffffff;
   z-index:99;
   border-radius: 10rpx;
 }
 
+button{
+  margin:auto;
+  margin-top:20rpx;
+  background: white;
 
-.toptab.active{
-  color: #2198cc;
-  border-bottom: solid 2px #2198cc;
+}
+button::after{
+  border: 0;
+
 }
 
-.container{
-  margin-top: 120rpx
-}
+
+
+
 
 .Grid {
   display: flex; 
@@ -66,13 +101,13 @@ page {
 }
 
 .infoDetails{
-  font-size: 29rpx;
+  font-size: 25rpx;
 }
 
 
 .userinfo-avatar {
-  width: 120rpx;
-  height: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
   margin: auto;
   display: flex;   
@@ -86,10 +121,10 @@ page {
 }
 
 .ongoingPost{
-  margin: 20rpx 10rpx;
-  font-size: 35rpx;
-  background: #efeaea;
-  border-radius: 10rpx;  
+  margin: 20rpx 70rpx;
+  font-size: 25rpx;
+  background: white;
+  border-radius: 20rpx;  
 }
 
 .gender{
@@ -112,13 +147,40 @@ page {
   margin-left:auto;
 }
 
-p{
-  background: #2198cc;
-  color: #ffffff;
-  border-radius: 10rpx;
-  padding: 5rpx;
-  display: inline-block;
-  height: 40rpx;
-  line-height:40rpx;
-  width: 200rpx;
+
+
+.bot{
+  text-align: center;
+  font-size:30rpx;
+}
+
+.picker{
+  display: block;
+  width: 150rpx;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+}
+
+.left{
+  margin-left:0;
+}
+
+.right{
+  margin-right: 0;
+}
+
+.prevent-screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  color: #fff;
 }

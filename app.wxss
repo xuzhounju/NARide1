@@ -57,7 +57,7 @@ arrow{
   top:0;
   width: 750rpx;
   height: 20rpx;
-  background:#2198cc;
+  background:#89c3d8;
 }
 
 space{

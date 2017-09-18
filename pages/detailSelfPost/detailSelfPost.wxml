@@ -11,7 +11,7 @@
 
 
 
-<view class="text-container" wx:if="{{detailPost.fields.departure<=placeArray.length}}">
+<view class="text-container" wx:if="{{detailPost.fields.departure!=12}}">
   <space>旅程:</space><span class="travel">{{placeArray[detailPost.fields.departure-1]+'  '}}<arrow>→</arrow>{{' '+placeArray[detailPost.fields.arrival-1]}}</span>
 
 </view>

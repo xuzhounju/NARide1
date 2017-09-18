@@ -1,0 +1,66 @@
+<!--pages/book/book.wxml-->
+<view class="top-margin flex-tab"></view>
+<form bindsubmit="formSubmit" bindreset="formReset" id="js-postform">
+   <view class= "Grid">
+      <view class="Grid-cell 1-1">
+        <picker name= "monitor_place_from" bindchange="bindDeparturePickerChange" value="{{dId}}" range="{{placeArray}}" range-key="name">
+          <view class="picker">
+            <space class="da">出发地:</space><span class="long">{{placeArray[dId].name}}</span>
+          </view>
+        </picker>
+      </view>
+      
+    </view>
+
+
+
+    <view class= "Grid">
+      
+      <view class= "Grid-cell 1-2">
+        <picker name="monitor_place_to" bindchange="bindarrivalPickerChange" value="{{aId}}" range="{{placeArray}}" range-key="name">
+          <view class="picker">
+            <space class="da">目的地:</space><span class='long'>{{placeArray[aId].name}}</span>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+
+
+
+   <view class="Grid">
+      <view class="Grid-cell d2-1">
+        <picker name="monitor_time_from" mode="date" value="{{eDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindEDateChange">
+          <view class="picker">
+            <space>用车日期:</space><span class="date">{{eDate}}</span>
+          </view>
+        </picker>
+
+        <picker name="monitor_time_to" mode="date" value="{{lDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindLDateChange">
+          <view class="picker">
+            —<span class="date">{{lDate}}</span>
+          </view>
+        </picker>
+      </view> 
+    </view>
+
+    
+    <view class="Grid">
+      <view class="Grid-cell memo">
+        <form bindsubmit="addForm"  id="js-postform" report-submit>
+          <space>接受通知数量:</space><span>{{formNumber}}</span><space></space>  <button class="increase"formType="submit" >+</button>
+
+        </form>
+      </view>
+    </view>
+
+
+
+
+  
+  <view class="btn-area">
+    <button class="yellowB"formType="submit">确定订阅</button>
+    <button class="greenB"form-type="reset">删除订阅</button>
+  </view>
+</form>
+

@@ -8,7 +8,7 @@
   <view wx:for="{{array}}"class="ongoingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
     <view class = "driver" wx:if="{{item[3]}}">司机</view>
     <view class = "passenger" wx:else> 乘客</view>
-    <view wx:if="{{item[0]<=placeArray.length}}">{{index+1}}.<span>{{placeArray[item[0]-1]+'   '}}</span><arrow>→</arrow><span>{{placeArray[item[1]-1]}}</span></view>
+    <view wx:if="{{item[0]!=12}}">{{index+1}}.<span>{{placeArray[item[0]-1]+'   '}}</span><arrow>→</arrow><span>{{placeArray[item[1]-1]}}</span></view>
     <view wx:else><span>用途：{{item[4]}}</span></view>
     <view>申请时间:<span>{{item[2]}}</span></view>  
   </view>

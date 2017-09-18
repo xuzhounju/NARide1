@@ -27,7 +27,7 @@ App({
 
         for (var i=0;i<(res.data.length);i++){
           var place={name:'',id:null}
-          if (res.data[i].pk != 12){ 
+          if (res.data[i].pk != 12&&that.globalData.regions.includes(res.data[i].fields.region[0])){ 
             place.name=res.data[i].fields.name
             place.id=res.data[i].pk
             console.log(place)
@@ -80,9 +80,25 @@ App({
     }
   },
 
-  setOpenID: function(cb){
-    this.globalData.openid = cb
+  dealFormIds: function (formId) {
+
+    let data = {
+      formId: formId,
+      expire_time: parseInt(new Date().getTime() / 1000) + 604800 //计算7天后的过期时间时间戳
+    }
+
+    wx.request({
+      url: 'https://kunwang.us/weixintoken/' + this.globalData.openid + '/',
+      data: data,
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+    })
   },
+
+
+ 
 
   globalData: {
     userInfo:null,
@@ -104,6 +120,12 @@ App({
     newProfile: false,
     gloabalFomIds:[],
     places:[],
-    placeId:null
+    placeId:null,
+    regions:[1,2,3],
+    monitor_place_from:null,
+    monitor_place_to:null,
+    monitor_time_from:null,
+    monitor_time_to:null,
+    
   }
 })

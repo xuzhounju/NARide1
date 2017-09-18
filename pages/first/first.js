@@ -32,6 +32,16 @@ Page({
       mydata.avatarUrl = 'http://server.myspace-shack.com/d23/b74dba9d-ec33-446d-81d3-7efd254f1b85.png'
 
     }
+    if (app.globalData.monitor_place_from){
+      mydata.monitor_place_from = app.globalData.monitor_place_from
+      mydata.monitor_place_to = app.globalData.monitor_place_to
+      function stringToTime(date) {
+        var d = new Date(date)
+        return d.getTime() / 1000.0
+      }
+      mydata.monitor_time_from = stringToTime(app.globalData.monitor_time_from)
+      mydata.monitor_time_to = stringToTime(app.globalData.monitor_time_to)    
+    }
     
     this.setData({
       loadingHidden: false

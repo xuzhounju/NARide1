@@ -2,17 +2,32 @@
 	加载中...
 </loading>
 
-<view class="top-margin flex-tab"></view>
-
-<view class="top-tab flex-wrp flex-tab">
-  <view class="toptab flex-item {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
-    {{itemName}} 
-  </view>
-</view>
 
  
 
-<view class = "container">
+<view class="container">
+  <image class="top-image" src="../../images/cover.jpg"></image>
+  <view class="top-filter">
+    <picker bindchange="bindDeparturePickerChange" value="{{dId}}" range="{{placeArray_d}}" range-key="name">
+      <view class="picker left">
+        <p>{{placeArray_d[dId].name}}</p>
+      </view>
+    </picker>
+    ————>
+    <picker bindchange="bindArrivalPickerChange" value="{{aId}}" range="{{placeArray}}" range-key="name">
+      <view class="picker right">
+        <p>{{placeArray[aId].name}}</p>
+      </view>
+    </picker>
+  </view>
+  <view class="top-tab1 flex-wrp1 flex-tab1">
+    <view class="toptab1 flex-item1 {{currentNavtab==idx ? 'active' : ''}}" wx:for="{{navTab}}" wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}" bindtap="switchTab">
+       <image class="tap-image" src="{{itemName}}"></image>
+    
+       
+    </view>
+  </view>
+
   <view wx:if="{{sResult.length>0}}">
     <view wx:for="{{sResult}}"class="ongoingPost" bindtap="detailTap"wx:key="{{index}}" data-id="{{index}}">
       <view class="Grid"> 
@@ -28,31 +43,28 @@
           <view class = "passenger" wx:else> 乘客</view>
           <view class = "detail" wx:if="{{item.arrival.length>0}}"><span>{{item.departure + '  '}}</span><arrow>→</arrow><span>{{' ' + item.arrival}}</span></view>
           <view class = "detail" wx:else><span>用途：{{item.departure + '  '}}</span><span>{{' ' + item.arrival}}</span></view>
-          <view class = "detail">最早时间：<span>{{item.earliest}}</span></view>
-          <view class = "detail">最晚时间：<span>{{item.latest}}</span></view>
+          <view class = "detail">出发时间：<span>{{item.earliest}}</span></view>
           <view class = "detail">人数：<span>{{item.pNumber}}</span></view>
         </view>
       </view>
     </view>
+
+    <view class="hint bot" wx:if="{{filterAid!=0 || filterDid!=0}}">当前显示{{placeArray_d[dId].name}}到{{placeArray[aId].name}}的信息</view>
+
   </view>
+
   <view wx:else >
-    <view class="hint">当前没有发布的信息</view>
+    <view class="hint">当前没有{{placeArray_d[dId].name}}到{{placeArray[aId].name}}的信息</view>
   </view>
 </view>
 
 
 
 <view class="filter" hidden="{{filter}}" >
-  目的地:
-  <picker bindchange="bindDeparturePickerChange" value="{{dId}}" range="{{placeArray}}" range-key="name">
-    <view class="picker">
-      <p>{{placeArray[dId].name}}</p>
-    </view>
-  </picker>
-  排序方式:
-  <picker bindchange="rankMethod" value="{{rankId}}" range="{{rankArray}}" >
-    <view class="picker">
-      <p>{{rankArray[rankId]}}</p>
-    </view>
-  </picker>
+
+  <button class="rank" bindtap="postRank" color="green"><view style="color:{{color1}}">按发帖时间</view></button>
+  <button class="rank" bindtap="departureRank"><view style="color:{{color2}}">按出发时间</view></button>
+  
 </view>
+
+<view class="prevent-screen" hidden="{{filter}}"></view>

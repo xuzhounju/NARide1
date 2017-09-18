@@ -9,11 +9,12 @@
     "pages/resultDetail/resultDetail",
     "pages/terms/terms",
     "pages/profile/profile",
-    "pages/history/history"
+    "pages/history/history",
+    "pages/book/book"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#2198cc",
+    "navigationBarBackgroundColor": "#89c3d8",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "white"
   },

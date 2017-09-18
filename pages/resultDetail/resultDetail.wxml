@@ -59,6 +59,29 @@
 
 
 <view class="btn-area">
-    <button class="yellowB" bindtap="copyWechat">复制微信号</button>
-    <button class="greenB" bindtap="phoneCall">拨打电话</button>
+    <button class="yellowB" bindtap="copyWechat"disabled="{{removed}}">复制微信号</button>
+    <button class="greenB" bindtap="phoneCall" disabled="{{removed}}">拨打电话</button>
 </view>
+
+
+
+<view class="shareToGroup" hidden="{{!posted}}"> 
+  <view class="shareTitle">提示</view>
+  <view class="shareText" >发送通知至此用户？</view>
+  
+  <form bindsubmit="confirm" bindreset="reset" id="js-postform" report-submit>
+    <view class="btn-area">
+    
+      <button formType="submit"class="small confirm">确定</button>
+      <button formType="reset"class="small cancel">取消</button>
+    </view>
+
+  </form>
+
+</view>
+
+
+<view class="prevent-screen" hidden="{{!posted}}"></view>
+
+
+

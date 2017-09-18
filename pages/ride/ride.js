@@ -9,14 +9,13 @@ Page({
       { name: '我是乘客', value: 1 },
     ],
     numArray: [1, 2, 3, 4, 5, 6],
-    identityValue: 0,
     nowDate: '2017-01-01',
     endDate: '2018-12-30',
     
     placeArray: app.globalData.places,
     userInfo: {},
-    departure: 0,
-    arrival: 1,
+    departure: 1,
+    arrival: 2,
     eDate: '',
     eTime: '00:00',
     lDate: '',
@@ -146,6 +145,7 @@ Page({
             },
             success: function (res) {
               app.globalData.searchResult = res.data;
+              console.log(res.data)
               wx.navigateTo({
                 url: '../result/result',
               })

@@ -20,6 +20,19 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+
+function stringToTime(date){
+  var d = new Date(date)
+  return d.getTime()/1000.0
+}
+
+
+
+
+
+
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  stringToTime: stringToTime
 }
