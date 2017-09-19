@@ -118,3 +118,10 @@ button{
   padding: 30rpx 50rpx;
   border-radius: 20rpx;
 }
+
+.hidden{
+  color:grey;
+  margin: auto;
+  font-size:25rpx;
+  text-align: center;
+}

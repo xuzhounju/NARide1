@@ -312,6 +312,7 @@ Page({
             notice = '提交成功！' 
             app.globalData.newProfile = true 
             flag=true
+            app.onLaunch()
            
           }
           wx.showModal({

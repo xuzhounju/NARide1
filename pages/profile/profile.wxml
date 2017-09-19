@@ -27,13 +27,15 @@
 </view>
 
 
+<button class="contactButton" open-type="contact"></button>
+
+
 <view class="icon-bar">
   <view class="icon" bindtap="showHistory">
     <image class="tap-image" src="../../images/history.png"></image>
   </view>
   <view class="icon">
     <image class="tap-image" src="../../images/contact.png"></image>
-    <button class="contactButton" open-type="contact"></button>
   </view>
   <view class="icon" bindtap="showCampus">
     <image class="tap-image" src="../../images/campus.png"></image>

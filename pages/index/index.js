@@ -228,6 +228,7 @@ Page({
     var b = parseInt(e.currentTarget.dataset.id);
     app.globalData.detailEvent = a[b];
     var pk =a[b].pk
+    console.log('pk:',pk)
     for (var i = 0; i < app.globalData.onGoingPost.length; i++) {
       if (pk == app.globalData.onGoingPost[i].pk){
         app.globalData.detailSelfPostID = i

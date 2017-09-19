@@ -7,13 +7,16 @@
 
 <view class="container">
   <image class="top-image" src="../../images/cover.jpg"></image>
+
   <view class="top-filter">
     <picker bindchange="bindDeparturePickerChange" value="{{dId}}" range="{{placeArray_d}}" range-key="name">
       <view class="picker left">
         <p>{{placeArray_d[dId].name}}</p>
       </view>
     </picker>
-    <image class="bigArrow" src="../../image/arrow.png" ></image>
+    
+    <image class="bigArrow" src="../../images/arrow.png" ></image>
+
     <picker bindchange="bindArrivalPickerChange" value="{{aId}}" range="{{placeArray}}" range-key="name">
       <view class="picker right">
         <p>{{placeArray[aId].name}}</p>

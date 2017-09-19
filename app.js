@@ -90,6 +90,7 @@ App({
                 for (var i = 0; i < places2.length; i++) {
                   places2[i] = places2[i].name
                 }
+                pks.push(12)
                 that.globalData.validPk = pks
                 that.globalData.places = places
                 that.globalData.place = places2

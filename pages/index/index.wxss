@@ -26,7 +26,7 @@ page {
   font-size:30rpx;
   padding-left:80rpx;
   padding-right:80rpx;
-  color:#89c3d8;
+  color:#2198cc;
 }
 
 
@@ -56,7 +56,6 @@ page {
 .bigArrow{
   width: 150rpx;
   height: 14rpx;
-  z-index: 9999;
   margin-top:33rpx;
 }
 

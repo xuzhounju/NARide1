@@ -1,1 +1,27 @@
 /* pages/campus/campus.wxss */
+
+.title{
+  text-align: center;
+  margin-top:30%;
+  margin-bottom: 80rpx
+}
+
+.picker{
+  width: 300rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  background: white;
+  margin: auto
+}
+
+button{
+  background: #f8b62d;
+  color:white;
+  height: 60rpx;
+  width: 200rpx;
+  font-size: 30rpx;
+  text-align: center;
+  margin-top:80rpx;
+  line-height: 60rpx;
+
+}

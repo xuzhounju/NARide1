@@ -69,12 +69,13 @@
 }
 
 .contactButton{
-  position: fixed;
-  width: 150rpx;
+  position:fixed;
+  width: 100rpx;
   opacity:0;
   z-index: 99;
-  margin-left: 20rpx;
-  height:150rpx;
+  margin-left: 240rpx;
+  margin-top:80rpx;
+  height:100rpx;
  
 }
 
