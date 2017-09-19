@@ -53,6 +53,13 @@ page {
   height: 154rpx;
 }
 
+.bigArrow{
+  width: 150rpx;
+  height: 14rpx;
+  z-index: 9999;
+  margin-top:33rpx;
+}
+
 .filter{
   font-size:30rpx;
   padding-top:100rpx;
