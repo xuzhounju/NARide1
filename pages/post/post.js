@@ -38,7 +38,7 @@ Page({
   },
 
 
-  onLoad: function(){
+  onShow: function(){
     wx.getSetting({
       success(res) {
         console.log(res)

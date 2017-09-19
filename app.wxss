@@ -28,7 +28,7 @@ arrow{
 
 .driver{
   background: green;
-  width: 100rpx;
+  width: 80rpx;
   text-align: center;
   color: white;
   margin-right:20rpx; 
@@ -36,7 +36,7 @@ arrow{
 
 .passenger{
   background: darkcyan;
-  width: 100rpx;
+  width: 80rpx;
   text-align: center;
   color: white;
   margin-right:20rpx;
@@ -92,6 +92,20 @@ space{
 
 
 .toptab.active{
-  color: #2198cc;
-  border-bottom: solid 2px #2198cc;
+  color: #89c3d8;
+  border-bottom: solid 2px #89c3d8;
+}
+
+.top-image{
+  display: flex;
+  width:750rpx;
+  height:320rpx;
+  position: relative;
+}
+
+
+.role{
+  margin-bottom:15rpx;
+  font-size:20rpx;
+
 }

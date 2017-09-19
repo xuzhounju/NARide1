@@ -20,16 +20,52 @@ Page({
       aId: 1,
       dId: 0,
       formNumber: 1,
-
+      dName:'',
+      aName:'',
+      fromTime:null,
+      toTime:''
     
   },
 
   onLoad: function(e){
+    
     this.setData({
       placeArray: app.globalData.places,
 
     })
+    this.setBooked()
+  
   },
+
+  setBooked:function(e){
+    var placeArray = this.data.placeArray
+    if (app.globalData.monitor_place_from) {
+      this.setData({
+        fromTime: new Date(app.globalData.monitor_time_from).toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
+        toTime: new Date(app.globalData.monitor_time_to).toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' })
+      })
+      for (var i in placeArray) {
+        if (placeArray[i].id == app.globalData.monitor_place_from) {
+          console.log(placeArray[i].name)
+          this.setData({
+            dName: placeArray[i].name
+          })
+        }
+        if (placeArray[i].id == app.globalData.monitor_place_to) {
+          this.setData({
+            aName: placeArray[i].name
+          })
+        }
+      }
+
+    }else{
+      this.setData({
+        aName: '',
+        dName:''
+      })
+    }
+  },
+
   onShow: function (options) {
  
     var eDate = new Date(Date.now() + 24 * 60 * 60 * 1000)
@@ -123,8 +159,8 @@ Page({
       return d.getTime() / 1000.0
     }
     var mydata = e.detail.value;
-    mydata.monitor_time_from = stringToTime(mydata.monitor_time_from +' '+ this.data.eTime )
-    mydata.monitor_time_to = stringToTime(mydata.monitor_time_to+' '+this.data.lTime)
+    mydata.monitor_time_from = stringToTime(this.data.eDate +' '+ this.data.eTime )
+    mydata.monitor_time_to = stringToTime(this.data.lDate+' '+this.data.lTime)
     mydata.monitor_place_from = this.data.departure
     mydata.monitor_place_to = this.data.arrival
     if (app.globalData.userInfo) {
@@ -136,6 +172,10 @@ Page({
       mydata.nickName = "未知"
       mydata.avatarUrl = 'http://server.myspace-shack.com/d23/b74dba9d-ec33-446d-81d3-7efd254f1b85.png'
      
+    }
+
+    if (app.globalData.preference) {
+      mydata.preference = app.globalData.preference
     }
 
     mydata.weixin = app.globalData.weixin
@@ -154,6 +194,9 @@ Page({
   },
 
   book:function(mydata){
+    wx.showLoading({
+      title: '加载中',
+    })
     var that =this 
     wx.login({
       success: function (res) {
@@ -166,9 +209,8 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
-            that.setData({
-              loadingHidden: true
-            })
+            
+            wx.hideLoading()
             var notice
             var flag = false
             if (res.statusCode == 400) {
@@ -177,6 +219,23 @@ Page({
               notice = '提交成功！'
               flag = true
               app.globalData.newProfile = true
+              
+              if (mydata.monitor_time_from){
+                app.globalData.monitor_place_from = mydata.monitor_place_from
+                app.globalData.monitor_place_to = mydata.monitor_place_to
+                mydata.monitor_time_from = new Date(mydata.monitor_time_from * 1000)
+                mydata.monitor_time_to = new Date(mydata.monitor_time_to * 1000)
+                app.globalData.monitor_time_from = mydata.monitor_time_from.toISOString()
+                app.globalData.monitor_time_to = mydata.monitor_time_to.toISOString()
+              }else{
+                app.globalData.monitor_place_from = null
+                app.globalData.monitor_place_to = null
+                app.globalData.monitor_time_from = null
+                app.globalData.monitor_time_to = null
+              }
+             
+              that.setBooked()
+
             }
 
             app.globalData.newProfile = true
@@ -219,6 +278,9 @@ Page({
       mydata.nickName = "未知"
       mydata.avatarUrl = 'http://server.myspace-shack.com/d23/b74dba9d-ec33-446d-81d3-7efd254f1b85.png'
 
+    }
+    if (app.globalData.preference) {
+      mydata.preference = app.globalData.preference
     }
 
     mydata.weixin = app.globalData.weixin

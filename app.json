@@ -10,7 +10,8 @@
     "pages/terms/terms",
     "pages/profile/profile",
     "pages/history/history",
-    "pages/book/book"
+    "pages/book/book",
+    "pages/campus/campus"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -31,6 +31,9 @@ Page({
       loadingHidden: false,
       currentNavtab: app.globalData.currentTap,
     })
+    // while(app.globalData.places.length==0){
+
+    // }
 
     var that = this
     var nowTime = new Date();
@@ -64,7 +67,7 @@ Page({
         var result = res.data;
         var placeArray = app.globalData.place;
         for (var i = 0; i < result.length; i++) {
-          if (result[i]) {
+          if (result[i] && app.globalData.validPk.includes(result[i].fields.departure) && app.globalData.validPk.includes(result[i].fields.arrival)) {
             var filterAid = result[i].fields.arrival
             var filterDid = result[i].fields.departure
             if (result[i].fields.departure != 12) {
@@ -150,30 +153,7 @@ Page({
 
 
 
-    wx.login({
-      success: function (res) {
-        var js_code = res.code;//调用登录接口获得的用户的登录凭证code
-        wx.request({
-          url: 'https://kunwang.us/user/' + js_code,
-          method: 'GET',
-          success: function (res) {
-            app.globalData.openid = res.data[0].fields.username
-            app.globalData.onGoingPost = res.data[1]
-            if (res.data[0].fields.gender == -1) {
-              app.globalData.firstLogin = true
-              wx.navigateTo({
-                url: '../terms/terms',
-              })
-            }
-            app.globalData.weixin = res.data[0].fields.weixin
-            app.globalData.phone = res.data[0].fields.phone
-            app.globalData.email = res.data[0].fields.email
 
-
-          }
-        })
-      }
-    })
 
     app.getUserInfo(function (userInfo) {
       //更新数据
@@ -181,6 +161,8 @@ Page({
         userInfo: userInfo
       })
     })
+  
+    console.log('onshow end:',app.globalData.places)
   },
 
   switchTab: function (e) {

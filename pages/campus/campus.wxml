@@ -1,0 +1,11 @@
+<!--pages/campus/campus.wxml-->
+<view class="top-margin flex-tab"></view>
+<view class="title">我的校区</view>
+<form bindsubmit="formSubmit"id="js-postform">
+  <picker bindchange="bindCampusPickerChange" value="{{cId}}" range="{{campusArray}}" range-key="name">
+    <view class="picker">
+      {{campusArray[cId].name}}
+    </view>
+  </picker>
+  <button class="yellowB"formType="submit">确定</button>
+</form>

@@ -32,7 +32,7 @@
       <view class="Grid-cell d2-1">
         <picker name="monitor_time_from" mode="date" value="{{eDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindEDateChange">
           <view class="picker">
-            <space>用车日期:</space><span class="date">{{eDate}}</span>
+            <space>关注时间:</space><span class="date">{{eDate}}</span>
           </view>
         </picker>
 
@@ -64,3 +64,9 @@
   </view>
 </form>
 
+
+<view class="title">已关注路线</view>
+<view class="booked" wx:if="{{dName.length>0}}">
+  <view class="top">路线：{{dName}}→{{aName}}</view>
+  <view class="bot">时间：{{fromTime}}—{{toTime}}</view>
+</view>

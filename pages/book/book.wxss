@@ -104,3 +104,17 @@ button{
   margin-left: 30rpx;
   background: #8fc31f;
 }
+
+
+.title{
+  text-align: center;
+  margin-top:100rpx;
+}
+
+.booked{
+  background: white;
+  margin: 40rpx 60rpx;
+  font-size:30rpx;
+  padding: 30rpx 50rpx;
+  border-radius: 20rpx;
+}

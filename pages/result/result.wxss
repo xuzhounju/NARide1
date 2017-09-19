@@ -5,24 +5,25 @@
 
 .Grid-cell{
   flex: 1;
-  height: 300 rpx;
   margin: 20rpx 10rpx;
+  margin-bottom: 9.5rpx;
 
 }
 .userinfo{
   flex:0 0 30%;  
   text-align: center;
   color: grey;
+  font-size: 23rpx;
 }
 
 .infoDetails{
-  font-size: 29rpx;
+  font-size: 25rpx;
 }
 
 
 .userinfo-avatar {
-  width: 120rpx;
-  height: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
   margin: auto;
   display: flex;   
@@ -36,15 +37,15 @@
 }
 
 .ongoingPost{
-  margin: 20rpx 10rpx;
-  font-size: 35rpx;
-  background: #efeaea;
-  border-radius: 5%  
+  margin: 20rpx 70rpx;
+  font-size: 25rpx;
+  background: white;
+  border-radius: 20rpx;  
 }
 
 .gender{
-  width:25rpx;
-  height: 25rpx;
+  width:23rpx;
+  height: 23rpx;
   margin: auto;
   display: flex;
       
@@ -52,5 +53,8 @@
 
 .nickName{
   display: inline-flex;
+  margin-top:15rpx;
 }
+
+
 

@@ -101,6 +101,12 @@ Page({
     wx.navigateTo({
       url: '../book/book',
     })
+  },
+
+  showCampus: function(e){
+    wx.navigateTo({
+      url: '../campus/campus',
+    })
   }
 
  

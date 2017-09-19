@@ -9,12 +9,7 @@ page {
   top:0;
   margin:0;
 }
-.top-image{
-  display: flex;
-  width:750rpx;
-  height:320rpx;
-  position: relative;
-}
+
 
 .top-filter{
   top:280rpx;
@@ -26,12 +21,12 @@ page {
   margin: auto;
   position: absolute;
   text-align: center;
-  color:grey;
   display: -webkit-inline-flex;
   line-height: 80rpx;
   font-size:30rpx;
   padding-left:80rpx;
   padding-right:80rpx;
+  color:#89c3d8;
 }
 
 
@@ -45,17 +40,17 @@ page {
 }
 .top-tab1{
   margin-top:70rpx;
-  margin-left:45rpx;
+  margin-left:48rpx;
   width: 660rpx;
-  height: 150rpx;
+  height: 210rpx;
   color: black;
   font-size: 28rpx;
   line-height: 80rpx;
 }
 
 .tap-image{
-  width:100rpx;
-  height: 128rpx;
+  width:120rpx;
+  height: 154rpx;
 }
 
 .filter{
@@ -92,12 +87,14 @@ button::after{
 .Grid-cell{
   flex: 1;
   margin: 20rpx 10rpx;
+  margin-bottom: 9.5rpx;
 
 }
 .userinfo{
   flex:0 0 30%;  
   text-align: center;
   color: grey;
+  font-size: 23rpx;
 }
 
 .infoDetails{
@@ -128,14 +125,15 @@ button::after{
 }
 
 .gender{
-  width:25rpx;
-  height: 25rpx;
+  width:23rpx;
+  height: 23rpx;
   margin: auto;
   display: flex;
       
 }
 
 .nickName{
+  margin-top:15rpx;
   display: inline-flex;
 }
 
@@ -184,3 +182,11 @@ button::after{
   overflow: hidden;
   color: #fff;
 }
+
+
+.detail{
+  font-size: 22rpx;
+  margin-top:5rpx;
+}
+
+

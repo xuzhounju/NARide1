@@ -22,7 +22,7 @@ Page({
     var placeArray = app.globalData.place;
     if (app.globalData.searchTap == 0) {
       for (var i = 0; i < result.length; i++) {
-        if (result[i] && !result[i].fields.driver) {
+        if (result[i] && !result[i].fields.driver && app.globalData.validPk.includes(result[i].fields.departure) && app.globalData.validPk.includes(result[i].fields.arrival)) {
           result[i].fields.departure = placeArray[result[i].fields.departure - 1];
           result[i].fields.arrival = placeArray[result[i].fields.arrival - 1];
           result[i].fields.earliest = new Date(result[i].fields.earliest);
