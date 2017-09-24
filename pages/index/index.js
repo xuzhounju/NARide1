@@ -30,11 +30,9 @@ Page({
     this.setData({
       loadingHidden: false,
       currentNavtab: app.globalData.currentTap,
+     
     })
-    // while(app.globalData.places.length==0){
-
-    // }
-
+    
     var that = this
     var nowTime = new Date();
     var latestTime = new Date(nowTime.getTime() + 3 * 30 * 24 * 3600 * 1000);
@@ -67,7 +65,7 @@ Page({
         var result = res.data;
         var placeArray = app.globalData.place;
         for (var i = 0; i < result.length; i++) {
-          if (result[i] && app.globalData.validPk.includes(result[i].fields.departure) && app.globalData.validPk.includes(result[i].fields.arrival)) {
+          if (result[i] && !(app.globalData.validPk.indexOf(result[i].fields.departure)===-1) && !(app.globalData.validPk.indexOf(result[i].fields.arrival)===-1)) {
             var filterAid = result[i].fields.arrival
             var filterDid = result[i].fields.departure
             if (result[i].fields.departure != 12) {
@@ -148,7 +146,8 @@ Page({
             loadingHidden: true
           })
         }
-      }
+      },
+
     })
 
 

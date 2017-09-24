@@ -2,7 +2,6 @@
 App({
   onLaunch: function() {
     //调用API从本地缓存中获取数据
-    wx.clearStorage()  
     var that= this
     // wx.getLocation({
     //   type: 'wgs84',
@@ -16,6 +15,16 @@ App({
 
     //   }
     // })
+    wx.getStorage({
+      key: 'openid',
+      success: function (res) {
+        console.log("local openid:",res.data)
+        this.globalData.openid = res.data
+      },
+      fail: function(res){
+        console.log("fail")
+      }
+    })
     wx.login({
       success: function (res) {
         var js_code = res.code;//调用登录接口获得的用户的登录凭证code
@@ -54,7 +63,7 @@ App({
                 console.log(that.globalData.regions)
                 for (var i = 0; i < (res.data.length); i++) {
                   var place = { name: '', id: null }
-                  if (res.data[i].pk != 12 && that.globalData.regions.includes(res.data[i].fields.region[0])) {
+                  if (res.data[i].pk != 12 && ! (that.globalData.regions.indexOf(res.data[i].fields.region[0])===-1)) {
                     console.log(res.data[i].fields.region[0])
                     place.name = res.data[i].fields.name
                     place.id = res.data[i].pk
@@ -106,8 +115,18 @@ App({
           
         })
       }
+     
+
+
     })
 
+  },
+
+  onShow:function(){
+    console.log('app.onshow', this.globalData.places.length)
+    if (this.globalData.places.length==0){
+      this.onLaunch()
+    }
   },
 
   getUserInfo: function(cb) {
@@ -147,6 +166,7 @@ App({
  
 
   globalData: {
+    badNet:false,
     userInfo:null,
     openid:null,
     searchResult: null,

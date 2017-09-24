@@ -41,6 +41,9 @@ Page({
   },
 
   formSubmit: function (e) {
+    wx.showLoading({
+      title: '加载中',
+    })
     var that = this
     var mydata = e.detail.value
     if(this.data.preference>1){
@@ -90,6 +93,7 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
+            wx.hideLoading()
             that.setData({
               loadingHidden: true
             })

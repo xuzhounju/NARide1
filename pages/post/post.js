@@ -39,58 +39,7 @@ Page({
 
 
   onShow: function(){
-    wx.getSetting({
-      success(res) {
-        console.log(res)
-        if (!res.authSetting['scope.userInfo']) {
-          wx.showModal({
-            title: '提示',
-            content: '尚未授权小程序获得头像昵称等信息，是否授权？',
-            success(res) {
-              if (res.confirm) {
-                wx.openSetting({
-                  success: function (res) {
-                    app.getUserInfo(function (userInfo) {
-
-                    })
-                    app.globalData.newProfile = true
-                    var mydata={}
-                    mydata.gender = app.globalData.userInfo.gender
-                    mydata.nickName = app.globalData.userInfo.nickName
-                    mydata.avatarUrl = app.globalData.userInfo.avatarUrl
-                    mydata.weixin = app.globalData.weixin
-                    mydata.phone = app.globalData.phone
-                    mydata.email = app.globalData.email
-                    console.log('info:',mydata)
-                    wx.showLoading({
-                      title: '加载中',
-                    })
-                    wx.login({
-                      success: function (res) {
-                        var js_code = res.code
-                        wx.request({
-                          url: 'https://kunwang.us/user/' + js_code + '/',
-                          data: mydata,
-                          method: "POST",
-                          header: {
-                            'content-type': 'application/x-www-form-urlencoded'
-                          },
-                          success: function (res) {
-                            wx.hideLoading()
-                          }
-                        })
-                      }
-                    })
-                  }
-                })
-
-              }
-            }
-          })
-          
-        }
-      }
-    })
+    
     var d = new Date(Date.now()+24*60*60*1000)
     var year = d.getFullYear()
     var month =d.getMonth()+1
@@ -115,6 +64,65 @@ Page({
       lDate: year + '-' + month + '-' + day,
 
     })
+
+    if(wx.getSetting){
+      console.log("new version")
+      wx.getSetting({
+        success(res) {
+          console.log(res)
+          if (!res.authSetting['scope.userInfo']) {
+            wx.showModal({
+              title: '提示',
+              content: '尚未授权小程序获得头像昵称等信息，是否授权？',
+              success(res) {
+                if (res.confirm) {
+                  wx.openSetting({
+                    success: function (res) {
+                      app.getUserInfo(function (userInfo) {
+
+                      })
+                      app.globalData.newProfile = true
+                      var mydata = {}
+                      mydata.gender = app.globalData.userInfo.gender
+                      mydata.nickName = app.globalData.userInfo.nickName
+                      mydata.avatarUrl = app.globalData.userInfo.avatarUrl
+                      mydata.weixin = app.globalData.weixin
+                      mydata.phone = app.globalData.phone
+                      mydata.email = app.globalData.email
+                      console.log('info:', mydata)
+                      wx.showLoading({
+                        title: '加载中',
+                      })
+                      wx.login({
+                        success: function (res) {
+                          var js_code = res.code
+                          wx.request({
+                            url: 'https://kunwang.us/user/' + js_code + '/',
+                            data: mydata,
+                            method: "POST",
+                            header: {
+                              'content-type': 'application/x-www-form-urlencoded'
+                            },
+                            success: function (res) {
+                              wx.hideLoading()
+                            }
+                          })
+                        }
+                      })
+                    }
+                  })
+
+                }
+              }
+            })
+
+          }
+        }
+      })
+    }else{
+    
+    }
+
 
   },
 
@@ -265,7 +273,8 @@ Page({
         var earliest = stringToTime(data.earliest)
         var lastest = stringToTime(data.earliest)
         console.log('ongoing time',earliest)
-        if (earliest == mydata.earliest && latest == mydata.latest && data.departure == mydata.departure && data.arrival == mydata.arrival) {
+        if ((earliest - mydata.earliest) * (earliest - mydata.earliest)<=(2*60*60*2*60*60) && data.departure == mydata.departure && data.arrival == mydata.arrival) {
+
           wx.showModal({
             title: '提示',
             content: '你已发过相同内容帖子！是否跳转修改',
