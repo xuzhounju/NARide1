@@ -14,113 +14,134 @@ App({
     //     console.log('accuracy:', accuracy)
 
     //   }
-    // })
+    // }) 
     wx.getStorage({
       key: 'openid',
       success: function (res) {
         console.log("local openid:",res.data)
-        this.globalData.openid = res.data
+        that.globalData.openid = res.data
+        that.getInfo()
       },
       fail: function(res){
         console.log("fail")
-      }
-    })
-    wx.login({
-      success: function (res) {
-        var js_code = res.code;//调用登录接口获得的用户的登录凭证code
-        wx.request({
-          url: 'https://kunwang.us/user/' + js_code,
-          method: 'GET',
-          success: function (res) {
-            that.globalData.openid = res.data[0].fields.username
-            that.globalData.onGoingPost = res.data[1]
-            if (res.data[0].fields.gender == -1) {
-              that.globalData.firstLogin = true
-              wx.navigateTo({
-                url: '../terms/terms',
-              })
-            }
-            that.globalData.weixin = res.data[0].fields.weixin
-            that.globalData.phone = res.data[0].fields.phone
-            that.globalData.email = res.data[0].fields.email
-            that.globalData.preference = res.data[0].fields.preference
-            if (that.globalData.preference) {
-              that.globalData.regions = [1]
-              that.globalData.regions.push(that.globalData.preference)
-            }else{
-              that.globalData.regions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-            }
-
+        wx.login({
+          success: function(res){
+            var js_code = res.code
             wx.request({
-              url: 'https://Kunwang.us/all_places/',
-              method: 'GET',
-              success: function (res) {
-                console.log("places:", res.data)
+              url: "https://kunwang.us/user/"+js_code,
+              method:'GET',
+              success:function(res){
+                that.globalData.openid = res.data[0].fields.username
 
-                var places = []
-                var places2 = []
-                var pks = []
-                console.log(that.globalData.regions)
-                for (var i = 0; i < (res.data.length); i++) {
-                  var place = { name: '', id: null }
-                  if (res.data[i].pk != 12 && ! (that.globalData.regions.indexOf(res.data[i].fields.region[0])===-1)) {
-                    console.log(res.data[i].fields.region[0])
-                    place.name = res.data[i].fields.name
-                    place.id = res.data[i].pk
-                    pks.push(res.data[i].pk)
-                    console.log(place)
-                    places2.push(place)
-                    places.push(place)
-                  }else{
-                    
-                    place.name = res.data[i].fields.name
-                    place.id = res.data[i].pk
-                    places2.push(place)
-                   
-                  }
-                }
-
-                places.sort(function (a, b) {
-                  var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-                  var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-                  if (nameA < nameB) {
-                    return -1;
-                  }
-                  if (nameA > nameB) {
-                    return 1;
-                  }
-
-                  // names must be equal
-                  return 0;
+                wx.setStorage({
+                  key: 'openid',
+                  data: res.data[0].fields.username,
                 })
-                places2.sort(function (a, b) {
-                  return a.id - b.id
-                })
-                for (var i = 0; i < places2.length; i++) {
-                  places2[i] = places2[i].name
-                }
-                pks.push(12)
-                that.globalData.validPk = pks
-                that.globalData.places = places
-                that.globalData.place = places2
-                console.log(places2)
-                if (getCurrentPages().length != 0) {
-                  getCurrentPages()[getCurrentPages().length - 1].onShow()
-                }
-
+                that.getInfo()
               }
             })
           }
-
-          
         })
       }
-     
+    })
+
+       
+  },
+
+  getInfo:function(){
+    var that= this
+    wx.request({
+      url: 'https://kunwang.us/user/' + that.globalData.openid + '/a',
+      method: 'GET',
+      success: function (res) {
+        that.globalData.openid = res.data[0].fields.username
+        that.globalData.onGoingPost = res.data[1]
+        if (res.data[0].fields.gender == -1) {
+          that.globalData.firstLogin = true
+          wx.navigateTo({
+            url: '../terms/terms',
+          })
+        }
+        that.globalData.weixin = res.data[0].fields.weixin
+        that.globalData.phone = res.data[0].fields.phone
+        that.globalData.email = res.data[0].fields.email
+        that.globalData.preference = res.data[0].fields.preference
+        if (that.globalData.preference) {
+          that.globalData.regions = [1]
+          that.globalData.regions.push(that.globalData.preference)
+        } else {
+          that.globalData.regions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        }
+
+        wx.request({
+          url: 'https://Kunwang.us/all_places/',
+          method: 'GET',
+          success: function (res) {
+            console.log("places:", res.data)
+            that.findCampusCenter(res.data)
+            var places = []
+            var places2 = []
+            var pks = []
+            console.log(that.globalData.regions)
+            for (var i = 0; i < (res.data.length); i++) {
+              var place = { name: '', id: null }
+              if (res.data[i].pk != 12 && !(that.globalData.regions.indexOf(res.data[i].fields.region[0]) === -1)) {
+             
+                console.log(res.data[i].fields.region[0])
+                place.name = res.data[i].fields.name
+                place.id = res.data[i].pk
+                pks.push(res.data[i].pk)
+                console.log(place)
+                places2.push(place)
+                places.push(place)
+              } else {
+
+                place.name = res.data[i].fields.name
+                place.id = res.data[i].pk
+                places2.push(place)
+
+              }
+            }
+
+            places.sort(function (a, b) {
+              var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+              var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+              if (nameA < nameB) {
+                return -1;
+              }
+              if (nameA > nameB) {
+                return 1;
+              }
+
+              // names must be equal
+              return 0;
+            })
+            places2.sort(function (a, b) {
+              return a.id - b.id
+            })
+            for (var i = 0; i < places2.length; i++) {
+              places2[i] = places2[i].name
+            }
+            pks.push(12)
+            that.globalData.validPk = pks
+            that.globalData.places = places
+            that.globalData.place = places2
+            console.log(places2)
+            if (getCurrentPages().length != 0) {
+              getCurrentPages()[getCurrentPages().length - 1].onShow()
+            }
+
+          }
+        })
+      }
 
 
     })
-
   },
+     
+
+
+
 
   onShow:function(){
     console.log('app.onshow', this.globalData.places.length)
@@ -161,7 +182,13 @@ App({
       },
     })
   },
-
+  findCampusCenter:function(data){
+    if (this.globalData.preference){
+      for(var i = 0; i< data.length;i++){
+        if (data[i].fields.region[0] == this.globalData.preference) this.globalData.campusCenter= data[i].pk
+      }
+    } else this.globalData.campusCenter=12
+  },
 
  
 
@@ -193,6 +220,7 @@ App({
     monitor_time_from:null,
     monitor_time_to:null,
     preference:null,
-    validPk:[]
+    validPk:[],
+    campusCenter:null
   }
 })

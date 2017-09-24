@@ -38,11 +38,8 @@ Page({
     //调用应用实例的方法获取全局数据
 
 
-    wx.login({
-      success: function (res) {
-        var js_code = res.code;//调用登录接口获得的用户的登录凭证code
         wx.request({
-          url: 'https://kunwang.us/user/' + js_code,
+          url: 'https://kunwang.us/user/' + app.globalData.openid+'/a',
           method: 'GET',
           success: function (res) {
             console.log(res)
@@ -72,8 +69,7 @@ Page({
 
           }
         })
-      }
-    })
+   
     app.getUserInfo(function (userInfo) {
       //更新数据
       that.setData({

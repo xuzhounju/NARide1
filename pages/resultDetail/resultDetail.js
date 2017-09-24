@@ -71,36 +71,54 @@ Page({
     console.log(this.data.eventDetail)
   },
   phoneCall: function (e){
-   
-    wx.makePhoneCall({
-      phoneNumber: this.data.eventDetail.poster[6].toString()
-    })
+
+    if (this.data.eventDetail.poster[6]){
+      wx.makePhoneCall({
+        phoneNumber: this.data.eventDetail.poster[6].toString()
+      })
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '该用户未填写手机号',
+        showCancel: false
+      })
+    }
+  
   },
 
   copyWechat: function (e){
     var that =this
-    wx.setClipboardData({
-      data: this.data.eventDetail.poster[5],
-      success: function (res) {
-        wx.getClipboardData({
-          success: function (res) {
-            wx.showModal({
-              title: '提示',
-              content: '微信号已复制到粘贴板！',
-              showCancel: false,
-              success: function(res){
-                if(res.confirm){
-                  that.setData({
-                    posted: true
-                  })
+    if(this.data.eventDetail.poster[5].length>0){
+      wx.setClipboardData({
+        data: that.data.eventDetail.poster[5],
+        success: function (res) {
+          wx.getClipboardData({
+            success: function (res) {
+              wx.showModal({
+                title: '提示',
+                content: '微信号已复制到粘贴板！',
+                showCancel: false,
+                success: function (res) {
+                  if (res.confirm) {
+                    that.setData({
+                      posted: true
+                    })
 
+                  }
                 }
-              }
-            })
-          }
-        })
-      }
-    })
+              })
+            }
+          })
+        }
+      })
+    }else{
+      wx.showModal({
+        title:'提示',
+        content:'该用户未填写微信号',
+        showCancel:false
+      })
+    }
+
   },
 
   confirm: function (e) {
@@ -117,7 +135,7 @@ Page({
     })
   },
 
-  cancel: function (e) {
+  reset: function (e) {
     let formId = e.detail.formId;
 
     app.dealFormIds(formId); //处理保存推送码
@@ -136,17 +154,8 @@ Page({
       url: 'https://kunwang.us/task_notify/' + this.data.eventDetail.pk + '/' + app.globalData.openid + '/',
       method: "GET",
       success:function(res){
-        if(res.statusCode==403){
-          that.setData({
-            removed:true
-          })
-          wx.showModal({
-            title: '提示',
-            content: '该分享贴已被删除！',
-            showCancel: false,
-
-          })
-        }
+        
+        
       }
     })
     

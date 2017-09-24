@@ -4,7 +4,7 @@ var util = require('../../utils/util.js')
 var app = getApp()
 Page({
   data: {
-    navTab: ["普通拼车","特殊用车"],
+    navTab: ["普通拼车","搬家练车"],
     currentNavtab: app.globalData.currentTap_post,
     
     identity: [
@@ -93,11 +93,8 @@ Page({
                       wx.showLoading({
                         title: '加载中',
                       })
-                      wx.login({
-                        success: function (res) {
-                          var js_code = res.code
                           wx.request({
-                            url: 'https://kunwang.us/user/' + js_code + '/',
+                            url: 'https://kunwang.us/user/' + app.globalData.openid + '/',
                             data: mydata,
                             method: "POST",
                             header: {
@@ -107,8 +104,7 @@ Page({
                               wx.hideLoading()
                             }
                           })
-                        }
-                      })
+                     
                     }
                   })
 
@@ -231,7 +227,7 @@ Page({
       }
       var rawE = e.detail.value.eDate + ' ' + '00:00'
       var rawL = e.detail.value.lDate + ' ' + '00:00'
-      mydata.arrival = 12
+      mydata.arrival = app.globalData.campusCenter
       mydata.departure = 12 
 
     }

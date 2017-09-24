@@ -85,7 +85,12 @@ Page({
             result[i].fields.post_time = new Date(result[i].fields.post_time);
             result[i].fields.post_time = Date.parse(result[i].fields.post_time) / 1000;
             result[i].fields.pk = result[i].pk
-            if (that.data.filterAid == 0 &&that.data.filterDid==0) {
+            if (that.data.filterDid == 12 || that.data.filterAid==12){
+              if(filterDid==12){
+                sResult.push(result[i].fields);
+
+              }
+            }else if (that.data.filterAid == 0 &&that.data.filterDid==0) {
               sResult.push(result[i].fields);
             } else if (that.data.filterAid == 0) {
               if (filterDid == that.data.filterDid){
@@ -243,7 +248,7 @@ Page({
     })
   },
   bindArrivalPickerChange: function (e) {
-    if (this.data.placeArray[e.detail.value].id!=12){
+    if (this.data.placeArray_d[e.detail.value].id!=12){
       this.setData({
         aId: e.detail.value,
         filterAid: this.data.placeArray[e.detail.value].id,
@@ -263,7 +268,7 @@ Page({
 
   },
   bindDeparturePickerChange: function (e) {
-    if (this.data.placeArray[e.detail.value].id != 12) {
+    if (this.data.placeArray_d[e.detail.value].id != 12) {
       this.setData({
         dId: e.detail.value,
         filterDid: this.data.placeArray_d[e.detail.value].id

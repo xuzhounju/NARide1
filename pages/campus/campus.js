@@ -82,11 +82,9 @@ Page({
     this.setData({
       loadingHidden: false
     })
-    wx.login({
-      success: function (res) {
-        var js_code = res.code
+   
         wx.request({
-          url: 'https://kunwang.us/user/' + js_code + '/',
+          url: 'https://kunwang.us/user/' + app.globalData.openid + '/a',
           data: mydata,
           method: "POST",
           header: {
@@ -132,8 +130,7 @@ Page({
         })
 
 
-      }
-    })
+   
 
 
   }
