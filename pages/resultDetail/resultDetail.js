@@ -60,9 +60,7 @@ Page({
               }
             })
           }
-          that.setData({
-            removed: res.data[0].fields.removed
-          })
+      
         }
       })
     }

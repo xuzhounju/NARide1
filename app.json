@@ -11,7 +11,8 @@
     "pages/profile/profile",
     "pages/history/history",
     "pages/book/book",
-    "pages/campus/campus"
+    "pages/campus/campus",
+    "pages/discover/discover"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -42,6 +43,7 @@
         "iconPath": "images/post.png",
         "selectedIconPath": "images/post_c.png"
       },
+
       {
         "pagePath": "pages/profile/profile",
         "text": "个人",
