@@ -83,9 +83,12 @@ Page({
                       })
                       app.globalData.newProfile = true
                       var mydata = {}
-                      mydata.gender = app.globalData.userInfo.gender
-                      mydata.nickName = app.globalData.userInfo.nickName
-                      mydata.avatarUrl = app.globalData.userInfo.avatarUrl
+                      if (app.globalData.userInfo){
+                        mydata.gender = app.globalData.userInfo.gender
+                        mydata.nickName = app.globalData.userInfo.nickName
+                        mydata.avatarUrl = app.globalData.userInfo.avatarUrl
+                      }
+                     
                       mydata.weixin = app.globalData.weixin
                       mydata.phone = app.globalData.phone
                       mydata.email = app.globalData.email
