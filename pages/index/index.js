@@ -77,13 +77,15 @@ Page({
               result[i].fields.departure = result[i].fields.purpose
               result[i].fields.arrival = ""
             }
-            result[i].fields.earliest = new Date(result[i].fields.earliest);
-            result[i].fields.e = result[i].fields.earliest.getTime()
-            result[i].fields.earliest = result[i].fields.earliest.toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' });
-            result[i].fields.latest = new Date(result[i].fields.latest);
-            result[i].fields.latest = result[i].fields.latest.toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' });
-            result[i].fields.post_time = new Date(result[i].fields.post_time);
-            result[i].fields.post_time = Date.parse(result[i].fields.post_time) / 1000;
+          
+           
+            result[i].fields.e = app.timeStringToNumber(result[i].fields.earliest)
+            result[i].fields.earliest = app.timeStringToShortString(result[i].fields.earliest)
+           
+            result[i].fields.latest = app.timeStringToShortString(result[i].fields.latest )
+
+          
+            result[i].fields.post_time = app.timeStringToNumber(result[i].fields.post_time)/1000
             result[i].fields.pk = result[i].pk
             if (that.data.filterDid == 12 || that.data.filterAid==12){
               if(filterDid==12){

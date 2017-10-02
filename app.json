@@ -12,7 +12,9 @@
     "pages/history/history",
     "pages/book/book",
     "pages/campus/campus",
-    "pages/discover/discover"
+    "pages/discover/discover",
+    "pages/message/message",
+    "pages/article/article"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -43,7 +45,12 @@
         "iconPath": "images/post.png",
         "selectedIconPath": "images/post_c.png"
       },
-
+      {
+        "pagePath": "pages/discover/discover",
+        "text": "发现",
+        "iconPath": "images/discover.png",
+        "selectedIconPath": "images/discover_c.png"
+      },
       {
         "pagePath": "pages/profile/profile",
         "text": "个人",

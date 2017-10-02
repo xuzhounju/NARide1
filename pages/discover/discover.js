@@ -1,65 +1,107 @@
 // pages/discover/discover.js
+var app =getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+
   data: {
-  
+    articles:[]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
-  
+    var aim=''
+    var that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.getStorage({
+      key: 'articles',
+      success: function(res) {
+        that.setData({
+          articles:res.data
+        })
+        aim='unsent/'
+        console.log(aim)
+        that.getNewArticles(aim)
+        that.removeExpiredArticles()
+        wx.hideLoading()
+      },
+
+      fail: function(res){
+        console.log('no article stored')
+        aim='unsent/'
+        that.getNewArticles(aim)
+        that.removeExpiredArticles()
+        wx.hideLoading()
+      }
+    })
+
+   
+
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  getNewArticles:function(aim){
+    console.log('aim:',aim)
+    var that =this;
+    wx.request({
+      url: 'https://kunwang.us/article/'+aim+ app.globalData.openid + '/',
+      method: 'GET',
+      success: function (res) {
+        console.log(res.data)
+        var articles = []
+        for (var i = 0; i < res.data.length; i++) {
+          articles.push(res.data[i].fields)
+        }
+        that.setData({
+          articles: that.data.articles.concat(articles)
+        })
+
+        wx.setStorage({
+          key: 'articles',
+          data: that.data.articles,
+        })
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  removeExpiredArticles:function(){
+    var that =this
+    wx.getStorage({
+      key: 'articles',
+      success: function(res) {
+        var articles = res.data
+        console.log(articles)
+        var nowTime = new Date().getTime()
+        for(var i=0;i<articles.length;i++){
+          if (app.timeStringToNumber(articles.expire_time)<nowTime){
+            articles.splice(i,1)
+            console.log('remove one expired article')
+          }
+        }
+        that.setData({
+          articles:articles
+        })
+        wx.setStorage({
+          key: 'articles',
+          data: articles,
+        })
+      },
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  detailTap:function(e){
+    app.globalData.article = this.data.articles[e.currentTarget.dataset.idx]
+    console.log('article', app.globalData.article)
+    wx,wx.navigateTo({
+      url: '../article/article',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
   
   }

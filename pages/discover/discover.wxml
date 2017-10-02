@@ -1,2 +1,12 @@
 <!--pages/discover/discover.wxml-->
-<text>pages/discover/discover.wxml</text>
+<view class="article-container">
+  <view class="article" bindtap="detailTap"  wx:for="{{articles}}"wx:for-index="idx" wx:for-item="itemName" data-idx="{{idx}}">
+    
+    <image class="article-image" src='{{itemName.image_link}}' mode="widthFix" ></image>   
+
+    <view class="article-info" >
+      <view class="article-title">{{itemName.title}}</view>
+      <view class="article-body">{{itemName.summary}}</view>
+    </view>
+  </view>
+</view>

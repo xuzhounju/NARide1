@@ -9,9 +9,9 @@
 }
 
 .ongoingPost{
-  margin: 20rpx 70rpx;
+  margin: 20rpx 50rpx;
   font-size: 25rpx;
   background: white;
   border-radius: 20rpx;  
-  padding: 20rpx
+  padding: 20rpx 30rpx;
 }

@@ -1,1 +1,55 @@
-/* pages/discover/discover.wxss */
+.article-container{
+  column-count: 2;
+  column-gap: 20rpx;
+  margin: 20rpx 40rpx;
+}
+
+.article{
+  
+  border-radius: 10rpx;
+  width: 100%;
+  position: relative;
+  display: inline-block
+ 
+  
+}
+
+.article-title{
+  margin-top:20rpx;
+  margin-left:20rpx;
+  font-size:25rpx;
+  font-weight: bold;
+  
+}
+
+.article-image{
+  width:100%;
+  border-radius:10rpx;
+  display: inline-block;
+
+  
+}
+
+.article-info{
+  
+  width: 100%;
+  z-index: 99;
+  position: absolute;
+  bottom: 10%;
+  left:0;
+  display: inline-block;
+  background: rgba(242, 239, 239,0.8);
+  
+  
+}
+
+.article-body{
+  margin-top:10rpx;
+  margin-left:20rpx;
+  font-size:20rpx;
+  margin-bottom: 15rpx;
+  white-space: pre-wrap;
+
+ 
+
+}

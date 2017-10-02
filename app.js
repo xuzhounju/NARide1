@@ -18,12 +18,11 @@ App({
     wx.getStorage({
       key: 'openid',
       success: function (res) {
-        console.log("local openid:",res.data)
+        
         that.globalData.openid = res.data
         that.getInfo()
       },
       fail: function(res){
-        console.log("fail")
         wx.login({
           success: function(res){
             var js_code = res.code
@@ -77,21 +76,17 @@ App({
           url: 'https://Kunwang.us/all_places/',
           method: 'GET',
           success: function (res) {
-            console.log("places:", res.data)
             that.findCampusCenter(res.data)
             var places = []
             var places2 = []
             var pks = []
-            console.log(that.globalData.regions)
             for (var i = 0; i < (res.data.length); i++) {
               var place = { name: '', id: null }
               if (res.data[i].pk != 12 && !(that.globalData.regions.indexOf(res.data[i].fields.region[0]) === -1)) {
              
-                console.log(res.data[i].fields.region[0])
                 place.name = res.data[i].fields.name
                 place.id = res.data[i].pk
                 pks.push(res.data[i].pk)
-                console.log(place)
                 places2.push(place)
                 places.push(place)
               } else {
@@ -126,7 +121,6 @@ App({
             that.globalData.validPk = pks
             that.globalData.places = places
             that.globalData.place = places2
-            console.log(places2)
             if (getCurrentPages().length != 0) {
               getCurrentPages()[getCurrentPages().length - 1].onShow()
             }
@@ -189,7 +183,16 @@ App({
       }
     } else this.globalData.campusCenter=12
   },
+  timeStringToNumber(time){
+    var t = new Date(time)
+    return t.getTime()
+  },
 
+  timeStringToShortString(time){
+    var t = new Date(time)
+    return t.toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' })
+
+  },
  
 
   globalData: {
@@ -221,6 +224,7 @@ App({
     monitor_time_to:null,
     preference:null,
     validPk:[],
-    campusCenter:null
+    campusCenter:null,
+    article:null, 
   }
 })
