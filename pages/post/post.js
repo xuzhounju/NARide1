@@ -36,7 +36,64 @@ Page({
     aId:1,
     dId:0,
   },
+  onLoad: function(){
+    if (wx.getSetting) {
+      console.log("new version")
+      wx.getSetting({
+        success(res) {
+          console.log(res)
+          if (!res.authSetting['scope.userInfo']) {
+            wx.showModal({
+              title: '提示',
+              content: '尚未授权小程序获得头像昵称等信息，是否授权？',
+              success(res) {
+                if (res.confirm) {
+                  wx.openSetting({
+                    success: function (res) {
+                      app.getUserInfo(function (userInfo) {
 
+                      })
+                      app.globalData.newProfile = true
+                      var mydata = {}
+                      if (app.globalData.userInfo) {
+                        mydata.gender = app.globalData.userInfo.gender
+                        mydata.nickName = app.globalData.userInfo.nickName
+                        mydata.avatarUrl = app.globalData.userInfo.avatarUrl
+                      }
+
+                      mydata.weixin = app.globalData.weixin
+                      mydata.phone = app.globalData.phone
+                      mydata.email = app.globalData.email
+                      console.log('info:', mydata)
+                      wx.showLoading({
+                        title: '加载中',
+                      })
+                      wx.request({
+                        url: 'https://kunwang.us/user/' + app.globalData.openid + '/',
+                        data: mydata,
+                        method: "POST",
+                        header: {
+                          'content-type': 'application/x-www-form-urlencoded'
+                        },
+                        success: function (res) {
+                          wx.hideLoading()
+                        }
+                      })
+
+                    }
+                  })
+
+                }
+              }
+            })
+
+          }
+        }
+      })
+    } else {
+
+    }
+  },
 
   onShow: function(){
     
@@ -65,62 +122,9 @@ Page({
 
     })
 
-    if(wx.getSetting){
-      console.log("new version")
-      wx.getSetting({
-        success(res) {
-          console.log(res)
-          if (!res.authSetting['scope.userInfo']) {
-            wx.showModal({
-              title: '提示',
-              content: '尚未授权小程序获得头像昵称等信息，是否授权？',
-              success(res) {
-                if (res.confirm) {
-                  wx.openSetting({
-                    success: function (res) {
-                      app.getUserInfo(function (userInfo) {
 
-                      })
-                      app.globalData.newProfile = true
-                      var mydata = {}
-                      if (app.globalData.userInfo){
-                        mydata.gender = app.globalData.userInfo.gender
-                        mydata.nickName = app.globalData.userInfo.nickName
-                        mydata.avatarUrl = app.globalData.userInfo.avatarUrl
-                      }
-                     
-                      mydata.weixin = app.globalData.weixin
-                      mydata.phone = app.globalData.phone
-                      mydata.email = app.globalData.email
-                      console.log('info:', mydata)
-                      wx.showLoading({
-                        title: '加载中',
-                      })
-                          wx.request({
-                            url: 'https://kunwang.us/user/' + app.globalData.openid + '/',
-                            data: mydata,
-                            method: "POST",
-                            header: {
-                              'content-type': 'application/x-www-form-urlencoded'
-                            },
-                            success: function (res) {
-                              wx.hideLoading()
-                            }
-                          })
-                     
-                    }
-                  })
 
-                }
-              }
-            })
 
-          }
-        }
-      })
-    }else{
-    
-    }
 
 
   },
