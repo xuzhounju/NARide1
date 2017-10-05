@@ -36,7 +36,7 @@ Page({
     aId:1,
     dId:0,
   },
-  onLoad: function(){
+  askAuth: function(){
     if (wx.getSetting) {
       console.log("new version")
       wx.getSetting({
@@ -95,8 +95,8 @@ Page({
     }
   },
 
-  onShow: function(){
-    
+  onLoad: function(){
+    this.askAuth()   
     var d = new Date(Date.now()+24*60*60*1000)
     var year = d.getFullYear()
     var month =d.getMonth()+1
