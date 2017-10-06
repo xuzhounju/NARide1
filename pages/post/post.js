@@ -35,6 +35,7 @@ Page({
     pk:null,
     aId:1,
     dId:0,
+    refresh:true
   },
   askAuth: function(){
     if (wx.getSetting) {
@@ -126,6 +127,35 @@ Page({
 
 
 
+
+
+
+  },
+
+  onShow: function(){
+   
+    this.setData({
+      placeArray: app.globalData.places,
+      place: app.globalData.place,
+      
+
+    })
+
+    if(this.data.refresh){
+      this.setData({
+        departure: app.globalData.places[0].id,
+        arrival: app.globalData.places[1].id,
+        aId: 1,
+        dId: 0,
+      })
+    }else{
+      this.setData({
+        refresh: true
+      })
+    }
+
+    console.log('departure:',this.data.departure)
+    console.log('arrival:',this.data.arrival)
 
   },
 
@@ -324,6 +354,10 @@ Page({
             notice = '提交成功！' 
             app.globalData.newProfile = true 
             flag=true
+            that.setData({
+              refresh:false
+            })
+            
             app.onLaunch()
            
           }

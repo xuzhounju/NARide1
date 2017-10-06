@@ -7,7 +7,7 @@ Page({
    */
   data: {
     cId:null,
-    campusArray: [{name:"所有地区",id:1},{name:"UMass周边",id:2},{name:"UConn周边",id:3},{name:"Clark University周边",id:4}],
+    campusArray: [{ name: "所有地区", id: 1 }, { name: "Amherst,MA 周边", id: 2 }, { name: "UConn, CT 周边", id: 3 }, { name:"Worcester,MA 周边",id:4}],
     preference: app.globalData.preference
   },
 
