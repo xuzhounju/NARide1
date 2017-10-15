@@ -6,7 +6,13 @@
 <view class="Grid"> 
   <view class="Grid-cell userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <view class="nickName">{{userInfo.nickName}}</view>
+    <view class="nickName-mailbox" bindtap="checkMessage">
+      <view class="nickName">{{userInfo.nickName}}</view>
+      <image class="message-image" src="../../images/message.png" mode='aspectFit' hidden='{{!hasMessage}}'></image>
+      <image class="message-image_1" src="../../images/message_c.png" mode='aspectFit' hidden='{{hasMessage}}'></image>
+
+
+    </view>
   </view>
 
 </view>

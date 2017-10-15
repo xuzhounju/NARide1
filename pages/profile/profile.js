@@ -11,10 +11,15 @@ Page({
     loadingHidden: true,
     gender: ['未知', '男', '女'],
     genderID:'',
+    hasMessage:app.globalData.hasMessage
   },
   //事件处理函数
 
   onShow: function(){
+    this.setData({
+      hasMessage: app.globalData.hasMessage
+    })
+    console.log('hasMess:',this.data.hasMessage)
     if (app.globalData.newProfile){
       this.onLoad()
       app.globalData.newProfile = false
@@ -96,6 +101,12 @@ Page({
   showBook:function(e){
     wx.navigateTo({
       url: '../book/book',
+    })
+  },
+  checkMessage(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '../message/message',
     })
   },
 

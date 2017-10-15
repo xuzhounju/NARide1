@@ -1,66 +1,53 @@
 // pages/message/message.js
+var app =getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+
   data: {
-  
+    messages:[]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
+    app.globalData.hasMessage = false
+    var that = this
+    wx.getStorage({
+      key: 'messages',
+      success: function(res) {
+        console.log(res.data)
+        res.data = that.clearMessage(res.data)
+        for(var i=0; i<res.data.length;i++){
+          res.data[i].read=true
+
+        }
+      
+        wx.setStorage({
+          key: 'messages',
+          data: res.data,
+        })
+        that.setData({
+          messages: res.data.reverse()
+        })
+        console.log('messages:', that.data.messages)
+
+      },
+    })
+    
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
+  clearMessage:function(messages){
+    var newMessages = []
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+    for(var i = 0; i< messages.length; i++){
+      if (messages[i].fields.blocking == false && Date.now() - messages[i].time >7*24*60*60*1000){
+        console.log('delete one message')
+      }else{
+        console.log('add 1 mess:',messages[i])
+        newMessages.push(messages[i])
+      }
+    }
+    console.log('newMess:',newMessages)
+    return newMessages
   }
+
+
 })

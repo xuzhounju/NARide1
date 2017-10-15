@@ -2,11 +2,14 @@
 	加载中...
 </loading>
 
-
- 
-
 <view class="container">
+  <image class="message-image" src="../../images/message.png" mode='aspectFit' hidden='{{!hasMessage}}'></image>
+  <image class="message-image_1" src="../../images/message_c.png" mode='aspectFit' hidden='{{hasMessage}}'></image>
   <image class="top-image" src="../../images/cover.jpg"></image>
+
+  <view class='message' bindtap='checkMessage'>
+ 
+  </view>
 
   <view class="top-filter">
     <picker bindchange="bindDeparturePickerChange" value="{{dId}}" range="{{placeArray_d}}" range-key="name">

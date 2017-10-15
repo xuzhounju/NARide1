@@ -1,2 +1,4 @@
 <!--pages/message/message.wxml-->
-<text>pages/message/message.wxml</text>
+<view class="message-box" wx:for="{{messages}}">
+  {{item.fields.body}}
+</view>

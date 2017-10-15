@@ -14,7 +14,8 @@ Page({
       this.setData({
         eventDetail: app.globalData.detailEvent
       })
-
+      console.log('data',this.data.eventDetail)
+      
     } else {
       wx.showLoading({
         title: '加载中',
@@ -122,6 +123,7 @@ Page({
   confirm: function (e) {
     console.log("confirm")
     let formId = e.detail.formId;
+
     this.task_notify()
 
     app.dealFormIds(formId); //处理保存推送码

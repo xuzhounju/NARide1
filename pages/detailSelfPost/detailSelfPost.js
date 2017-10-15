@@ -14,7 +14,12 @@ Page({
     latest:'',
     userInfo:'',
     pNumber:'',
-    memo:''
+    memo:'',
+    departure:'',
+    arrival:'',
+    poster:null,
+    driver:null
+
   },
 
   /**
@@ -28,14 +33,40 @@ Page({
       placeArray: app.globalData.place,
 
     })
+
+    console.log('data',this.data.detailPost)
     var etime = new Date(this.data.detailPost.fields.earliest)
     var ltime = new Date(this.data.detailPost.fields.latest)
     this.setData({
-      earliest: etime.toLocaleString(),
-      latest: ltime.toLocaleString(),
+      earliest: etime.toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
+      latest: ltime.toLocaleString([], { month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
       pNumber: this.data.detailPost.fields.pNumber,
-      memo: this.data.detailPost.fields.memo
+      memo: this.data.detailPost.fields.memo,
+      driver:this.data.detailPost.fields.driver,
     })
+    
+    if (this.data.detailPost.fields.departure != 12){
+      this.setData({
+        departure: this.data.placeArray[this.data.detailPost.fields.departure - 1],
+        arrival: this.data.placeArray[this.data.detailPost.fields.arrival - 1]
+      })
+    }else{
+      this.setData({
+        departure: this.data.detailPost.fields.purpose,
+        arrival:''
+      })
+    }
+
+    var poster
+    if (app.globalData.userInfo) {
+      poster = [0, app.globalData.userInfo.gender, app.globalData.userInfo.nickName, app.globalData.userInfo.avatarUrl, app.globalData.email, app.globalData.weixin, app.globalData.phone, 0]
+    } else {
+      poster = [0, 0, "未知", 'http://server.myspace-shack.com/d23/b74dba9d-ec33-446d-81d3-7efd254f1b85.png', app.globalData.email, app.globalData.weixin, app.globalData.phone, 0]
+    }
+    this.setData({
+      poster:poster
+    })
+    console.log('data:',this.data)
     if (this.data.detailPost.fields.driver){
       this.setData({
         purposeID:0
@@ -171,8 +202,45 @@ Page({
     this.setData({
       memo: e.detail.value
     })
-  }
+  },
   
+  onShareAppMessage: function () {
+    var text = JSON.stringify(this.data)
+    console.log(text)
+    var user = this.data
+    var title = ''
+    if (user.driver) {
+      title = title + '寻乘客：'
+    } else {
+      title = title + '寻司机：'
+    }
+
+    if (user.purpose.length == 0) {
+      title = title + user.departure + '到' + user.arrival + '; 日期：' + user.earliest
+
+
+
+    } else {
+      title = title + user.purpose + "; 日期：" + user.earliest
+
+
+    }
+
+    return {
+      title: title,
+      path: 'pages/resultDetail/resultDetail?text=' + text,
+
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+    wx.switchTab({
+      url: '../index/index'
+    })
+  }
 
   
 })

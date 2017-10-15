@@ -12,9 +12,23 @@
   
 
 }
+.message-image{
 
+  margin-left: 30rpx;
+  width: 55rpx;
+  height: 40rpx;
+  margin-top:20rpx;
+}
+
+.message-image_1{
+
+  margin-left: 30rpx;
+  width: 45rpx;
+  height: 40rpx;
+  margin-top:20rpx;
+}
 .nickName{
-  margin-top:100rpx;
+  margin-top:70rpx;
   margin-left: 30rpx;
   color: #89c3d8;
   font-size:45rpx;
@@ -96,3 +110,5 @@ page{
   height: 158rpx;
   margin:auto;
 }
+
+

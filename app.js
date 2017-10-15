@@ -44,6 +44,8 @@ App({
       }
     })
 
+
+
        
   },
 
@@ -121,9 +123,8 @@ App({
             that.globalData.validPk = pks
             that.globalData.places = places
             that.globalData.place = places2
-            if (getCurrentPages().length != 0) {
-              getCurrentPages()[getCurrentPages().length - 1].onShow()
-            }
+            that.takeMessage()
+           
 
           }
         })
@@ -131,18 +132,66 @@ App({
 
 
     })
+    
   },
-     
+  
+  takeMessage(){
+    var that =this
+    var choice='unsent/'
+    wx.getStorage({
+      key: 'messages',
+      success: function (res) {
+        console.log('success')
+        for (var i = 0; i < res.data.length; i++) {
+          if(!res.data[i].read){
+            that.globalData.hasMessage = true
+          }
+          that.globalData.messages.push(res.data[i])
+        }
+      },
+      fail: function(){
+        console.log('fail')
+        choice='all/'
+      }
+    })
+    wx.request({
+      url: 'https://kunwang.us/message/'+choice + that.globalData.openid + '/',
+      method: "GET",
+      success: function (res) {
+        console.log('got messages:', res.data)
+        if (res.data.length > 0) {
+          that.globalData.hasMessage = true
+          for(var i = 0; i< res.data.length;i++){
+            res.data[i].read = false
+            res.data[i].time = Date.now()
+            that.globalData.messages.push(res.data[i])
+          }
+          wx.setStorage({
+            key: 'messages',
+            data: that.globalData.messages,
+          })
 
 
 
+        }
+        console.log("messages:",that.globalData.messages)
+        if (getCurrentPages().length != 0) {
+          getCurrentPages()[getCurrentPages().length - 1].onShow()
+        }
+      }
 
-  onShow:function(){
-    console.log('app.onshow', this.globalData.places.length)
-    if (this.globalData.places.length==0){
-      this.onLaunch()
-    }
+    })
   },
+
+
+
+
+  // onShow:function(){
+  //   console.log('app.onshow', this.globalData.places.length)
+  //   if (this.globalData.places.length==0){
+  //     this.onLaunch()
+  //   }
+  // },
 
   getUserInfo: function(cb) {
     var that = this
@@ -226,5 +275,7 @@ App({
     validPk:[],
     campusCenter:null,
     article:null, 
+    hasMessage:false,
+    messages:[]
   }
 })

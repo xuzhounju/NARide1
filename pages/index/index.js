@@ -22,7 +22,8 @@ Page({
     rankId: 1,
     rankArray: ["按出发时间", "按发帖时间"],
     color1:"green",
-    color2:"black"
+    color2:"black",
+    hasMessage: false
   },
 
   onShow: function (options) {
@@ -30,6 +31,7 @@ Page({
     this.setData({
       loadingHidden: false,
       currentNavtab: app.globalData.currentTap,
+      hasMessage:app.globalData.hasMessage
      
     })
     
@@ -318,7 +320,12 @@ Page({
 
     this.onShow()
   },
-
+  checkMessage(e){
+    console.log(e)
+    wx.navigateTo({
+      url: '../message/message',
+    })
+  },
 
   onShareAppMessage: function () {
 

@@ -195,4 +195,33 @@ button::after{
   margin-top:5rpx;
 }
 
+.message-image{
+  position: absolute;
+  z-index: 9998;
+  width: 55rpx;
+  height: 40rpx;
+  top:235rpx;
+
+  right:75rpx
+}
+
+.message-image_1{
+  position: absolute;
+  z-index: 9998;
+  width: 45rpx;
+  height: 40rpx;
+  top:235rpx;
+  right:75rpx
+}
+.message{
+  position: absolute;
+  background: white;
+  top:240rpx;
+  right:55rpx;
+  width:80rpx;
+  height:50rpx;
+  z-index: 9999;
+  opacity: 0
+  
+}
 
