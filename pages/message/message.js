@@ -38,7 +38,7 @@ Page({
     var newMessages = []
 
     for(var i = 0; i< messages.length; i++){
-      if (messages[i].fields.blocking == false && Date.now() - messages[i].time >7*24*60*60*1000){
+      if (messages[i].fields.important == false && Date.now() - messages[i].time >7*24*60*60*1000){
         console.log('delete one message')
       }else{
         console.log('add 1 mess:',messages[i])

@@ -124,8 +124,10 @@ App({
             that.globalData.places = places
             that.globalData.place = places2
             that.takeMessage()
-           
-
+            if (getCurrentPages().length != 0) {
+              getCurrentPages()[getCurrentPages().length - 1].onShow()
+            }
+            
           }
         })
       }
@@ -149,10 +151,7 @@ App({
           that.globalData.messages.push(res.data[i])
         }
       },
-      fail: function(){
-        console.log('fail')
-        choice='all/'
-      }
+   
     })
     wx.request({
       url: 'https://kunwang.us/message/'+choice + that.globalData.openid + '/',
@@ -175,9 +174,9 @@ App({
 
         }
         console.log("messages:",that.globalData.messages)
-        if (getCurrentPages().length != 0) {
-          getCurrentPages()[getCurrentPages().length - 1].onShow()
-        }
+        that.globalData.finishLaunch = true
+
+
       }
 
     })
@@ -186,12 +185,6 @@ App({
 
 
 
-  // onShow:function(){
-  //   console.log('app.onshow', this.globalData.places.length)
-  //   if (this.globalData.places.length==0){
-  //     this.onLaunch()
-  //   }
-  // },
 
   getUserInfo: function(cb) {
     var that = this
@@ -276,6 +269,7 @@ App({
     campusCenter:null,
     article:null, 
     hasMessage:false,
-    messages:[]
+    messages:[],
+    finshLaunch:false,
   }
 })

@@ -27,7 +27,9 @@ Page({
   },
 
   onShow: function (options) {
-
+    if(app.globalData.finishLaunch){
+      app.takeMessage()
+    }
     this.setData({
       loadingHidden: false,
       currentNavtab: app.globalData.currentTap,
@@ -169,7 +171,6 @@ Page({
         userInfo: userInfo
       })
     })
-  
     console.log('onshow end:',app.globalData.places)
   },
 
