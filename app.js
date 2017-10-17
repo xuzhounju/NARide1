@@ -144,6 +144,8 @@ App({
       key: 'messages',
       success: function (res) {
         console.log('success')
+        that.globalData.messages = []
+
         for (var i = 0; i < res.data.length; i++) {
           if(!res.data[i].read){
             that.globalData.hasMessage = true
@@ -158,6 +160,7 @@ App({
       method: "GET",
       success: function (res) {
         console.log('got messages:', res.data)
+        console.log(res.data.length)
         if (res.data.length > 0) {
           that.globalData.hasMessage = true
           for(var i = 0; i< res.data.length;i++){
