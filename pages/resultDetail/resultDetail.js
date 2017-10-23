@@ -17,9 +17,12 @@ Page({
       console.log('data',this.data.eventDetail)
       
     } else {
-      wx.showLoading({
-        title: '加载中',
-      })
+      if(wx.showLoading){
+        wx.showLoading({
+          title: '加载中',
+        })
+      }
+   
      
       wx.login({
         success: function (res) {
@@ -28,10 +31,14 @@ Page({
             url: 'https://kunwang.us/user/' + js_code,
             method: 'GET',
             success: function (res) {
-              app.globalData.openid = res.data[0].fields.username
+              if (res.data[0].fields.username){
+                app.globalData.openid = res.data[0].fields.username
+              }
               
+              if(wx.hideLoading){
+                wx.hideLoading()
 
-              wx.hideLoading()
+              }
             }
           
           })
@@ -42,6 +49,7 @@ Page({
       this.setData({
         eventDetail: JSON.parse(text)
       })
+      console.log('pk', that.data.eventDetail.pk)
       wx.request({
         url: 'https://kunwang.us/entry/'+that.data.eventDetail.pk+'/',
         method:'GET',
@@ -99,9 +107,12 @@ Page({
                 showCancel: false,
                 success: function (res) {
                   if (res.confirm) {
-                    that.setData({
-                      posted: true
-                    })
+                    if (app.globalData.openid){
+                      that.setData({
+                        posted: true
+                      })
+                    }
+                  
 
                   }
                 }

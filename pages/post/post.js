@@ -1,4 +1,4 @@
-//post.js
+//kost.js
 var util = require('../../utils/util.js')
 
 var app = getApp()
@@ -340,7 +340,7 @@ Page({
           'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
-          
+          console.log(res.data)
           that.setData({
             loadingHidden: true,
             pk:res.data

@@ -48,6 +48,17 @@ App({
 
        
   },
+  onError:function(){
+    console.log('error restart mini program')
+    var that = this
+    wx.removeStorage({
+      key:'openid',
+      success:function(res){
+        that.onLaunch()
+      }
+    })
+   
+  },
 
   getInfo:function(){
     var that= this

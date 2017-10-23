@@ -18,8 +18,8 @@ Page({
     departure:'',
     arrival:'',
     poster:null,
-    driver:null
-
+    driver:null,
+    pk:null
   },
 
   /**
@@ -31,10 +31,11 @@ Page({
       userInfo:app.globalData.userInfo,
       detailPost: app.globalData.onGoingPost[app.globalData.detailSelfPostID], 
       placeArray: app.globalData.place,
+      pk:app.globalData.onGoingPost[app.globalData.detailSelfPostID].pk
 
     })
 
-    console.log('data',this.data.detailPost)
+    console.log('selfdata',this.data.detailPost)
     var etime = new Date(this.data.detailPost.fields.earliest)
     var ltime = new Date(this.data.detailPost.fields.latest)
     this.setData({
