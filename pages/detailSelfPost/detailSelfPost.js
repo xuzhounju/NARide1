@@ -8,7 +8,7 @@ Page({
   data: {
     placeArray: app.globalData.place,
     detailPost:'',
-    purpose:['招客','搭车'],
+    purpose:'',
     purposeID: 1,
     earliest:'',
     latest:'',
@@ -31,7 +31,8 @@ Page({
       userInfo:app.globalData.userInfo,
       detailPost: app.globalData.onGoingPost[app.globalData.detailSelfPostID], 
       placeArray: app.globalData.place,
-      pk:app.globalData.onGoingPost[app.globalData.detailSelfPostID].pk
+      pk:app.globalData.onGoingPost[app.globalData.detailSelfPostID].pk,
+      purpose: app.globalData.onGoingPost[app.globalData.detailSelfPostID].fields.purpose
 
     })
 
@@ -206,6 +207,7 @@ Page({
   },
   
   onShareAppMessage: function () {
+    // this.data.purpose = 
     var text = JSON.stringify(this.data)
     console.log(text)
     var user = this.data
