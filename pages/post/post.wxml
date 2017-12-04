@@ -131,7 +131,7 @@
 
 
 
-<view class="container" wx:else>
+<view class="container" wx:if="{{currentNavtab==1}}">
   <form bindsubmit="formSubmit" bindreset="formReset" id="js-postform" report-submit>
     <view class="Grid">
       <view class="Grid-cell memo">
@@ -206,6 +206,72 @@
   
   </form>
 </view>
+
+<view class="container" wx:if="{{currentNavtab==2}}">
+  <form bindsubmit="vipSubmit" bindreset="vipReset" id="js-postform" report-submit>
+     <view class= "Grid">
+      <view class="Grid-cell 1-1">
+    
+       
+        <space class="da">出发地:</space><input name="vipDeparture" maxlength="100" auto-height="true" placeholder="请用英文填写"/>
+      
+     
+      </view>
+    </view>
+  
+
+
+
+    <view class= "Grid">
+      
+      <view class= "Grid-cell 1-2">
+       
+        <space class="da">目的地:</space><input name="vipArrival" maxlength="100" auto-height="true" placeholder="请用英文填写"/>
+      
+      </view>
+    </view>
+
+     <view class="Grid">
+      
+      <view class="Grid-cell d2-1">
+
+        <picker name="eDate" mode="date" value="{{eDate}}" start="{{nowDate}}" end="{{endDate}}" bindchange="bindEDateChange">
+          <view class="picker">
+            <space>日期:</space><span class="date">{{eDate}}</span>
+          </view>
+        </picker>
+      </view>
+      <view class="Grid-cell d2-2">
+        <picker name="eTime" mode="time" value="{{eTime}}" bindchange="bindETimeChange">
+          <view class="time-picker">
+            <space>时间:</space><span class="short">{{eTime}}</span>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+
+
+
+    <view class="Grid">
+      <view class="Grid-cell 4-1">
+        <picker name="pNumber" bindchange="bindPNumberPickerChange"  range="{{numArray}}">
+          <view class="picker">
+            <space>乘客数/载客数:</space><span class="middle">{{pNumber}}</span>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="Grid">
+      <view class="Grid-cell memo">
+        <space>备注:</space><input name="memo" maxlength="100" disabled="{{posted}}"auto-height="true" placeholder="  价格，车型，特殊要求等。"  />
+      </view>
+    </view>
+
+  </form>
+</view>
+
 
 
  <view class="shareToGroup" hidden="{{!posted}}"> 

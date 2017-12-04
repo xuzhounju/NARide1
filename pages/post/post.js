@@ -4,7 +4,7 @@ var util = require('../../utils/util.js')
 var app = getApp()
 Page({
   data: {
-    navTab: ["普通拼车","搬家练车"],
+    navTab: ["普通拼车","搬家练车","呼叫专车"],
     currentNavtab: app.globalData.currentTap_post,
     
     identity: [

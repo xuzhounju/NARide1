@@ -71,19 +71,22 @@ Page({
       success: function(res) {
         var articles = res.data
         console.log(articles)
+        var new_articles=[]
         var nowTime = new Date().getTime()
         for(var i=0;i<articles.length;i++){
-          if (app.timeStringToNumber(articles.expire_time)<nowTime){
-            articles.splice(i,1)
+          console.log('expire time :', articles[i].expire_time)
+          if (app.timeStringToNumber(articles[i].expire_time)<nowTime){
             console.log('remove one expired article')
+          }else{
+            new_articles.push(articles[i])
           }
         }
         that.setData({
-          articles:articles
+          articles:new_articles
         })
         wx.setStorage({
           key: 'articles',
-          data: articles,
+          data: new_articles,
         })
       },
     })

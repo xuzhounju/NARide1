@@ -28,6 +28,13 @@ Page({
 
   onShareAppMessage(){
     var text = JSON.stringify(this.data.article)
+    if (text.length>700){
+      wx.showModal({
+        title: '提示',
+        content: '文章太长无法转发',
+      })
+      return
+    }
     return {
       title:'精彩活动',
       path: 'pages/article/article?text=' + text,

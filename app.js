@@ -30,13 +30,22 @@ App({
               url: "https://kunwang.us/user/"+js_code,
               method:'GET',
               success:function(res){
+                console.log('res',res.data)
                 that.globalData.openid = res.data[0].fields.username
 
                 wx.setStorage({
                   key: 'openid',
                   data: res.data[0].fields.username,
                 })
+                var first_login = res.data[0].fields.first_login
                 that.getInfo()
+                if (first_login ){
+                  wx.navigateTo({
+                    url: '../campus/campus',
+                  })
+                }
+                
+                
               }
             })
           }
