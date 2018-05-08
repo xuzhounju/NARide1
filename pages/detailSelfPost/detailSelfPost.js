@@ -48,9 +48,23 @@ Page({
     })
     
     if (this.data.detailPost.fields.departure != 12){
+      var alag = 0;
+      var dlag = 0;
+      if (this.data.detailPost.fields.arrival == 36) {
+        alag = 3
+      };
+      if (this.data.detailPost.fields.arrival > 36) {
+        alag = 4
+      };
+      if (this.data.detailPost.fields.departure == 36) {
+        dlag = 3
+      }
+      if (this.data.detailPost.fields.departure > 36) {
+        dlag = 4
+      }
       this.setData({
-        departure: this.data.placeArray[this.data.detailPost.fields.departure - 1],
-        arrival: this.data.placeArray[this.data.detailPost.fields.arrival - 1]
+        departure: this.data.placeArray[this.data.detailPost.fields.departure - 1-dlag],
+        arrival: this.data.placeArray[this.data.detailPost.fields.arrival - 1-alag]
       })
     }else{
       this.setData({

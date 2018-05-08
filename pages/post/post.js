@@ -4,7 +4,8 @@ var util = require('../../utils/util.js')
 var app = getApp()
 Page({
   data: {
-    navTab: ["普通拼车","搬家练车","呼叫专车"],
+    //navTab: ["普通拼车","搬家练车","呼叫专车"],
+    navTab: ["普通拼车", "搬家练车"],
     currentNavtab: app.globalData.currentTap_post,
     
     identity: [
@@ -253,6 +254,7 @@ Page({
       mydata.purpose=''
       mydata.arrival=that.data.arrival
       mydata.departure=that.data.departure
+      console.log('mydata:',mydata)
     }else{
       if(mydata.purpose.length==0){
         wx.showModal({
@@ -340,6 +342,7 @@ Page({
           'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
+         
           console.log(res.data)
           that.setData({
             loadingHidden: true,

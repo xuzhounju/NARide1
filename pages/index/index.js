@@ -67,14 +67,31 @@ Page({
           placeArray_d: places_d
         })
         var result = res.data;
+        console.log('result:',result.length)
         var placeArray = app.globalData.place;
+        console.log('index place:',placeArray)
         for (var i = 0; i < result.length; i++) {
           if (result[i] && !(app.globalData.validPk.indexOf(result[i].fields.departure)===-1) && !(app.globalData.validPk.indexOf(result[i].fields.arrival)===-1)) {
             var filterAid = result[i].fields.arrival
             var filterDid = result[i].fields.departure
             if (result[i].fields.departure != 12) {
-              result[i].fields.departure = placeArray[result[i].fields.departure - 1];
-              result[i].fields.arrival = placeArray[result[i].fields.arrival - 1];
+              var alag = 0;
+              var dlag = 0;
+              if (result[i].fields.arrival==36){
+                alag=3
+              };
+              if (result[i].fields.arrival > 36) {
+                alag = 4
+              };
+              if (result[i].fields.departure == 36) {
+                dlag = 3
+              }
+              if (result[i].fields.departure > 36) {
+                dlag = 4
+              }
+
+              result[i].fields.departure = placeArray[result[i].fields.departure - 1-dlag];
+              result[i].fields.arrival = placeArray[result[i].fields.arrival - 1-alag];
             }
             else {
               console.log(result[i].fields)
